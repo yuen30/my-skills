@@ -1,6 +1,8 @@
-# My Skills
+# my-skills
 
 ชุด Skills สำหรับ OpenCode AI Agent — พร้อมใช้งานข้ามเครื่องได้ทันที
+
+Repo: `git@github.com:yuen30/my-skills.git`
 
 ## 📦 มีอะไรบ้าง
 
@@ -13,48 +15,39 @@
 - **Framework** — Fiber (Go), Laravel Filament, Ruby on Rails
 - **Tools** — Firebase, Entra ID, TDD, Web Design Guidelines, xlsx, docx
 
-ดูรายชื่อทั้งหมดได้ที่ [`skills/`](./skills/)
+ดูรายชื่อทั้งหมดได้ที่ [`skills/_index.md`](./skills/_index.md)
 
 ## 🚀 วิธีติดตั้ง
 
-มี 2 วิธีให้เลือก:
-
-### วิธีที่ 1: Clone แล้ว symlink (แนะนำ)
-
 ```bash
-# 1. Clone ไปที่เครื่องใหม่
-git clone <repo-url> ~/my-skills
-
-# 2. ลบ skills เดิม (ถ้ามี) แล้วสร้าง symlink
-rm -rf ~/.agents/skills
-ln -s ~/my-skills/skills ~/.agents/skills
-
-# หรือถ้าต้องการเก็บ skills เดิมไว้
-mv ~/.agents/skills ~/.agents/skills.bak
-ln -s ~/my-skills/skills ~/.agents/skills
+npx skills add yuen30/my-skills
 ```
 
-### วิธีที่ 2: คัดลอกตรง ๆ
+เท่านี้ก็เรียบร้อย — ระบบจะติดตั้ง skills ทั้งหมดให้อัตโนมัติ
+
+### ถ้าต้องการติดตั้งทีละตัว
 
 ```bash
-# 1. Clone
-git clone <repo-url> ~/my-skills
+npx skills add yuen30/my-skills/skills/<skill-name>
+```
 
-# 2. คัดลอกทับ
-cp -R ~/my-skills/skills/* ~/.agents/skills/
+เช่น:
+
+```bash
+npx skills add yuen30/my-skills/skills/azure-diagnostics
+npx skills add yuen30/my-skills/skills/shadcn
 ```
 
 ## 🔄 วิธีอัพเดท
 
 ```bash
-# ถ้าใช้ symlink (วิธีที่ 1) — แค่ git pull
-cd ~/my-skills
-git pull
+npx skills update yuen30/my-skills
+```
 
-# ถ้าใช้ copy (วิธีที่ 2) — pull แล้ว copy ใหม่
-cd ~/my-skills
-git pull
-cp -R ~/my-skills/skills/* ~/.agents/skills/
+หรืออัพเดททั้งหมดพร้อมกัน:
+
+```bash
+npx skills update --all
 ```
 
 ## 📁 โครงสร้าง
@@ -73,9 +66,9 @@ my-skills/
 
 ## 🧰 การเพิ่ม skill ใหม่
 
-1. เพิ่ม文件夹ใน `skills/` พร้อม `SKILL.md`
+1. เพิ่ม directory ใน `skills/` พร้อม `SKILL.md`
 2. Commit และ push
-3. ที่เครื่องอื่น `git pull` (หรือ copy ใหม่)
+3. ที่เครื่องอื่น: `npx skills update yuen30/my-skills`
 
 ## ⚠️ หมายเหตุ
 
