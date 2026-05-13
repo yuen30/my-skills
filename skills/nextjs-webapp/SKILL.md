@@ -9,18 +9,41 @@ description: "TOA E-Ordering webapp conventions — directory layout, component 
 
 ```
 webapp/
-├── app/                    # Next.js 16 App Router (pages + API)
-├── components/             # React components (grouped by feature)
-├── types/                  # Shared TypeScript type definitions
-├── helpers/                # Pure utility functions
-├── hooks/                  # Custom React hooks
-├── lib/                    # Shared logic (api, auth, mock, stores)
+├── app/
+│   ├── [locale]/             # Pages under locale prefix (th/en/vi)
+│   │   ├── admin/            # Admin pages
+│   │   ├── cart/
+│   │   ├── checkout/
+│   │   ├── login/
+│   │   ├── orders/
+│   │   ├── products/
+│   │   ├── profile/
+│   │   ├── tracking/
+│   │   └── page.tsx          # Dashboard/home
+│   └── api/                  # API routes (no locale prefix)
+│       ├── auth/[...nextauth]/
+│       ├── cart/
+│       ├── mock/
+│       └── profile/
+├── components/               # React components (grouped by feature)
+├── types/                    # Shared TypeScript type definitions
+├── helpers/                  # Pure utility functions
+├── hooks/                    # Custom React hooks
+├── lib/                      # Shared logic (api, auth, mock, stores)
+├── i18n/                     # next-intl configuration
+│   ├── routing.ts            # Locale routing config (locales, default)
+│   ├── request.ts            # Request-time i18n setup (load messages)
+│   └── navigation.ts         # Typed navigation helpers (Link, redirect, usePathname, useRouter)
+├── messages/                 # Translation JSON files
+│   ├── th.json               # Thai translations
+│   ├── en.json               # English translations
+│   └── vi.json               # Vietnamese translations
 ├── public/
-│   ├── mockdata/           # Static JSON mock files + CSV imports
+│   ├── mockdata/             # Static JSON mock files + CSV imports
 │   └── assets/ banners/ products/ promotions/
-├── tests/e2e/              # Playwright E2E tests
-├── auth.ts                 # NextAuth.js configuration
-├── proxy.ts                # Development proxy
+├── tests/e2e/                # Playwright E2E tests
+├── auth.ts                   # NextAuth.js configuration
+├── proxy.ts                  # Middleware: next-intl locale routing + next-auth auth guard
 ├── next.config.ts
 ├── tsconfig.json
 ├── eslint.config.mjs
@@ -38,7 +61,8 @@ Single alias `@/*` → `webapp/*` (defined in `tsconfig.json`):
 | `@/hooks/use-cart` | `webapp/hooks/use-cart.ts` |
 | `@/components/ui/button` | `webapp/components/ui/button.tsx` |
 | `@/lib/api/client` | `webapp/lib/api/client.ts` |
-| `@/app/layout` | `webapp/app/layout.tsx` |
+| `@/i18n/routing` | `webapp/i18n/routing.ts` |
+| `@/i18n/navigation` | `webapp/i18n/navigation.ts` |
 
 ## 3. Component Architecture
 
@@ -77,26 +101,26 @@ Import: `import { Button } from "@/components/ui/button"`
 
 ## 4. Route Structure
 
-### Page Routes
+### Page Routes (all under `[locale]`)
 
 | Route | File | Type |
 |-------|------|------|
-| `/` | `app/page.tsx` | Dashboard/home |
-| `/cart` | `app/cart/page.tsx` | Client |
-| `/checkout` | `app/checkout/page.tsx` | Mixed |
-| `/login` | `app/login/page.tsx` | Mixed |
-| `/orders` | `app/orders/page.tsx` | Server → Client |
-| `/orders/[orderId]` | `app/orders/[orderId]/page.tsx` | Server |
-| `/orders/[orderId]/print` | `app/orders/[orderId]/print/page.tsx` | Server |
-| `/orders/purchase-report` | `app/orders/purchase-report/page.tsx` | Client |
-| `/orders/thank-you/[orderId]` | `app/orders/thank-you/[orderId]/page.tsx` | Client |
-| `/products` | `app/products/page.tsx` | TBD |
-| `/products/[sku]` | `app/products/[sku]/page.tsx` | TBD |
-| `/profile` | `app/profile/page.tsx` | Client |
-| `/tracking` | `app/tracking/page.tsx` | TBD |
-| `/admin/*` | `app/admin/*/page.tsx` | Admin pages |
+| `/th` (or `/en`, `/vi`) | `app/[locale]/page.tsx` | Dashboard/home |
+| `/th/cart` | `app/[locale]/cart/page.tsx` | Client |
+| `/th/checkout` | `app/[locale]/checkout/page.tsx` | Mixed |
+| `/th/login` | `app/[locale]/login/page.tsx` | Mixed |
+| `/th/orders` | `app/[locale]/orders/page.tsx` | Server → Client |
+| `/th/orders/[orderId]` | `app/[locale]/orders/[orderId]/page.tsx` | Server |
+| `/th/orders/[orderId]/print` | `app/[locale]/orders/[orderId]/print/page.tsx` | Server |
+| `/th/orders/purchase-report` | `app/[locale]/orders/purchase-report/page.tsx` | Client |
+| `/th/orders/thank-you/[orderId]` | `app/[locale]/orders/thank-you/[orderId]/page.tsx` | Client |
+| `/th/products` | `app/[locale]/products/page.tsx` | TBD |
+| `/th/products/[sku]` | `app/[locale]/products/[sku]/page.tsx` | TBD |
+| `/th/profile` | `app/[locale]/profile/page.tsx` | Client |
+| `/th/tracking` | `app/[locale]/tracking/page.tsx` | TBD |
+| `/th/admin/*` | `app/[locale]/admin/*/page.tsx` | Admin pages |
 
-### API Routes
+### API Routes (no locale prefix)
 
 | Endpoint | File | Type |
 |----------|------|------|
@@ -107,12 +131,80 @@ Import: `import { Button } from "@/components/ui/button"`
 
 ### Key Route Patterns
 
-- **Locale prefix required**: All user-facing routes expect prefix (`/th`, `/en`, `/vi`) — no fallback
+- **Locale prefix required**: All user-facing routes expect prefix (`/th`, `/en`, `/vi`) — no fallback. All pages live under `app/[locale]/`.
 - **Param pattern**: Dynamic routes use `[param]` convention (e.g., `[orderId]`)
 - **Server components first**: Pages start as server components, add `"use client"` only when needed
-- **Auth guard**: Most pages check `auth()` and `redirect()` unauthenticated users
+- **Auth guard**: Handled centrally in `proxy.ts` (Edge middleware), not per-page
 
-## 5. Mock Data Strategy
+## 5. Internationalization (i18n)
+
+### Setup
+
+Uses `next-intl` v4 with App Router integration:
+
+| File | Purpose |
+|------|---------|
+| `i18n/routing.ts` | Defines `locales`, `localePrefix: "always"`, default locale |
+| `i18n/request.ts` | Loads messages from `messages/{locale}.json` at request time |
+| `i18n/navigation.ts` | Re-exports `createNavigation` with typed `Link`, `redirect`, `usePathname`, `useRouter` |
+
+### Usage in Pages
+
+```tsx
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
+
+export default function Page() {
+  const t = useTranslations("common")
+  return <Link href="/orders">{t("viewOrders")}</Link>
+}
+```
+
+### Translation Files
+
+Located in `messages/`:
+- `th.json` — Thai (primary)
+- `en.json` — English
+- `vi.json` — Vietnamese
+
+Namespaces: `common`, `auth`, `nav`, `dashboard`, `orders`, `products`, `admin`, `promotions`, `profile`, `tracking`, `cart`, `audit`
+
+### Locale Switcher
+
+`components/locale-switcher.tsx` — dropdown in admin header using `<Select>` with `useRouter` + `usePathname` from `@/i18n/navigation`.
+
+### Root Layout
+
+- `app/layout.tsx` — minimal: just `<html>` + `<body>`
+- `app/[locale]/layout.tsx` — wraps with `NextIntlClientProvider`, `AuthProvider`, `CustomerProvider`, `Toaster`
+
+## 6. Middleware (proxy.ts)
+
+`proxy.ts` serves as Edge Middleware combining:
+
+1. **Locale routing** — uses `createMiddleware` from `next-intl/middleware` to detect/redirect locale
+2. **Auth guard** — uses `getToken` from `next-auth/jwt` (NOT `auth()` wrapper, which imports `node:fs/promises` and breaks Edge Runtime):
+   - Unauthenticated users → redirect to `/th/login`
+   - Non-admin users accessing `/admin/*` → redirect to `/th`
+
+Key: The function is named `proxy` (not `middleware`) per Next.js 16 convention (file named `proxy.ts`, not `middleware.ts`).
+
+```ts
+// proxy.ts — simplified structure
+import { getToken } from "next-auth/jwt"
+import createMiddleware from "next-intl/middleware"
+import { NextRequest, NextResponse } from "next/server"
+
+const intlMiddleware = createMiddleware({ /* routing config */ })
+
+export default async function proxy(req: NextRequest) {
+  // 1. Run intl middleware
+  // 2. Check auth via getToken()
+  // 3. Redirect if needed
+}
+```
+
+## 7. Mock Data Strategy
 
 Two parallel systems:
 
@@ -133,13 +225,14 @@ Strategy pattern for data access:
 - `lib/api/adapters/mock/auth.ts`, `customers.ts`, `orders.ts`, `products.ts`, `promotions.ts`
 - Called via `lib/api/client.ts`
 
-## 6. Key Libraries
+## 8. Key Libraries
 
 | Library | Version | Purpose |
 |---------|---------|---------|
 | Next.js | 16.x | Framework (turbopack dev, webpack build) |
 | React | 19.x | UI library (compiler enabled) |
 | next-auth | 5.x | Authentication |
+| next-intl | 4.x | Internationalization (i18n) |
 | motion | 12.x | Animations |
 | lucide-react | 1.x | Icons |
 | sonner | 2.x | Toast notifications |
@@ -147,7 +240,7 @@ Strategy pattern for data access:
 | Zustand | — | State management (profile store) |
 | Playwright | — | E2E tests |
 
-## 7. Dev Commands
+## 9. Dev Commands
 
 ```bash
 bun run dev          # :3000 (--turbopack)
@@ -159,10 +252,12 @@ bun run test:e2e     # Playwright tests
 
 *Build uses `--webpack` due to Turbopack module resolution issues with `@/*` aliases.
 
-## 8. Critical Quirks
+## 10. Critical Quirks
 
 - **React Compiler enabled**: Functions passed to `children`/`footer` props MUST be wrapped in `useMemo` to avoid stale closures
 - **`.env` escape**: `$` → `$$` (e.g., `SFTP_PASSWORD=$ecret` → `SFTP_PASSWORD=$$ecret`)
-- **Locale required**: All user routes need prefix (`/th`, `/en`, `/vi`) — no fallback
-- **PostgreSQL external**: NOT in docker-compose.yml; configure `POSTGRES_HOST` in `.env`
+- **Locale required**: All user routes need prefix (`/th`, `/en`, `/vi`) — no fallback. Pages live under `app/[locale]/`, not `app/`.
+- **postgresql external**: NOT in docker-compose.yml; configure `POSTGRES_HOST` in `.env`
 - **`bun run typecheck` NOT available**: Use `tsc --noEmit` directly
+- **Middleware in `proxy.ts`**: Function named `proxy` (not `middleware`). Uses `getToken` from `next-auth/jwt` (not `auth()`) to avoid Node.js native imports in Edge runtime.
+- **`next-intl/navigation` instead of `next/link`**: Use `Link`, `redirect`, `useRouter`, `usePathname` from `@/i18n/navigation` for locale-aware navigation.
