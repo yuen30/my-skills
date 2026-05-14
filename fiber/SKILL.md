@@ -15,7 +15,13 @@ metadata:
 
 # Fiber Framework Guide
 
-> Applies to: Fiber v2.50+, Go 1.21+, High-Performance REST APIs, Microservices
+> **Applies to: Fiber v3.2+** (Latest stable — Feb 2026), **Go 1.25+**, High-Performance REST APIs, Microservices
+
+> ⚠️ **Migrating from v2?** Use the official migration tool:
+> ```bash
+> go install github.com/gofiber/cli/fiber@latest
+> fiber migrate --to v3
+> ```
 
 ## Overview
 
@@ -94,11 +100,11 @@ import (
     "syscall"
     "time"
 
-    "github.com/gofiber/fiber/v2"
-    "github.com/gofiber/fiber/v2/middleware/cors"
-    "github.com/gofiber/fiber/v2/middleware/helmet"
-    "github.com/gofiber/fiber/v2/middleware/limiter"
-    "github.com/gofiber/fiber/v2/middleware/requestid"
+    "github.com/gofiber/fiber/v3"
+    "github.com/gofiber/fiber/v3/middleware/cors"
+    "github.com/gofiber/fiber/v3/middleware/helmet"
+    "github.com/gofiber/fiber/v3/middleware/limiter"
+    "github.com/gofiber/fiber/v3/middleware/requestid"
 
     "myapi/internal/config"
     "myapi/internal/handler"
@@ -467,7 +473,7 @@ golangci-lint run
 
 ## Dependencies
 
-Core: `fiber/v2`, `gofiber/swagger` | Database: `gorm`, `gorm/driver/postgres` | Validation: `go-playground/validator/v10` | Auth: `golang-jwt/jwt/v5`, `x/crypto/bcrypt` | Testing: `stretchr/testify` | Docs: `swaggo/swag`
+Core: `fiber/v3`, `gofiber/swagger` | Database: `gorm`, `gorm/driver/postgres` | Validation: `go-playground/validator/v10` | Auth: `golang-jwt/jwt/v5`, `x/crypto` | Testing: `stretchr/testify` | Docs: `swaggo/swag`
 
 ## Advanced Topics
 
