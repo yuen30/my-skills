@@ -236,7 +236,7 @@ import (
     "strings"
 
     "github.com/go-playground/validator/v10"
-    "github.com/gofiber/fiber/v2"
+    "github.com/gofiber/fiber/v3"
 )
 
 type CustomValidator struct {
@@ -299,7 +299,7 @@ func getErrorMessage(e validator.FieldError) string {
     }
 }
 
-func ValidateBody[T any](c *fiber.Ctx, v *CustomValidator) (*T, error) {
+func ValidateBody[T any](c fiber.Ctx, v *CustomValidator) (*T, error) {
     var body T
     if err := c.BodyParser(&body); err != nil {
         return nil, fiber.NewError(fiber.StatusBadRequest, "Invalid request body")
@@ -752,7 +752,7 @@ import (
     "errors"
     "strconv"
 
-    "github.com/gofiber/fiber/v2"
+    "github.com/gofiber/fiber/v3"
 
     "myapi/internal/model"
     "myapi/internal/service"
@@ -777,7 +777,7 @@ func NewUserHandler(svc service.UserService, v *validator.CustomValidator) *User
 // @Param request body model.CreateUserRequest true "User data"
 // @Success 201 {object} model.UserResponse
 // @Router /api/v1/users [post]
-func (h *UserHandler) Create(c *fiber.Ctx) error {
+func (h *UserHandler) Create(c fiber.Ctx) error {
     req, err := validator.ValidateBody[model.CreateUserRequest](c, h.validator)
     if err != nil {
         if _, ok := err.(*fiber.Error); ok {
@@ -804,7 +804,7 @@ func (h *UserHandler) Create(c *fiber.Ctx) error {
 // @Param id path int true "User ID"
 // @Success 200 {object} model.UserResponse
 // @Router /api/v1/users/{id} [get]
-func (h *UserHandler) GetByID(c *fiber.Ctx) error {
+func (h *UserHandler) GetByID(c fiber.Ctx) error {
     id, err := strconv.ParseUint(c.Params("id"), 10, 32)
     if err != nil {
         return response.Error(c, fiber.StatusBadRequest, "Invalid user ID")
@@ -829,7 +829,7 @@ func (h *UserHandler) GetByID(c *fiber.Ctx) error {
 // @Param page_size query int false "Page size" default(20)
 // @Success 200 {object} model.PaginatedResponse
 // @Router /api/v1/users [get]
-func (h *UserHandler) GetAll(c *fiber.Ctx) error {
+func (h *UserHandler) GetAll(c fiber.Ctx) error {
     page := c.QueryInt("page", 1)
     pageSize := c.QueryInt("page_size", 20)
 
@@ -855,7 +855,7 @@ func (h *UserHandler) GetAll(c *fiber.Ctx) error {
 // @Param request body model.UpdateUserRequest true "User data"
 // @Success 200 {object} model.UserResponse
 // @Router /api/v1/users/{id} [put]
-func (h *UserHandler) Update(c *fiber.Ctx) error {
+func (h *UserHandler) Update(c fiber.Ctx) error {
     id, err := strconv.ParseUint(c.Params("id"), 10, 32)
     if err != nil {
         return response.Error(c, fiber.StatusBadRequest, "Invalid user ID")
@@ -889,7 +889,7 @@ func (h *UserHandler) Update(c *fiber.Ctx) error {
 // @Param id path int true "User ID"
 // @Success 204
 // @Router /api/v1/users/{id} [delete]
-func (h *UserHandler) Delete(c *fiber.Ctx) error {
+func (h *UserHandler) Delete(c fiber.Ctx) error {
     id, err := strconv.ParseUint(c.Params("id"), 10, 32)
     if err != nil {
         return response.Error(c, fiber.StatusBadRequest, "Invalid user ID")
@@ -913,7 +913,7 @@ func (h *UserHandler) Delete(c *fiber.Ctx) error {
 // @Param request body model.LoginRequest true "Credentials"
 // @Success 200 {object} model.AuthResponse
 // @Router /api/v1/auth/login [post]
-func (h *UserHandler) Login(c *fiber.Ctx) error {
+func (h *UserHandler) Login(c fiber.Ctx) error {
     req, err := validator.ValidateBody[model.LoginRequest](c, h.validator)
     if err != nil {
         if _, ok := err.(*fiber.Error); ok {
@@ -940,7 +940,7 @@ func (h *UserHandler) Login(c *fiber.Ctx) error {
 // @Security BearerAuth
 // @Success 200 {object} model.UserResponse
 // @Router /api/v1/auth/profile [get]
-func (h *UserHandler) GetProfile(c *fiber.Ctx) error {
+func (h *UserHandler) GetProfile(c fiber.Ctx) error {
     userID := c.Locals("userID").(uint)
 
     user, err := h.service.GetByID(c.Context(), userID)
@@ -958,7 +958,7 @@ func (h *UserHandler) GetProfile(c *fiber.Ctx) error {
 // internal/handler/health_handler.go
 package handler
 
-import "github.com/gofiber/fiber/v2"
+import "github.com/gofiber/fiber/v3"
 
 type HealthHandler struct{}
 
@@ -966,14 +966,14 @@ func NewHealthHandler() *HealthHandler {
     return &HealthHandler{}
 }
 
-func (h *HealthHandler) Health(c *fiber.Ctx) error {
+func (h *HealthHandler) Health(c fiber.Ctx) error {
     return c.JSON(fiber.Map{
         "status":  "healthy",
         "service": "myapi",
     })
 }
 
-func (h *HealthHandler) Ready(c *fiber.Ctx) error {
+func (h *HealthHandler) Ready(c fiber.Ctx) error {
     // Check database connection, external services, etc.
     return c.JSON(fiber.Map{
         "status": "ready",
@@ -996,7 +996,7 @@ import (
     "net/http/httptest"
     "testing"
 
-    "github.com/gofiber/fiber/v2"
+    "github.com/gofiber/fiber/v3"
     "github.com/stretchr/testify/assert"
     "github.com/stretchr/testify/mock"
 
@@ -1180,7 +1180,7 @@ Enable `Prefork: true` in `fiber.Config` to spawn multiple processes (one per CP
 Fiber's context values (headers, params, body) are only valid within the handler. If you need to pass values to goroutines, copy them first:
 
 ```go
-func (h *Handler) AsyncProcess(c *fiber.Ctx) error {
+func (h *Handler) AsyncProcess(c fiber.Ctx) error {
     // Copy values before passing to goroutine
     id := string(c.Params("id"))  // Copy from fasthttp
     body := make([]byte, len(c.Body()))

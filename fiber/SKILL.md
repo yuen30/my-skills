@@ -149,10 +149,10 @@ func main() {
     app.Use(limiter.New(limiter.Config{
         Max:        cfg.RateLimitMax,
         Expiration: cfg.RateLimitExpiration,
-        KeyGenerator: func(c *fiber.Ctx) string {
+        KeyGenerator: func(c fiber.Ctx) string {
             return c.IP()
         },
-        LimitReached: func(c *fiber.Ctx) error {
+        LimitReached: func(c fiber.Ctx) error {
             return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{
                 "error": "Rate limit exceeded",
             })
@@ -188,7 +188,7 @@ func main() {
     sqlDB.Close()
 }
 
-func customErrorHandler(c *fiber.Ctx, err error) error {
+func customErrorHandler(c fiber.Ctx, err error) error {
     code := fiber.StatusInternalServerError
     message := "Internal Server Error"
 
@@ -247,7 +247,7 @@ func Setup(app *fiber.App, h *handler.Handlers, authService service.AuthService)
 
 ```go
 func Auth(authService service.AuthService) fiber.Handler {
-    return func(c *fiber.Ctx) error {
+    return func(c fiber.Ctx) error {
         authHeader := c.Get("Authorization")
         if authHeader == "" {
             return fiber.NewError(fiber.StatusUnauthorized, "Missing authorization header")
@@ -276,7 +276,7 @@ func Auth(authService service.AuthService) fiber.Handler {
 
 ```go
 func RequireRole(roles ...string) fiber.Handler {
-    return func(c *fiber.Ctx) error {
+    return func(c fiber.Ctx) error {
         userRole, ok := c.Locals("userRole").(string)
         if !ok {
             return fiber.NewError(fiber.StatusForbidden, "Access denied")
@@ -297,7 +297,7 @@ func RequireRole(roles ...string) fiber.Handler {
 
 ```go
 func Logger() fiber.Handler {
-    return func(c *fiber.Ctx) error {
+    return func(c fiber.Ctx) error {
         start := time.Now()
         err := c.Next()
         log.Printf("[%s] %s %s %d %s",
@@ -308,7 +308,7 @@ func Logger() fiber.Handler {
 }
 
 func Recover() fiber.Handler {
-    return func(c *fiber.Ctx) error {
+    return func(c fiber.Ctx) error {
         defer func() {
             if r := recover(); r != nil {
                 log.Printf("Panic recovered: %v\n%s", r, debug.Stack())
@@ -327,7 +327,7 @@ func Recover() fiber.Handler {
 ### Generic Body Validator
 
 ```go
-func ValidateBody[T any](c *fiber.Ctx, v *CustomValidator) (*T, error) {
+func ValidateBody[T any](c fiber.Ctx, v *CustomValidator) (*T, error) {
     var body T
     if err := c.BodyParser(&body); err != nil {
         return nil, fiber.NewError(fiber.StatusBadRequest, "Invalid request body")
@@ -357,19 +357,19 @@ type UpdateUserRequest struct {
 ### Response Helpers
 
 ```go
-func Success(c *fiber.Ctx, data interface{}) error {
+func Success(c fiber.Ctx, data interface{}) error {
     return c.JSON(fiber.Map{"success": true, "data": data})
 }
 
-func Created(c *fiber.Ctx, data interface{}) error {
+func Created(c fiber.Ctx, data interface{}) error {
     return c.Status(fiber.StatusCreated).JSON(fiber.Map{"success": true, "data": data})
 }
 
-func Error(c *fiber.Ctx, code int, message string) error {
+func Error(c fiber.Ctx, code int, message string) error {
     return c.Status(code).JSON(fiber.Map{"success": false, "error": message})
 }
 
-func Paginated(c *fiber.Ctx, data interface{}, page, pageSize int, total int64) error {
+func Paginated(c fiber.Ctx, data interface{}, page, pageSize int, total int64) error {
     totalPages := int(total) / pageSize
     if int(total)%pageSize > 0 {
         totalPages++
@@ -393,7 +393,7 @@ func Paginated(c *fiber.Ctx, data interface{}, page, pageSize int, total int64) 
 - Never expose internal error details to clients
 
 ```go
-func (h *UserHandler) Create(c *fiber.Ctx) error {
+func (h *UserHandler) Create(c fiber.Ctx) error {
     req, err := validator.ValidateBody[model.CreateUserRequest](c, h.validator)
     if err != nil {
         if _, ok := err.(*fiber.Error); ok {
