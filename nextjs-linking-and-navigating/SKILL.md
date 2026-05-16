@@ -1,9 +1,9 @@
 ---
-name: Next.js Linking and Navigating
-description: Expert guidance on Next.js navigation mechanics including prefetching, streaming, client-side transitions, and optimization techniques for fast page transitions.
+name: Next.js Navigation and Prefetching
+description: Expert guidance on Next.js navigation mechanics including prefetching, streaming, client-side transitions, optimization techniques, automatic/manual/hover-triggered prefetch, and fast page transitions.
 ---
 
-# Next.js Linking and Navigating
+# Next.js Navigation and Prefetching
 
 Expert guidance on Next.js navigation mechanics including prefetching, streaming, client-side transitions, and optimization techniques for fast page transitions.
 

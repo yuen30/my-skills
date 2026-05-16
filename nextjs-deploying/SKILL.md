@@ -1,6 +1,6 @@
 ---
 name: Next.js Deploying
-description: Expert guidance on deploying Next.js applications — Node.js server, Docker, static export, and platform adapters (Vercel, Cloudflare, AWS, etc.).
+description: Expert guidance on deploying Next.js applications — Node.js server, Docker, static export, platform adapters, CDN compatibility, feature requirements, and verified adapters.
 ---
 
 # Next.js Deploying

@@ -1,9 +1,9 @@
 ---
-name: Next.js Fetching Data
-description: Expert guidance on data fetching in Next.js App Router — Server Components, Streaming, Suspense, parallel/sequential patterns, and client-side fetching with React use API.
+name: Next.js Data Fetching and Mutating
+description: Expert guidance on data fetching and mutating in Next.js App Router — Server Components, Streaming, Suspense, parallel/sequential patterns, Server Actions, forms, revalidation, and security.
 ---
 
-# Next.js Fetching Data
+# Next.js Data Fetching and Mutating
 
 Expert guidance on data fetching in Next.js App Router — Server Components, Streaming, Suspense, parallel/sequential patterns, and client-side fetching with React use API.
 

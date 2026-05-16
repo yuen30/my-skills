@@ -1,9 +1,9 @@
 ---
-name: Next.js Incremental Static Regeneration (ISR)
-description: Expert guidance on ISR in Next.js — time-based revalidation, on-demand revalidation, generateStaticParams, caching, and multi-instance considerations.
+name: Next.js ISR and Revalidation Internals
+description: Expert guidance on ISR in Next.js — time-based revalidation, on-demand revalidation, generateStaticParams, tag system architecture, multi-instance coordination, cache handlers, and graceful degradation.
 ---
 
-# Next.js Incremental Static Regeneration (ISR)
+# Next.js ISR and Revalidation Internals
 
 Expert guidance on ISR in Next.js — time-based revalidation, on-demand revalidation, generateStaticParams, caching, and multi-instance considerations.
 

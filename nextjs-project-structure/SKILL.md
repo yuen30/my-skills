@@ -1,6 +1,6 @@
 ---
 name: Next.js Project Structure
-description: Expert guidance on Next.js folder/file conventions, routing files, dynamic routes, route groups, private folders, metadata files, and project organization strategies.
+description: Expert guidance on Next.js project setup, folder/file conventions, routing files, dynamic routes, route groups, private folders, metadata files, Server/Client Components, and organization strategies.
 ---
 
 # Next.js Project Structure

@@ -1,6 +1,6 @@
 ---
 name: Next.js Rendering Philosophy
-description: Expert guidance on Next.js rendering model — static/dynamic as a spectrum at component level, PPR, infrastructure implications, and platform portability.
+description: Expert guidance on Next.js rendering model — static/dynamic as a spectrum at component level, PPR, static/cache/dynamic components, infrastructure implications, and platform portability.
 ---
 
 # Next.js Rendering Philosophy

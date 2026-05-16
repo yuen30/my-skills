@@ -1,9 +1,9 @@
 ---
-name: Next.js Caching
-description: Expert guidance on caching data and UI in Next.js App Router using Cache Components, "use cache" directive, Streaming, Suspense, and Partial Prerendering (PPR).
+name: Next.js Caching and Revalidating
+description: Expert guidance on caching data and UI in Next.js App Router using Cache Components, "use cache" directive, cacheLife, cacheTag, revalidateTag, updateTag, revalidatePath, and Partial Prerendering.
 ---
 
-# Next.js Caching
+# Next.js Caching and Revalidating
 
 Expert guidance on caching data and UI in Next.js App Router using Cache Components, "use cache" directive, Streaming, Suspense, and Partial Prerendering (PPR).
 

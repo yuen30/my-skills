@@ -1,9 +1,9 @@
 ---
-name: Next.js Image Optimization
-description: Expert guidance on optimizing images in Next.js using the Image component — local/remote images, lazy loading, blur placeholders, and responsive sizing.
+name: Next.js Asset Optimization
+description: Expert guidance on optimizing images and fonts in Next.js — next/image, next/font, local/remote images, Google Fonts, lazy loading, blur placeholders, and responsive sizing.
 ---
 
-# Next.js Image Optimization
+# Next.js Asset Optimization
 
 Expert guidance on optimizing images in Next.js using the Image component — local/remote images, lazy loading, blur placeholders, and responsive sizing.
 

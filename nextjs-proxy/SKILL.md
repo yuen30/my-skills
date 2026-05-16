@@ -323,15 +323,165 @@ const nextConfig = {
 | Add request header | `NextResponse.next({ request: { headers } })` |
 | Add response header | `response.headers.set('key', 'value')` |
 | Read cookie | `request.cookies.get('name')?.value` |
+| Set cookie | `response.cookies.set('name', 'value', { httpOnly: true })` |
+| Delete cookie | `response.cookies.delete('name')` |
 | Read header | `request.headers.get('name')` |
 | Get pathname | `request.nextUrl.pathname` |
 | Get search params | `request.nextUrl.searchParams` |
+
+### 7. Cookies API
+
+```tsx
+export function proxy(request: NextRequest) {
+  // Read cookies
+  const session = request.cookies.get('session')
+  const allCookies = request.cookies.getAll()
+  const hasSession = request.cookies.has('session')
+
+  // Set cookies on response
+  const response = NextResponse.next()
+  response.cookies.set('theme', 'dark')
+  response.cookies.set({
+    name: 'session',
+    value: 'abc123',
+    path: '/',
+    httpOnly: true,
+    secure: true,
+    sameSite: 'lax',
+  })
+
+  // Delete cookie
+  response.cookies.delete('old-cookie')
+
+  return response
+}
+```
+
+### 8. CORS
+
+```tsx
+const allowedOrigins = ['https://acme.com', 'https://my-app.org']
+
+export function proxy(request: NextRequest) {
+  const origin = request.headers.get('origin') ?? ''
+  const isAllowedOrigin = allowedOrigins.includes(origin)
+
+  // Handle preflight
+  if (request.method === 'OPTIONS') {
+    return NextResponse.json({}, {
+      headers: {
+        ...(isAllowedOrigin && { 'Access-Control-Allow-Origin': origin }),
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    })
+  }
+
+  // Handle simple requests
+  const response = NextResponse.next()
+  if (isAllowedOrigin) {
+    response.headers.set('Access-Control-Allow-Origin', origin)
+  }
+  return response
+}
+
+export const config = { matcher: '/api/:path*' }
+```
+
+### 9. Negative Matching (Exclude Paths)
+
+```tsx
+export const config = {
+  matcher: [
+    {
+      source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+      missing: [
+        { type: 'header', key: 'next-router-prefetch' },
+        { type: 'header', key: 'purpose', value: 'prefetch' },
+      ],
+    },
+  ],
+}
+```
+
+- `missing` — run only when headers/cookies are absent
+- `has` — run only when headers/cookies are present
+
+### 10. `waitUntil` (Background Work)
+
+```tsx
+import { NextResponse } from 'next/server'
+import type { NextFetchEvent, NextRequest } from 'next/server'
+
+export function proxy(req: NextRequest, event: NextFetchEvent) {
+  // Background analytics — doesn't block response
+  event.waitUntil(
+    fetch('https://analytics.example.com', {
+      method: 'POST',
+      body: JSON.stringify({ pathname: req.nextUrl.pathname }),
+    })
+  )
+
+  return NextResponse.next()
+}
+```
+
+### 11. Unit Testing (Experimental)
+
+```ts
+import { unstable_doesProxyMatch } from 'next/experimental/testing/server'
+import { isRewrite, getRewrittenUrl } from 'next/experimental/testing/server'
+
+// Test matcher
+expect(unstable_doesProxyMatch({
+  config,
+  nextConfig,
+  url: '/test',
+})).toEqual(false)
+
+// Test proxy function
+const request = new NextRequest('https://example.com/docs')
+const response = await proxy(request)
+expect(isRewrite(response)).toEqual(true)
+expect(getRewrittenUrl(response)).toEqual('https://other.com/docs')
+```
+
+### 12. Migration from Middleware
+
+```bash
+# Automatic migration
+npx @next/codemod@canary middleware-to-proxy .
+```
+
+Changes:
+- `middleware.ts` → `proxy.ts`
+- `export function middleware()` → `export function proxy()`
+- Runtime: now defaults to Node.js (was Edge)
+
+## Execution Order
+
+```
+1. headers (next.config.js)
+2. redirects (next.config.js)
+3. Proxy (rewrites, redirects, responses)
+4. beforeFiles rewrites (next.config.js)
+5. Filesystem routes (public/, _next/static/, pages/, app/)
+6. afterFiles rewrites (next.config.js)
+7. Dynamic Routes (/blog/[slug])
+8. fallback rewrites (next.config.js)
+```
+
+> **Server Functions** ไม่ใช่ separate routes — handled as POST to the route ที่ใช้ Proxy matcher ที่ exclude path จะ skip Server Function calls ด้วย
 
 ## สรุป
 
 1. **สร้าง `proxy.ts`** ที่ project root (1 ไฟล์เท่านั้น)
 2. **Export `proxy` function** (named หรือ default)
 3. **ใช้ `matcher`** กำหนด paths ที่ต้องการ
-4. **ใช้สำหรับ:** redirects, rewrites, headers, auth checks, i18n
+4. **ใช้สำหรับ:** redirects, rewrites, headers, auth checks, i18n, CORS
 5. **อย่าใช้สำหรับ:** slow data fetching, heavy computation
 6. **Simple redirects** → ใช้ `next.config.ts` redirects แทน
+7. **Cookies:** `request.cookies.get()` / `response.cookies.set()`
+8. **`waitUntil`** — background work ไม่ block response
+9. **Migration:** `npx @next/codemod middleware-to-proxy .`
+10. **Runtime:** Node.js by default (ตั้งแต่ v16)

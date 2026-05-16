@@ -1,9 +1,9 @@
 ---
-name: Next.js CSS
-description: Expert guidance on styling Next.js applications with Tailwind CSS, CSS Modules, Global CSS, external stylesheets, and CSS ordering best practices.
+name: Next.js Styling
+description: Expert guidance on styling Next.js applications — Tailwind CSS, CSS Modules, Global CSS, CSS-in-JS (styled-components, styled-jsx), Sass/SCSS, external stylesheets, and CSS ordering.
 ---
 
-# Next.js CSS
+# Next.js Styling
 
 Expert guidance on styling Next.js applications with Tailwind CSS, CSS Modules, Global CSS, external stylesheets, and CSS ordering best practices.
 

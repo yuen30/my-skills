@@ -1,6 +1,6 @@
 ---
 name: Next.js AI Coding Agents
-description: Expert guidance on configuring Next.js projects for AI coding agents using AGENTS.md and bundled documentation for accurate, version-matched references.
+description: Expert guidance on configuring Next.js projects for AI coding agents — AGENTS.md, bundled docs, MCP Server for real-time error detection, route inspection, and live application state.
 ---
 
 # Next.js AI Coding Agents

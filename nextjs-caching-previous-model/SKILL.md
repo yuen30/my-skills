@@ -1,9 +1,9 @@
 ---
-name: Next.js Caching Previous Model
-description: Expert guidance on caching and revalidating data without Cache Components — fetch options, unstable_cache, route segment configs, and on-demand revalidation.
+name: Next.js Caching Previous Model and Migration
+description: Expert guidance on caching without Cache Components — fetch options, unstable_cache, route segment configs, and migrating to Cache Components with "use cache" and cacheLife.
 ---
 
-# Next.js Caching (Previous Model)
+# Next.js Caching Previous Model and Migration
 
 Expert guidance on caching and revalidating data without Cache Components — fetch options, unstable_cache, route segment configs, and on-demand revalidation.
 
