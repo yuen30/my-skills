@@ -20,6 +20,10 @@ npx skills add yuen30/my-skills
 | [shadcn-ui](./shadcn-ui/) | shadcn/ui — CLI, components, theming, customization, MCP server, registries |
 | [go-fiber-v3](./go-fiber-v3/) | Go Fiber v3 — migration, Binding, Context interface, routing, client, services |
 | [github-actions-cicd](./github-actions-cicd/) | GitHub Actions CI/CD — AWS ECR, EC2 deploy, smoke test, multi-service, rollback |
+| [astro](./astro/) | Astro Framework — islands architecture, content collections, image optimization, hydration |
+| [frontend-aesthetics](./frontend-aesthetics/) | Frontend Aesthetics — bold design thinking, typography, color, motion, spatial composition |
+| [django](./django/) | Django Expert — Django 5.0, DRF, models, serializers, viewsets, ORM, JWT, testing |
+| [prisma](./prisma/) | Prisma ORM — schema design, migrations, repository pattern, transactions, PostGIS |
 
 ### Next.js — Core
 

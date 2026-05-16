@@ -1,47 +1,70 @@
 ---
-name: shadcn/ui
-description: Expert guidance on using shadcn/ui — CLI commands, component installation, theming, customization, registry, MCP server, and composition patterns.
+name: shadcn/ui Component Library
+description: Complete reference for shadcn/ui — CLI, installation, components, theming (OKLCH), forms (React Hook Form + Zod), dark mode, MCP server, registry, and best practices.
 ---
 
-# shadcn/ui
+# shadcn/ui Component Library
 
-Expert guidance on using shadcn/ui — CLI commands, component installation, theming, customization, registry, MCP server, and composition patterns.
+Complete reference for shadcn/ui — CLI, installation, components, theming (OKLCH), forms (React Hook Form + Zod), dark mode, MCP server, registry, and best practices.
 
-## Core Concepts
+## Key Principles
 
-shadcn/ui ไม่ใช่ component library แบบ npm package — เป็น **collection of reusable components** ที่ copy เข้า project:
-- Components อยู่ใน source code ของคุณ (แก้ไขได้เต็มที่)
-- ใช้ Radix UI primitives + Tailwind CSS
-- CLI สำหรับ add/update components
-- Theming ด้วย CSS variables
+- **Open Code** — Components copied into your project, not installed as dependencies
+- **Composition** — Build complex UIs by composing simple components
+- **Distribution** — CLI and registry system for easy component management
+- **Beautiful Defaults** — Production-ready styling out of the box
+- **AI-Ready** — Designed to work well with AI assistants
 
-## Guidelines
+---
 
-### 1. Installation
+## Quick Reference — CLI Commands
 
 ```bash
+# Initialize
 npx shadcn@latest init
+
+# Add components
+npx shadcn@latest add button
+npx shadcn@latest add button card dialog input
+npx shadcn@latest add --all
+
+# Search & browse
+npx shadcn@latest add          # Interactive list
+npx shadcn@latest search "login"
+npx shadcn@latest docs button
+
+# Update & diff
+npx shadcn@latest diff
+
+# Project info
+npx shadcn@latest info
+
+# From custom registry
+npx shadcn@latest add @acme/hero
+
+# Dry run
+npx shadcn@latest add button --dry-run
+
+# MCP server
+npx shadcn@latest mcp init --client vscode
 ```
 
-เลือก options:
-- Style: New York (แนะนำ)
-- Base color: Neutral / Zinc / Slate
-- CSS variables: Yes
-- Base library: Radix (default) หรือ Base
+---
 
-สร้าง `components.json`:
+## Configuration (`components.json`)
 
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
-  "rsc": true,
+  "rsc": false,
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "app/globals.css",
+    "css": "src/index.css",
     "baseColor": "neutral",
-    "cssVariables": true
+    "cssVariables": true,
+    "prefix": ""
   },
   "aliases": {
     "components": "@/components",
@@ -54,100 +77,90 @@ npx shadcn@latest init
 }
 ```
 
-### 2. CLI Commands
+---
+
+## Installation
+
+### Vite + React + TypeScript (Recommended)
 
 ```bash
-# Add components
-npx shadcn@latest add button card dialog input
+# 1. Create project
+npm create vite@latest my-app -- --template react-ts
 
-# Search components
-npx shadcn@latest search "login"
+# 2. Add Tailwind CSS
+npm install tailwindcss @tailwindcss/vite
 
-# View component docs
-npx shadcn@latest docs button
-
-# Check project info
-npx shadcn@latest info
-
-# Diff (check updates)
-npx shadcn@latest diff
-
-# Add from registry
-npx shadcn@latest add https://acme.com/r/hero.json
-
-# Dry run (preview without installing)
-npx shadcn@latest add button --dry-run
-
-# Override existing files
-npx shadcn@latest add button --overwrite
+# 3. Configure vite.config.ts
 ```
 
-### 3. Using Components
+```ts
+// vite.config.ts
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
 
-```tsx
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
 
-export function LoginForm() {
-  return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Login</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" />
-          </div>
-          <Button type="submit" className="w-full">
-            Sign In
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
-  )
+```json
+// tsconfig.json — add paths
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }
 ```
 
-### 4. Theming (CSS Variables)
+```bash
+# 4. Initialize shadcn/ui
+npx shadcn@latest init
+
+# 5. Add components
+npx shadcn@latest add button card
+```
+
+### Next.js (App Router)
+
+```bash
+npx shadcn@latest init
+# Select: New York style, Neutral base color, CSS variables: Yes
+```
+
+### TanStack Router
+
+```bash
+npx create-tsrouter-app@latest my-app --template file-router --tailwind --add-ons shadcn
+```
+
+---
+
+## Theming — CSS Variables (OKLCH)
 
 ```css
-/* app/globals.css */
+/* src/index.css */
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
 
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
@@ -179,9 +192,53 @@ export function LoginForm() {
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
 }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 ```
 
-### 5. `cn()` Utility
+### Using Theme Colors
+
+```tsx
+<div className="bg-background text-foreground" />
+<div className="bg-primary text-primary-foreground" />
+<div className="bg-secondary text-secondary-foreground" />
+<div className="bg-muted text-muted-foreground" />
+<div className="bg-accent text-accent-foreground" />
+<div className="bg-destructive text-destructive-foreground" />
+<div className="border-border" />
+```
+
+---
+
+## `cn()` Utility
 
 ```ts
 // lib/utils.ts
@@ -191,174 +248,197 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+// Usage
+<Button className={cn("w-full", isLoading && "opacity-50")} />
 ```
 
-ใช้สำหรับ conditional class merging:
+---
+
+## Components Reference
+
+### Form & Input
+
+| Component | Install | Description |
+|-----------|---------|-------------|
+| Form | `add form` | React Hook Form + Zod |
+| Field | `add field` | Form field with label/error |
+| Button | `add button` | Multiple variants |
+| Input | `add input` | Text input |
+| Input OTP | `add input-otp` | One-time password |
+| Textarea | `add textarea` | Multi-line |
+| Checkbox | `add checkbox` | Checkbox |
+| Radio Group | `add radio-group` | Radio buttons |
+| Select | `add select` | Dropdown |
+| Switch | `add switch` | Toggle switch |
+| Slider | `add slider` | Range slider |
+| Calendar | `add calendar` | Date selection |
+| Date Picker | `add date-picker` | Input + calendar |
+| Combobox | `add combobox` | Searchable select |
+
+### Layout & Navigation
+
+| Component | Install | Description |
+|-----------|---------|-------------|
+| Accordion | `add accordion` | Collapsible sections |
+| Breadcrumb | `add breadcrumb` | Navigation trail |
+| Navigation Menu | `add navigation-menu` | Accessible nav |
+| Sidebar | `add sidebar` | Collapsible sidebar |
+| Tabs | `add tabs` | Tabbed interface |
+| Separator | `add separator` | Visual divider |
+| Scroll Area | `add scroll-area` | Custom scrollbar |
+| Resizable | `add resizable` | Resizable panels |
+
+### Overlay & Dialog
+
+| Component | Install | Description |
+|-----------|---------|-------------|
+| Dialog | `add dialog` | Modal |
+| Alert Dialog | `add alert-dialog` | Confirmation |
+| Sheet | `add sheet` | Slide-out panel |
+| Drawer | `add drawer` | Mobile drawer (Vaul) |
+| Popover | `add popover` | Floating content |
+| Tooltip | `add tooltip` | Hover info |
+| Dropdown Menu | `add dropdown-menu` | Dropdown |
+| Context Menu | `add context-menu` | Right-click |
+| Command | `add command` | Command palette (cmdk) |
+
+### Feedback & Status
+
+| Component | Install | Description |
+|-----------|---------|-------------|
+| Alert | `add alert` | Messages |
+| Toast | `add toast` | Notifications (Sonner) |
+| Progress | `add progress` | Progress bar |
+| Spinner | `add spinner` | Loading |
+| Skeleton | `add skeleton` | Loading placeholder |
+| Badge | `add badge` | Labels/status |
+
+### Display & Data
+
+| Component | Install | Description |
+|-----------|---------|-------------|
+| Avatar | `add avatar` | Profile images |
+| Card | `add card` | Card container |
+| Table | `add table` | Data table |
+| Data Table | `add data-table` | TanStack Table |
+| Chart | `add chart` | Charts (Recharts) |
+| Carousel | `add carousel` | Carousel (Embla) |
+
+---
+
+## Common Patterns
+
+### Form with React Hook Form + Zod
 
 ```tsx
-<Button className={cn("w-full", isLoading && "opacity-50")}>
-  Submit
-</Button>
-```
-
-### 6. Component Variants (CVA)
-
-```tsx
-// components/ui/button.tsx
-import { cva, type VariantProps } from "class-variance-authority"
-
-const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-white hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-```
-
-### 7. Common Component Patterns
-
-#### Form with Validation
-
-```tsx
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
 import { Button } from "@/components/ui/button"
+import {
+  Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
+} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
-export function SettingsForm() {
+const formSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+export function LoginForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { email: "", password: "" },
+  })
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
+  }
+
   return (
-    <form className="space-y-6">
-      <div className="space-y-2">
-        <Label htmlFor="name">Name</Label>
-        <Input id="name" placeholder="Your name" />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="role">Role</Label>
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a role" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="admin">Admin</SelectItem>
-            <SelectItem value="user">User</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <Button type="submit">Save Changes</Button>
-    </form>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="email@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
   )
 }
 ```
 
-#### Dialog
+### Button Variants
 
 ```tsx
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+<Button variant="default">Default</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
 
-export function ConfirmDialog() {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="destructive">Delete</Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Are you sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone.
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <Button variant="outline">Cancel</Button>
-          <Button variant="destructive">Delete</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  )
-}
+<Button size="default">Default</Button>
+<Button size="sm">Small</Button>
+<Button size="lg">Large</Button>
+<Button size="icon"><IconName /></Button>
 ```
 
-#### Data Table
+### Installing Components for Features
 
-```tsx
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
+```bash
+# Authentication flow
+npx shadcn@latest add button input form label card
 
-export function UsersTable({ users }) {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Status</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell className="font-medium">{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>
-              <Badge variant={user.active ? "default" : "secondary"}>
-                {user.active ? "Active" : "Inactive"}
-              </Badge>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  )
-}
+# Dashboard layout
+npx shadcn@latest add sidebar navigation-menu breadcrumb avatar dropdown-menu
+
+# Data display
+npx shadcn@latest add table data-table pagination skeleton
+
+# Forms
+npx shadcn@latest add form field input select checkbox radio-group switch calendar date-picker combobox
+
+# Feedback
+npx shadcn@latest add alert toast dialog alert-dialog
 ```
 
-### 8. Dark Mode
+---
+
+## Dark Mode
+
+### Vite (next-themes)
+
+```bash
+npm install next-themes
+```
 
 ```tsx
-// components/theme-provider.tsx
-'use client'
-
+// src/components/theme-provider.tsx
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -371,21 +451,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 ```
 
 ```tsx
-// app/layout.tsx
+// src/main.tsx
 import { ThemeProvider } from "@/components/theme-provider"
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
-    </html>
-  )
-}
+<ThemeProvider>
+  <App />
+</ThemeProvider>
 ```
 
-### 9. MCP Server (AI Assistant Integration)
+---
+
+## MCP Server (AI Integration)
 
 ```json
 // .mcp.json (Claude Code)
@@ -423,18 +499,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-**Quick setup:**
-```bash
-npx shadcn@latest mcp init --client vscode
-# or: --client cursor, --client claude, --client codex
-```
+Quick setup: `npx shadcn@latest mcp init --client vscode`
 
-MCP Server ให้ AI assistants:
-- Browse components จาก registries
-- Search components ตามชื่อ/functionality
-- Install components ด้วย natural language
+---
 
-### 10. Custom Registries
+## Registry System
+
+### Custom Registries
 
 ```json
 // components.json
@@ -452,78 +523,75 @@ MCP Server ให้ AI assistants:
 ```
 
 ```bash
-# Install from custom registry
 npx shadcn@latest add @acme/hero
 npx shadcn@latest add @internal/auth-form
 ```
 
-### 11. Customizing Components
+---
 
-Components อยู่ใน `components/ui/` — แก้ไขได้เต็มที่:
+## Best Practices
 
-```tsx
-// components/ui/button.tsx — customize ได้เลย
-// เพิ่ม variant ใหม่
-const buttonVariants = cva("...", {
-  variants: {
-    variant: {
-      // ... existing variants
-      gradient: "bg-gradient-to-r from-blue-500 to-purple-500 text-white",
-    },
-  },
-})
+### File Structure
+
+```
+src/components/
+├── ui/                 # shadcn/ui components (customize freely)
+│   ├── button.tsx
+│   ├── card.tsx
+│   └── ...
+├── forms/              # Form compositions
+│   ├── login-form.tsx
+│   └── settings-form.tsx
+├── layouts/            # Layout components
+│   ├── header.tsx
+│   └── sidebar.tsx
+└── features/           # Feature-specific
+    └── dashboard/
 ```
 
-### 12. Semantic Colors
+### Extending Components
 
-| Variable | Usage |
-|----------|-------|
-| `--background` | Page background |
-| `--foreground` | Default text |
-| `--primary` | Primary buttons, links |
-| `--secondary` | Secondary buttons |
-| `--muted` | Muted backgrounds |
-| `--muted-foreground` | Muted text |
-| `--accent` | Hover states |
-| `--destructive` | Error/delete actions |
-| `--border` | Borders |
-| `--input` | Input borders |
-| `--ring` | Focus rings |
-| `--radius` | Border radius base |
+```tsx
+import { Button } from "@/components/ui/button"
+import { Spinner } from "@/components/ui/spinner"
 
-## Available Components
+interface LoadingButtonProps extends React.ComponentProps<typeof Button> {
+  loading?: boolean
+}
 
-| Category | Components |
-|----------|-----------|
-| Layout | Card, Separator, ScrollArea, Sheet, Resizable |
-| Forms | Input, Textarea, Select, Checkbox, RadioGroup, Switch, Slider, DatePicker |
-| Buttons | Button, Toggle, ToggleGroup |
-| Navigation | NavigationMenu, Tabs, Breadcrumb, Pagination, Sidebar |
-| Feedback | Alert, Toast, Sonner, Progress, Skeleton, Badge |
-| Overlay | Dialog, AlertDialog, Popover, Tooltip, HoverCard, DropdownMenu, ContextMenu |
-| Data | Table, DataTable, Command, Combobox |
-| Typography | Typography (prose styles) |
+export function LoadingButton({ loading, children, ...props }: LoadingButtonProps) {
+  return (
+    <Button disabled={loading} {...props}>
+      {loading && <Spinner className="mr-2 h-4 w-4" />}
+      {children}
+    </Button>
+  )
+}
+```
 
-## Quick Reference
+---
 
-| Command | Purpose |
-|---------|---------|
-| `npx shadcn@latest init` | Initialize project |
-| `npx shadcn@latest add [component]` | Add component(s) |
-| `npx shadcn@latest add --all` | Add all components |
-| `npx shadcn@latest search [query]` | Search components |
-| `npx shadcn@latest docs [component]` | View docs |
-| `npx shadcn@latest diff` | Check for updates |
-| `npx shadcn@latest info` | Project info (JSON) |
-| `npx shadcn@latest mcp init` | Setup MCP server |
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Cannot find `@/components/ui/button` | Check `tsconfig.json` paths match `components.json` aliases |
+| Components look unstyled | Verify Tailwind CSS config + CSS variables in `:root` |
+| Dark mode not working | Add `dark` class to `<html>` + use theme provider |
+| TypeScript errors with forms | Install `@hookform/resolvers` and `zod` |
+| Components not found after install | Restart dev server |
+
+---
 
 ## สรุป
 
-1. **ไม่ใช่ npm package** — components copy เข้า project (แก้ไขได้)
-2. **CLI** — `npx shadcn@latest add` สำหรับ install components
-3. **Theming** — CSS variables (OKLCH) + dark mode
-4. **`cn()` utility** — conditional class merging (clsx + tailwind-merge)
-5. **CVA** — component variants (variant + size)
-6. **Customize** — แก้ไข `components/ui/` ได้เต็มที่
-7. **MCP Server** — AI assistants browse/search/install components
-8. **Custom registries** — private/third-party component sources
+1. **Open Code** — components อยู่ใน project (แก้ไขได้เต็มที่)
+2. **CLI** — `npx shadcn@latest add` สำหรับ install
+3. **Theming** — CSS variables (OKLCH) + `@theme inline`
+4. **`cn()` utility** — clsx + tailwind-merge
+5. **Forms** — React Hook Form + Zod + Form components
+6. **Dark mode** — next-themes + `.dark` class
+7. **MCP Server** — AI assistants browse/search/install
+8. **Registry** — custom/private component sources
+9. **Customize** — แก้ไข `components/ui/` ได้เต็มที่
+10. **Dependencies** — `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react`
