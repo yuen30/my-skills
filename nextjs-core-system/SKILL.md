@@ -1,9 +1,9 @@
 ---
-name: Next.js App Router
+name: Next.js Core System
 description: Expert guidance for building full-stack web applications with Next.js 16 App Router, including Server Components, caching, data fetching, and deployment.
 ---
 
-# Next.js App Router
+# Next.js Core System
 
 Expert guidance for building full-stack web applications with Next.js 16 App Router, including Server Components, caching, data fetching, and deployment.
 
