@@ -78,3 +78,20 @@ npx skills add yuen30/my-skills
 | [nextjs-lazy-loading](./nextjs-lazy-loading/) | Next.js Lazy Loading — next/dynamic, code splitting, SSR skip, external libraries |
 | [nextjs-local-development](./nextjs-local-development/) | Next.js Local Development — Turbopack, antivirus, imports, Tailwind, Docker, tracing |
 | [nextjs-mdx](./nextjs-mdx/) | Next.js MDX — @next/mdx setup, custom components, remark/rehype plugins, frontmatter |
+| [nextjs-memory-usage](./nextjs-memory-usage/) | Next.js Memory Usage — reduce dependencies, webpack optimizations, heap profiling |
+| [nextjs-migrating-to-cache-components](./nextjs-migrating-to-cache-components/) | Next.js Migrating to Cache Components — replace route segment configs with "use cache" |
+| [nextjs-multi-zones](./nextjs-multi-zones/) | Next.js Multi-Zones — micro-frontends, separate apps under one domain, routing |
+| [nextjs-opentelemetry](./nextjs-opentelemetry/) | Next.js OpenTelemetry — @vercel/otel, custom spans, default spans, exporters, deployment |
+| [nextjs-ppr-platform-guide](./nextjs-ppr-platform-guide/) | Next.js PPR Platform Guide — resume protocol, CDN integration, adapter implementation |
+| [nextjs-prefetching](./nextjs-prefetching/) | Next.js Prefetching — automatic, manual, hover-triggered, disabled, client cache |
+| [nextjs-preserving-ui-state](./nextjs-preserving-ui-state/) | Next.js Preserving UI State — Activity component, dropdowns, forms, dialogs, testing |
+| [nextjs-preventing-flash](./nextjs-preventing-flash/) | Next.js Preventing Flash — inline scripts, dates, themes, persisted state, suppressHydrationWarning |
+| [nextjs-production-checklist](./nextjs-production-checklist/) | Next.js Production Checklist — performance, security, SEO, accessibility, bundle analysis |
+| [nextjs-pwa](./nextjs-pwa/) | Next.js PWA — manifest, push notifications, service workers, VAPID keys, install prompts |
+| [nextjs-public-static-pages](./nextjs-public-static-pages/) | Next.js Public Static Pages — static/cache/dynamic components, PPR, streaming |
+| [nextjs-redirecting](./nextjs-redirecting/) | Next.js Redirecting — redirect, permanentRedirect, useRouter, Proxy, scale with Bloom filter |
+| [nextjs-rendering-philosophy](./nextjs-rendering-philosophy/) | Next.js Rendering Philosophy — static/dynamic spectrum, component-level boundaries, PPR |
+| [nextjs-sass](./nextjs-sass/) | Next.js Sass — SCSS/Sass, CSS Modules, sassOptions, variables export, implementation |
+| [nextjs-scripts](./nextjs-scripts/) | Next.js Scripts — next/script strategies, inline scripts, event handlers, web workers |
+| [nextjs-self-hosting](./nextjs-self-hosting/) | Next.js Self-Hosting — reverse proxy, caching, multi-instance, Docker, streaming, version skew |
+| [nextjs-static-exports](./nextjs-static-exports/) | Next.js Static Exports — configuration, supported/unsupported features, deployment, SPA mode |
