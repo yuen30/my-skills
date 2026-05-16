@@ -34,3 +34,5 @@ npx skills add yuen30/my-skills
 | [docker](./docker/) | Docker & Docker Compose best practices, templates, and troubleshooting |
 | [react-three-fiber](./react-three-fiber/) | React Three Fiber (R3F), Three.js, and Drei helpers |
 | [tailwind-v4-shadcn](./tailwind-v4-shadcn/) | Tailwind CSS v4 + shadcn/ui components |
+| [nextjs-core-system](./nextjs-core-system/) | Next.js 16 App Router — Server Components, caching, data fetching, deployment |
+| [nextjs-pages-router](./nextjs-pages-router/) | Next.js Pages Router — SSR, SSG, ISR, API Routes, getStaticProps/getServerSideProps |
