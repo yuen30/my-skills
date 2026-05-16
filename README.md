@@ -21,8 +21,16 @@ skills/
 2. สร้างไฟล์ `SKILL.md` ที่อธิบายว่า skill ทำอะไร และมีคำสั่งอะไรบ้าง
 3. เพิ่ม references, examples, scripts ตามต้องการ
 
+## Installation
+
+```bash
+npx skills add yuen30/my-skills
+```
+
 ## รายการ Skills
 
 | Skill | Description |
 |-------|-------------|
 | [docker](./docker/) | Docker & Docker Compose best practices, templates, and troubleshooting |
+| [react-three-fiber](./react-three-fiber/) | React Three Fiber (R3F), Three.js, and Drei helpers |
+| [tailwind-v4-shadcn](./tailwind-v4-shadcn/) | Tailwind CSS v4 + shadcn/ui components |

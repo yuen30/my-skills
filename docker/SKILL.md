@@ -1,3 +1,8 @@
+---
+name: Docker & Docker Compose
+description: Expert guidance for building, running, and orchestrating containers with Docker and Docker Compose.
+---
+
 # Docker & Docker Compose
 
 Expert guidance for building, running, and orchestrating containers with Docker and Docker Compose.
