@@ -1,0 +1,260 @@
+{
+  "skills": [
+    {
+      "name": "nextjs-project-structure",
+      "files": ["nextjs-project-structure/SKILL.md"]
+    },
+    {
+      "name": "nextjs-opentelemetry",
+      "files": ["nextjs-opentelemetry/SKILL.md"]
+    },
+    {
+      "name": "nextjs-videos",
+      "files": ["nextjs-videos/SKILL.md"]
+    },
+    {
+      "name": "nextjs-caching-previous-model",
+      "files": ["nextjs-caching-previous-model/SKILL.md"]
+    },
+    {
+      "name": "frontend-aesthetics",
+      "files": ["frontend-aesthetics/SKILL.md"]
+    },
+    {
+      "name": "nextjs-pages-router",
+      "files": ["nextjs-pages-router/SKILL.md"]
+    },
+    {
+      "name": "nextjs-route-handlers",
+      "files": ["nextjs-route-handlers/SKILL.md"]
+    },
+    {
+      "name": "nextjs-cdn-caching",
+      "files": ["nextjs-cdn-caching/SKILL.md"]
+    },
+    {
+      "name": "nextjs-local-development",
+      "files": ["nextjs-local-development/SKILL.md"]
+    },
+    {
+      "name": "docker",
+      "files": ["docker/SKILL.md"]
+    },
+    {
+      "name": "nextjs-self-hosting",
+      "files": ["nextjs-self-hosting/SKILL.md"]
+    },
+    {
+      "name": "nextjs-clean-code",
+      "files": ["nextjs-clean-code/SKILL.md"]
+    },
+    {
+      "name": "nextjs-multi-zones",
+      "files": ["nextjs-multi-zones/SKILL.md"]
+    },
+    {
+      "name": "nextjs-static-exports",
+      "files": ["nextjs-static-exports/SKILL.md"]
+    },
+    {
+      "name": "nextjs-pwa",
+      "files": ["nextjs-pwa/SKILL.md"]
+    },
+    {
+      "name": "nextjs-preserving-ui-state",
+      "files": ["nextjs-preserving-ui-state/SKILL.md"]
+    },
+    {
+      "name": "nextjs-custom-server",
+      "files": ["nextjs-custom-server/SKILL.md"]
+    },
+    {
+      "name": "nextjs-turbopack",
+      "files": ["nextjs-turbopack/SKILL.md"]
+    },
+    {
+      "name": "shadcn-ui",
+      "files": ["shadcn-ui/SKILL.md"]
+    },
+    {
+      "name": "nextjs-ai-agents",
+      "files": ["nextjs-ai-agents/SKILL.md"]
+    },
+    {
+      "name": "nextjs-debugging",
+      "files": ["nextjs-debugging/SKILL.md"]
+    },
+    {
+      "name": "nextjs-backend-for-frontend",
+      "files": ["nextjs-backend-for-frontend/SKILL.md"]
+    },
+    {
+      "name": "go-fiber-v3",
+      "files": ["go-fiber-v3/SKILL.md"]
+    },
+    {
+      "name": "nextjs-authentication",
+      "files": ["nextjs-authentication/SKILL.md"]
+    },
+    {
+      "name": "tailwind-v4-shadcn",
+      "files": ["tailwind-v4-shadcn/SKILL.md"]
+    },
+    {
+      "name": "prisma",
+      "files": ["prisma/SKILL.md"]
+    },
+    {
+      "name": "nextjs-lazy-loading",
+      "files": ["nextjs-lazy-loading/SKILL.md"]
+    },
+    {
+      "name": "nextjs-forms",
+      "files": ["nextjs-forms/SKILL.md"]
+    },
+    {
+      "name": "nextjs-proxy",
+      "files": ["nextjs-proxy/SKILL.md"]
+    },
+    {
+      "name": "nextjs-metadata",
+      "files": ["nextjs-metadata/SKILL.md"]
+    },
+    {
+      "name": "nextjs-assets",
+      "files": ["nextjs-assets/SKILL.md"]
+    },
+    {
+      "name": "nextjs-internationalization",
+      "files": ["nextjs-internationalization/SKILL.md"]
+    },
+    {
+      "name": "github-actions-cicd",
+      "files": ["github-actions-cicd/SKILL.md"]
+    },
+    {
+      "name": "nextjs-environment-variables",
+      "files": ["nextjs-environment-variables/SKILL.md"]
+    },
+    {
+      "name": "nextjs-ppr-platform-guide",
+      "files": ["nextjs-ppr-platform-guide/SKILL.md"]
+    },
+    {
+      "name": "nextjs-redirecting",
+      "files": ["nextjs-redirecting/SKILL.md"]
+    },
+    {
+      "name": "nextjs-scripts",
+      "files": ["nextjs-scripts/SKILL.md"]
+    },
+    {
+      "name": "nextjs-streaming",
+      "files": ["nextjs-streaming/SKILL.md"]
+    },
+    {
+      "name": "nextjs-ci-build-caching",
+      "files": ["nextjs-ci-build-caching/SKILL.md"]
+    },
+    {
+      "name": "nextjs-draft-mode",
+      "files": ["nextjs-draft-mode/SKILL.md"]
+    },
+    {
+      "name": "nextjs-linking-and-navigating",
+      "files": ["nextjs-linking-and-navigating/SKILL.md"]
+    },
+    {
+      "name": "nextjs-mdx",
+      "files": ["nextjs-mdx/SKILL.md"]
+    },
+    {
+      "name": "nextjs-fetching-data",
+      "files": ["nextjs-fetching-data/SKILL.md"]
+    },
+    {
+      "name": "nextjs-memory-usage",
+      "files": ["nextjs-memory-usage/SKILL.md"]
+    },
+    {
+      "name": "nextjs-css",
+      "files": ["nextjs-css/SKILL.md"]
+    },
+    {
+      "name": "nextjs-preventing-flash",
+      "files": ["nextjs-preventing-flash/SKILL.md"]
+    },
+    {
+      "name": "nextjs-error-handling",
+      "files": ["nextjs-error-handling/SKILL.md"]
+    },
+    {
+      "name": "nextjs-isr",
+      "files": ["nextjs-isr/SKILL.md"]
+    },
+    {
+      "name": "nextjs-layouts-and-pages",
+      "files": ["nextjs-layouts-and-pages/SKILL.md"]
+    },
+    {
+      "name": "nextjs-deploying",
+      "files": ["nextjs-deploying/SKILL.md"]
+    },
+    {
+      "name": "nextjs-content-security-policy",
+      "files": ["nextjs-content-security-policy/SKILL.md"]
+    },
+    {
+      "name": "nextjs-instrumentation",
+      "files": ["nextjs-instrumentation/SKILL.md"]
+    },
+    {
+      "name": "nextjs-server-and-client-components",
+      "files": ["nextjs-server-and-client-components/SKILL.md"]
+    },
+    {
+      "name": "astro",
+      "files": ["astro/SKILL.md"]
+    },
+    {
+      "name": "nextjs-json-ld",
+      "files": ["nextjs-json-ld/SKILL.md"]
+    },
+    {
+      "name": "nextjs-upgrading",
+      "files": ["nextjs-upgrading/SKILL.md"]
+    },
+    {
+      "name": "nextjs-rendering-philosophy",
+      "files": ["nextjs-rendering-philosophy/SKILL.md"]
+    },
+    {
+      "name": "react-three-fiber",
+      "files": ["react-three-fiber/SKILL.md"]
+    },
+    {
+      "name": "nextjs-production-checklist",
+      "files": ["nextjs-production-checklist/SKILL.md"]
+    },
+    {
+      "name": "django",
+      "files": ["django/SKILL.md"]
+    },
+    {
+      "name": "nextjs-data-security",
+      "files": ["nextjs-data-security/SKILL.md"]
+    },
+    {
+      "name": "nextjs-analytics",
+      "files": ["nextjs-analytics/SKILL.md"]
+    },
+    {
+      "name": "nextjs-view-transitions",
+      "files": ["nextjs-view-transitions/SKILL.md"]
+    },
+    {
+      "name": "nextjs-caching",
+      "files": ["nextjs-caching/SKILL.md"]
+    }
+  ]
+}
