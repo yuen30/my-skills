@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>my-skills Handover Dashboard - 2026-06-29</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+    <main class="mx-auto max-w-6xl px-6 py-10">
+      <section class="mb-8 border-b border-slate-800 pb-6">
+        <p class="text-sm font-medium uppercase tracking-wide text-cyan-300">State Persistence Tracking</p>
+        <h1 class="mt-3 text-3xl font-semibold text-zinc-50">my-skills Daily Handover</h1>
+        <p class="mt-3 max-w-3xl text-sm leading-6 text-zinc-400">
+          Execution report for global skill update and repository control document onboarding.
+        </p>
+      </section>
+
+      <section class="overflow-hidden rounded-lg border border-slate-800 bg-zinc-900 shadow-2xl shadow-zinc-950">
+        <table class="w-full border-collapse text-left text-sm">
+          <thead class="bg-slate-950 text-xs uppercase tracking-wide text-slate-300">
+            <tr>
+              <th class="border-b border-slate-800 px-4 py-3">Date</th>
+              <th class="border-b border-slate-800 px-4 py-3">Execution Time</th>
+              <th class="border-b border-slate-800 px-4 py-3">Task Title</th>
+              <th class="border-b border-slate-800 px-4 py-3">Scope Context</th>
+              <th class="border-b border-slate-800 px-4 py-3">Modified Files &amp; Changes Summary</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-zinc-300">
+            <tr class="align-top">
+              <td class="px-4 py-4 font-medium text-zinc-100">2026-06-29</td>
+              <td class="px-4 py-4">10:36:35 +07</td>
+              <td class="px-4 py-4">Update global skills</td>
+              <td class="px-4 py-4">
+                Verified `my-skills` remote state, updated global skills with `npx skills update -g -y`,
+                and kept source `SKILL.md` files unchanged.
+              </td>
+              <td class="px-4 py-4">
+                Added `.aiignore`, `.ai-history.md`, `docs/SYSTEM_OVERVIEW.md`, and this daily dashboard.
+                Global update changed installed user-level skills: `find-skills`, `ui-ux-pro-max`, `ai-sdk`, `clean-code`.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="mt-6 grid gap-4 md:grid-cols-3">
+        <div class="rounded-lg border border-slate-800 bg-zinc-900 p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-400">Repo</p>
+          <p class="mt-2 text-sm text-zinc-100">main at ec5b17f, aligned with origin/main</p>
+        </div>
+        <div class="rounded-lg border border-slate-800 bg-zinc-900 p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-400">Install Target</p>
+          <p class="mt-2 text-sm text-zinc-100">Global skills via `skills update -g`</p>
+        </div>
+        <div class="rounded-lg border border-slate-800 bg-zinc-900 p-4">
+          <p class="text-xs uppercase tracking-wide text-slate-400">Next Step</p>
+          <p class="mt-2 text-sm text-zinc-100">Restart Codex to reload skill metadata</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
