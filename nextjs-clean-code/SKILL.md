@@ -14,6 +14,8 @@ description: Foundation skill — clean code principles, strict rules, folder st
 
 @doc-version: 16.2.6
 
+> **Note:** โครงสร้างโฟลเดอร์ `components/ui`, `hooks`, `helpers`, `lib`, `types` เป็น framework-agnostic — ใช้กับโปรเจกต์ React.js ล้วนได้เช่นกัน (เช่น Vite + React ที่ไม่มี Next.js routing) มีเพียงส่วน `app/` (Routing) เท่านั้นที่เจาะจงกับ Next.js App Router.
+
 ## ⚠️ Foundation Skill — Reference This in ALL Next.js Work
 
 This skill defines the **architectural rules** for the entire project. When writing any Next.js code (forms, route handlers, data fetching, etc.), ALWAYS follow these principles. เมื่อได้รับคำสั่งให้เขียนโค้ด ให้อ้างอิงโครงสร้างนี้เสมอ
