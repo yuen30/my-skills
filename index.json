@@ -105,6 +105,10 @@
       "files": ["prisma/SKILL.md"]
     },
     {
+      "name": "drizzle-orm",
+      "files": ["drizzle-orm/SKILL.md"]
+    },
+    {
       "name": "nextjs-lazy-loading",
       "files": ["nextjs-lazy-loading/SKILL.md"]
     },
