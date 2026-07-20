@@ -52,7 +52,7 @@ module.exports = nextConfig
 - Assets ถูก serve ที่ `/blog-static/_next/...`
 - Default zone (main app) ไม่ต้องตั้ง `assetPrefix`
 
-> Next.js 15+ ไม่ต้อง rewrite สำหรับ static assets แล้ว
+> ตั้งแต่ Next.js 15 เป็นต้นมา ไม่ต้อง rewrite สำหรับ static assets แล้ว (ฟีเจอร์นี้เพิ่มเข้ามาใน 15+ ไม่ใช่ข้อกำหนดเวอร์ชันขั้นต่ำของ skill นี้)
 
 ### 3. Route Requests to Correct Zone
 

@@ -12,6 +12,8 @@ description: Foundation skill — clean code principles, strict rules, folder st
 
 สถาปัตยกรรมนี้ยึดหลัก **Separation of Concerns** และ **Single Responsibility** เพื่อทำให้โปรเจกต์ Next.js 16 ขยายตัวได้ง่าย (Scalable) และง่ายต่อการบำรุงรักษา โดยแบ่งแยกหน้าที่การทำงานออกจากกันอย่างเด็ดขาดตามโฟลเดอร์โครงสร้าง และจำกัดพฤติกรรมให้ `app/` ทำหน้าที่เป็นเพียง **ทางผ่านของ Route** เท่านั้น
 
+@doc-version: 16.2.6
+
 ## ⚠️ Foundation Skill — Reference This in ALL Next.js Work
 
 This skill defines the **architectural rules** for the entire project. When writing any Next.js code (forms, route handlers, data fetching, etc.), ALWAYS follow these principles. เมื่อได้รับคำสั่งให้เขียนโค้ด ให้อ้างอิงโครงสร้างนี้เสมอ
