@@ -25,6 +25,7 @@ npx skills add yuen30/my-skills
 | [django](./django/) | Django Expert — Django 5.0, DRF, models, serializers, viewsets, ORM, JWT, testing |
 | [prisma](./prisma/) | Prisma ORM — schema design, migrations, repository pattern, transactions, PostGIS |
 | [drizzle-orm](./drizzle-orm/) | Drizzle ORM — schema definition, drizzle-kit migrations, relational + SQL-like queries, type inference, relations, repository pattern |
+| [modern-web-guidance](./modern-web-guidance/) | Search tool for modern web development best practices — HTML/CSS/client-side JS, forms, performance, accessibility, passkeys, view transitions |
 
 ### Next.js — Core
 

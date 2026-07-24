@@ -259,6 +259,10 @@
     {
       "name": "nextjs-caching",
       "files": ["nextjs-caching/SKILL.md"]
+    },
+    {
+      "name": "modern-web-guidance",
+      "files": ["modern-web-guidance/SKILL.md"]
     }
   ]
 }
