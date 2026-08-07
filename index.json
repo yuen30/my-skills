@@ -21,6 +21,10 @@
       "files": ["frontend-aesthetics/SKILL.md"]
     },
     {
+      "name": "frontend-layer",
+      "files": ["frontend-layer/SKILL.md"]
+    },
+    {
       "name": "nextjs-pages-router",
       "files": ["nextjs-pages-router/SKILL.md"]
     },
