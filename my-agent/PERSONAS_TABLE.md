@@ -34,6 +34,6 @@ This table is the authoritative roster of all 13 personas in the Khun Abe agent 
 | Poo | sonnet |
 | Note | haiku |
 | Nine | sonnet |
-| Fah | sonnet |
+| Fah | opus |
 | Bank | opus |
 | khun-abe | inherit |

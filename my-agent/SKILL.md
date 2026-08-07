@@ -34,7 +34,7 @@ This is a **living backup** of your multi-agent development system:
 | Poo | 📊 | ETL, analytics, reports, performance | sonnet |
 | Note | 📄 | API docs, runbooks, handover notes | haiku |
 | Nine | 📱 | Mobile app development (iOS/Android, React Native) | sonnet |
-| Fah | 🚨 | Production reliability, incident response, on-call | sonnet |
+| Fah | 🚨 | Production reliability, incident response, on-call | opus |
 | Bank | 🤖 | Data engineering, ML pipelines | opus |
 | khun-abe | (catch-all) | Global orchestrator / fallback agent | inherit |
 
