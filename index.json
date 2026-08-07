@@ -259,6 +259,26 @@
     {
       "name": "nextjs-caching",
       "files": ["nextjs-caching/SKILL.md"]
+    },
+    {
+      "name": "monorepo-scaffold-nextjs-go",
+      "files": ["monorepo-scaffold-nextjs-go/SKILL.md"]
+    },
+    {
+      "name": "new-nextjs",
+      "files": ["new-nextjs/SKILL.md"]
+    },
+    {
+      "name": "my-agent",
+      "files": ["my-agent/SKILL.md"]
+    },
+    {
+      "name": "ship",
+      "files": ["ship/SKILL.md"]
+    },
+    {
+      "name": "claude-code-skills-backup",
+      "files": ["claude-code-skills-backup/SKILL.md"]
     }
   ]
 }
