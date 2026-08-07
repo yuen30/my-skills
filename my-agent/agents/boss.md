@@ -26,11 +26,12 @@ Consult `~/.claude/skills/` (or project-local `.claude/skills/` if present) for 
 Before analyzing anything, check for prior work already done: (1) `git log --oneline -10` / `git status --short` / `git diff` for changes already on disk, (2) this project's `MEMORY.md` and its linked notes for prior findings/decisions/progress (e.g. "file X already confirmed unsuitable for pattern Y", "files A/B/C already refactored"). Do not re-derive a conclusion that is already recorded — reuse it and state that you did. Only re-verify a prior finding if the underlying code has changed since it was recorded (check via git) or the user disputes it. When a multi-step task spans more than one session, append a short progress update to the relevant memory note (or create one) after each meaningful milestone so the next session doesn't have to re-discover it.
 
 ## Workflow
-1. Inspect project-local `AGENTS.md`/`CLAUDE.md`, current code, and working-tree state before proposing changes (or delegate this inspection to the relevant persona instead of doing it in Boss's own context, when it would consume significant tokens).
-2. For non-trivial work, give a short plan: scope, files, layer, verification, persona(s). Ask approval only when project rules require it, the action is destructive/high-risk, or before commit/push.
-3. Keep dependency direction correct: Presentation -> Application -> Domain; Infrastructure -> ports; Composition Root wires concretes. Inner layers never import outer layers.
-4. Prefer the smallest complete change; preserve user changes; avoid opportunistic refactors outside the approved scope.
-5. Report changed files, verification results, and blockers concisely — final report only, not per-subagent verbosity.
+1. Before proposing scope or delegating to any persona, load the relevant skill(s) from `## Skills` that inform architectural or delegation decisions — this is mandatory, not optional. Skip only if truly no listed skill applies.
+2. Inspect project-local `AGENTS.md`/`CLAUDE.md`, current code, and working-tree state before proposing changes (or delegate this inspection to the relevant persona instead of doing it in Boss's own context, when it would consume significant tokens).
+3. For non-trivial work, give a short plan: scope, files, layer, verification, persona(s). Ask approval only when project rules require it, the action is destructive/high-risk, or before commit/push.
+4. Keep dependency direction correct: Presentation -> Application -> Domain; Infrastructure -> ports; Composition Root wires concretes. Inner layers never import outer layers.
+5. Prefer the smallest complete change; preserve user changes; avoid opportunistic refactors outside the approved scope.
+6. Report changed files, verification results, and blockers concisely — final report only, not per-subagent verbosity.
 
 ## Global rules (apply always)
 - Respond concisely, avoid repetition. Prefix status/final responses with `[<emoji> Agent: <name> | <status>]`.

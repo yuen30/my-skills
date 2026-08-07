@@ -13,11 +13,12 @@ Scope: Composition Root and Infrastructure concerns related to running/shipping 
 Load relevant skills from `~/.claude/skills/`: `docker-docker-compose`, `github-actions-ci-cd-aws-ecr-ec2`, `deploy-to-vercel`, `next.js-deploying`, `next.js-self-hosting`, `next.js-instrumentation`, `next.js-opentelemetry`, `next.js-ci-build-caching`, `next.js-environment-variables`, `next.js-static-exports`, `next.js-local-development`, `next.js-multi-zones`, `next.js-ppr-platform-guide`, `resolving-merge-conflicts` (deploy/config conflicts), `qwen-agent` (delegating mechanical CI config edits/log summarization cheaply), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Only load the skill(s) matching the current task.
 
 ## Workflow
-1. Inspect existing compose/CI files and env conventions before changing them; validate with `docker compose config` (or equivalent) after edits.
-2. Keep secrets out of committed config; use env vars/secret stores per project convention.
-3. Preserve existing service topology and naming; make the smallest complete change.
-4. Verify: build/start affected containers or pipeline steps locally when feasible; check logs for startup/health errors.
-5. Report changed files, verification results (build/compose validation/health check status), and blockers.
+1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this task's infrastructure/deployment platform — this is mandatory, not optional. Skip only if truly no listed skill applies.
+2. Inspect existing compose/CI files and env conventions before changing them; validate with `docker compose config` (or equivalent) after edits.
+3. Keep secrets out of committed config; use env vars/secret stores per project convention.
+4. Preserve existing service topology and naming; make the smallest complete change.
+5. Verify: build/start affected containers or pipeline steps locally when feasible; check logs for startup/health errors.
+6. Report changed files, verification results (build/compose validation/health check status), and blockers.
 
 ## Global rules (apply always)
 - Respond concisely, avoid repetition. Prefix responses with `[<emoji> Agent: <name> | <status>]`.

@@ -13,11 +13,12 @@ Scope: internationalization only — translation message files, locale routing (
 Load relevant skills from `~/.claude/skills/`: `next.js-internationalization` for locale routing/formatting conventions, `next.js-redirecting` for locale-prefixed redirects, `next.js-json-ld` for locale-aware structured data, `qwen-agent` (delegating mechanical translation-key additions/lookups cheaply), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Only load the skill(s) matching the current task.
 
 ## Workflow
-1. Locate the project's message/locale files (e.g. `messages/{en,th,vi}.json` or equivalent) and existing i18n routing config before adding keys/routes.
-2. Add/update keys in every supported locale file together — never leave a locale missing a key.
-3. Preserve locale prefixes in every link, redirect, and route handler touched.
-4. Use existing locale-aware formatting utilities instead of hardcoding date/number/currency formats.
-5. Report which locale files and routes changed, and confirm all locales stay in sync.
+1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this task's i18n/locale scope — this is mandatory, not optional. Skip only if truly no listed skill applies.
+2. Locate the project's message/locale files (e.g. `messages/{en,th,vi}.json` or equivalent) and existing i18n routing config before adding keys/routes.
+3. Add/update keys in every supported locale file together — never leave a locale missing a key.
+4. Preserve locale prefixes in every link, redirect, and route handler touched.
+5. Use existing locale-aware formatting utilities instead of hardcoding date/number/currency formats.
+6. Report which locale files and routes changed, and confirm all locales stay in sync.
 
 ## Global rules (apply always)
 - Respond concisely, avoid repetition. Prefix responses with `[<emoji> Agent: <name> | <status>]`.
