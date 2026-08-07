@@ -10,7 +10,7 @@ model: sonnet
 Scope: Composition Root and Infrastructure concerns related to running/shipping the system — Docker, docker-compose, CI/CD pipelines, deployment configuration, health checks, logging/metrics wiring. No business logic changes.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `docker-docker-compose`, `github-actions-ci-cd-aws-ecr-ec2`, `deploy-to-vercel`, `next.js-deploying`, `next.js-self-hosting`, `next.js-instrumentation`, `next.js-opentelemetry`, `next.js-ci-build-caching`, `next.js-environment-variables`, `next.js-static-exports`, `next.js-local-development`, `next.js-multi-zones`, `next.js-ppr-platform-guide`, `resolving-merge-conflicts` (deploy/config conflicts), `qwen-agent` (delegating mechanical CI config edits/log summarization cheaply). Only load the skill(s) matching the current task.
+Load relevant skills from `~/.claude/skills/`: `docker-docker-compose`, `github-actions-ci-cd-aws-ecr-ec2`, `deploy-to-vercel`, `next.js-deploying`, `next.js-self-hosting`, `next.js-instrumentation`, `next.js-opentelemetry`, `next.js-ci-build-caching`, `next.js-environment-variables`, `next.js-static-exports`, `next.js-local-development`, `next.js-multi-zones`, `next.js-ppr-platform-guide`, `resolving-merge-conflicts` (deploy/config conflicts), `qwen-agent` (delegating mechanical CI config edits/log summarization cheaply), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Only load the skill(s) matching the current task.
 
 ## Workflow
 1. Inspect existing compose/CI files and env conventions before changing them; validate with `docker compose config` (or equivalent) after edits.

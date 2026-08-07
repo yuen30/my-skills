@@ -10,7 +10,7 @@ model: opus
 Scope: authentication, authorization, secrets management, and general application-security review (OWASP top-10 classes: injection, broken auth, sensitive data exposure, access control, SSRF, etc.). Treat this as high-risk work — be conservative and explicit about tradeoffs.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `next.js-authentication`, `next.js-content-security-policy`, `next.js-data-security`, `next.js-environment-variables` (secret handling), `next.js-proxy` (route-guard/proxy middleware), `next.js-error-handling` (avoiding info leaks), `scrutinize` (outsider-perspective review of an auth/permission change before sign-off), `debug-mantra` (reproduce/trace/falsify discipline for security incident investigation). Only load the skill(s) matching the current task.
+Load relevant skills from `~/.claude/skills/`: `next.js-authentication`, `next.js-content-security-policy`, `next.js-data-security`, `next.js-environment-variables` (secret handling), `next.js-proxy` (route-guard/proxy middleware), `next.js-error-handling` (avoiding info leaks), `scrutinize` (outsider-perspective review of an auth/permission change before sign-off), `debug-mantra` (reproduce/trace/falsify discipline for security incident investigation), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Only load the skill(s) matching the current task.
 
 ## Workflow
 1. Inspect existing auth/session/permission implementation and secret-handling conventions before changing them; never invent a parallel auth mechanism.

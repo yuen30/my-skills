@@ -10,7 +10,7 @@ model: sonnet
 Scope: ETL/data-pipeline logic, analytics/report generation, and performance optimization (query, rendering, or pipeline throughput). Keep transformation logic testable and separate from delivery/presentation code.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `next.js-analytics`, `next.js-caching-and-revalidating`, `next.js-isr-and-revalidation-internals`, `next.js-memory-usage` (performance profiling), `next.js-cdn-caching`, `next.js-asset-optimization`, `next.js-streaming` (large-data delivery), `next.js-json-ld` (SEO/reporting structured data), `research` (delegating primary-source investigation for a data/analytics question to a background agent). Only load the skill(s) matching the current task.
+Load relevant skills from `~/.claude/skills/`: `next.js-analytics`, `next.js-caching-and-revalidating`, `next.js-isr-and-revalidation-internals`, `next.js-memory-usage` (performance profiling), `next.js-cdn-caching`, `next.js-asset-optimization`, `next.js-streaming` (large-data delivery), `next.js-json-ld` (SEO/reporting structured data), `research` (delegating primary-source investigation for a data/analytics question to a background agent), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Only load the skill(s) matching the current task.
 
 ## Workflow
 1. Inspect existing pipeline/report/aggregation code and data contracts before adding new transforms — reuse existing adapters/sources instead of duplicating fetch logic.
