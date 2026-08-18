@@ -1,239 +1,62 @@
 ---
-name: Next.js Production Checklist
-description: Comprehensive checklist for optimizing Next.js applications before production — performance, security, SEO, accessibility, and bundle analysis.
+name: nextjs-production-checklist
+description: Use before releasing a Next.js application to review correctness, security, performance, caching, accessibility, SEO, observability, build output, and deployment readiness against the installed version.
 ---
 
-# Next.js Production Checklist
+# Next.js Production Review
 
-Comprehensive checklist for optimizing Next.js applications before production — performance, security, SEO, accessibility, and bundle analysis.
+This is a verification workflow, not a static API checklist. Read the installed Next.js guides relevant to the application's router, rendering, caching, runtime, and deployment target before judging readiness.
 
-@doc-version: 16.2.6
+## Establish the release target
 
-## Automatic Optimizations (No Config Needed)
+1. Identify the app package, installed Next.js version, router, runtime, package manager, and deployment topology.
+2. Inspect repository scripts, CI workflow, environment schema, container or platform configuration, and rollback path.
+3. Define critical user journeys and production acceptance criteria.
+4. Record what can be verified locally, in CI, and only after deployment.
 
-| Optimization | Description |
-|-------------|-------------|
-| Server Components | Default — no client JS for server-rendered content |
-| Code-splitting | Automatic per route segment |
-| Prefetching | Links in viewport prefetched in background |
-| Prerendering | Server + Client Components prerendered at build time |
-| Caching | Data requests, rendered results, static assets cached |
+## Correctness gates
 
-## During Development
+- Run repository-defined formatting, lint, typecheck, unit, integration, E2E, and production build commands.
+- Test production output using the project's actual start or preview path.
+- Verify loading, empty, error, not-found, and unauthorized states for critical routes.
+- Check route, Server Action, Route Handler, and cache behavior against local bundled docs.
+- Resolve deprecation warnings and generated agent-rule changes.
 
-### Routing and Rendering
+## Security gates
 
-```
-□ Use Layouts for shared UI + partial rendering
-□ Use <Link> for client-side navigation + prefetching
-□ Create custom error pages (error.tsx, not-found.tsx)
-□ Follow Server/Client Component composition patterns
-□ Place "use client" boundaries as low as possible
-□ Wrap Request-time APIs (cookies, searchParams) in <Suspense>
-□ Avoid Request-time APIs in Root Layout (opts entire app into dynamic)
-```
+- Apply the Next.js Data Security Review skill to public and privileged boundaries.
+- Confirm secrets remain server-side and required environment variables fail fast.
+- Verify authentication, resource authorization, validation, rate limits, headers, CSP, and error redaction.
+- Confirm user-specific or tenant-specific data cannot leak through caching or logs.
 
-### Data Fetching and Caching
+## Performance and caching
 
-```
-□ Fetch data in Server Components (not Route Handlers from Server Components)
-□ Use Route Handlers only for Client Component → backend access
-□ Use loading.tsx + Suspense for streaming
-□ Fetch data in parallel (Promise.all) to reduce waterfalls
-□ Verify data requests are cached appropriately
-□ Cache non-fetch requests (unstable_cache or "use cache")
-□ Use public/ directory for static assets
-```
+- Measure before optimizing; capture comparable build, bundle, field, or lab evidence.
+- Inspect client boundaries, dependency weight, waterfalls, image/font/script behavior, and route rendering mode.
+- Verify cache lifetime, invalidation, personalization, and multi-instance behavior match product requirements.
+- Test cold start and degraded upstream behavior where operationally relevant.
 
-### UI and Accessibility
+## Product quality
 
-```
-□ Use Server Actions for form submissions + server-side validation
-□ Add app/global-error.tsx for uncaught errors
-□ Add app/global-not-found.tsx for unmatched routes
-□ Use next/font (auto-host, no layout shift)
-□ Use next/image (auto-optimize, no layout shift, WebP)
-□ Use next/script (defer third-party, don't block main thread)
-□ Use eslint-plugin-jsx-a11y for accessibility linting
-```
+- Verify keyboard navigation, focus, labels, contrast, reduced motion, and responsive layouts.
+- Check metadata, canonical URLs, robots, sitemap, social previews, and structured data where applicable.
+- Confirm analytics and consent behavior do not expose sensitive data.
+- Validate locale-aware routing and formatting for every supported locale.
 
-### Security
+## Operations
 
-```
-□ Use Tainting API to prevent sensitive data exposure
-□ Verify auth + authorization inside every Server Action
-□ Move database access to server-only Data Access Layer
-□ Add rate limiting for expensive operations
-□ Ensure .env.* files are in .gitignore
-□ Only prefix public variables with NEXT_PUBLIC_
-□ Consider Content Security Policy (CSP)
-□ Don't rely on Proxy/layout alone for auth (Server Actions are separate endpoints)
-```
+- Verify health/readiness behavior, structured logs, traces, metrics, alert ownership, and useful failure diagnostics.
+- Confirm deployment order, migrations, backward compatibility, rollback, and artifact immutability.
+- Test required volumes, permissions, proxies, CDN behavior, streaming, and graceful shutdown for the target environment.
+- Ensure CI uses the lockfile and caches only safe, reproducible artifacts.
 
-### Metadata and SEO
+## Final report
 
-```
-□ Use Metadata API (title, description, openGraph)
-□ Create OG images (static or dynamic with ImageResponse)
-□ Generate sitemap.xml
-□ Generate robots.txt
-□ Add structured data (JSON-LD)
-```
+Classify each gate as:
 
-### Type Safety
+- **Verified** — supported by a command, test, artifact, or live observation.
+- **Not verified** — requires an environment or access not available.
+- **Failed** — blocks release until resolved.
+- **Accepted risk** — explicitly owned with impact and follow-up.
 
-```
-□ Use TypeScript
-□ Enable Next.js TypeScript plugin
-□ Use strict mode in tsconfig.json
-```
-
-## Before Going to Production
-
-### Build and Test
-
-```bash
-# 1. Build locally — catch errors
-next build
-
-# 2. Test in production-like environment
-next start
-
-# 3. Run Lighthouse in incognito
-# Chrome DevTools → Lighthouse tab
-```
-
-### Core Web Vitals
-
-```
-□ Run Lighthouse (simulated test)
-□ Check field data (CrUX, Vercel Analytics)
-□ Use useReportWebVitals hook for real user metrics
-□ Target: LCP < 2.5s, INP < 200ms, CLS < 0.1
-```
-
-### Bundle Analysis
-
-```bash
-# Install analyzer
-npm install @next/bundle-analyzer
-
-# Run with ANALYZE=true
-ANALYZE=true npm run build
-```
-
-**Tools:**
-- [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer) — visualize bundles
-- [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost) — VS Code extension
-- [Bundle Phobia](https://bundlephobia.com/) — check package size before installing
-- [Package Phobia](https://packagephobia.com/) — install size
-- [bundlejs](https://bundlejs.com/) — tree-shaking analysis
-
-## Performance Patterns
-
-### Reduce Client JS
-
-```tsx
-// ✅ Server Component (default) — no JS sent to client
-export default async function Page() {
-  const data = await getData()
-  return <div>{data.title}</div>
-}
-
-// ✅ "use client" only where needed (interactive parts)
-// Keep boundary as low as possible in component tree
-```
-
-### Optimize Images
-
-```tsx
-import Image from 'next/image'
-
-<Image
-  src="/hero.jpg"
-  alt="Hero"
-  width={1200}
-  height={600}
-  priority // Above-the-fold only
-/>
-```
-
-### Optimize Fonts
-
-```tsx
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
-
-// Apply in layout — self-hosted, no external requests
-```
-
-### Streaming
-
-```tsx
-import { Suspense } from 'react'
-
-export default function Page() {
-  return (
-    <>
-      <h1>Dashboard</h1> {/* Sent immediately */}
-      <Suspense fallback={<Skeleton />}>
-        <SlowComponent /> {/* Streamed when ready */}
-      </Suspense>
-    </>
-  )
-}
-```
-
-### Parallel Data Fetching
-
-```tsx
-// ✅ Parallel — fast
-const [posts, users] = await Promise.all([
-  getPosts(),
-  getUsers(),
-])
-
-// ❌ Sequential — slow (waterfall)
-const posts = await getPosts()
-const users = await getUsers()
-```
-
-## Security Checklist
-
-| Area | Check |
-|------|-------|
-| Server Actions | Auth + authorization inside every action |
-| Data Access | `server-only` Data Access Layer |
-| Environment | `.env.local` gitignored, no secrets in `NEXT_PUBLIC_` |
-| Input validation | Zod/schema validation in Server Actions |
-| CSP | Nonce-based or `'unsafe-inline'` |
-| Rate limiting | Expensive operations protected |
-| Tainting | Sensitive objects/values tainted |
-| CSRF | Server Actions use POST + origin check (built-in) |
-
-## Quick Reference
-
-| Category | Key Actions |
-|----------|-------------|
-| Performance | Server Components, code-splitting, prefetching, streaming |
-| Images | `next/image` with `priority` for LCP |
-| Fonts | `next/font` (self-hosted, no CLS) |
-| Scripts | `next/script` (defer, don't block) |
-| Security | Auth in actions, DAL, CSP, env vars |
-| SEO | Metadata API, OG images, sitemap, robots |
-| Accessibility | `eslint-plugin-jsx-a11y`, semantic HTML |
-| Bundle | `@next/bundle-analyzer`, lazy loading |
-| Testing | `next build` + `next start` + Lighthouse |
-
-## สรุป
-
-1. **Server Components default** — ลด client JS อัตโนมัติ
-2. **`<Link>` + Layouts** — prefetching + partial rendering
-3. **Streaming + Suspense** — ไม่ block ทั้ง route
-4. **Parallel fetch** — `Promise.all` ลด waterfalls
-5. **Auth ใน Server Actions** — ไม่พึ่ง Proxy/layout alone
-6. **Metadata API** — SEO + OG images + sitemap
-7. **Bundle analysis** — หา dependencies ที่ใหญ่เกินไป
-8. **`next build` + `next start`** — test ก่อน deploy
-9. **Lighthouse + Web Vitals** — measure real performance
+Do not declare production-ready when required checks are missing or failures are hidden behind assumptions.
