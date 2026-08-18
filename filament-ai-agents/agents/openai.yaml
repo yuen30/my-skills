@@ -1,0 +1,4 @@
+interface:
+  display_name: "Filament AI Agents"
+  short_description: "Read version-matched local Filament docs"
+  default_prompt: "Use $filament-ai-agents to inspect the installed Filament documentation before implementing this change."

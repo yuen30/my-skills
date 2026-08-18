@@ -45,6 +45,10 @@
       "files": ["drizzle-orm/SKILL.md"]
     },
     {
+      "name": "filament-ai-agents",
+      "files": ["filament-ai-agents/SKILL.md"]
+    },
+    {
       "name": "github-actions-cicd",
       "files": ["github-actions-cicd/SKILL.md"]
     },
