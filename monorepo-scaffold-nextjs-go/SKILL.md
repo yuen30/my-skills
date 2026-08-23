@@ -13,6 +13,8 @@ Template for a production-grade monorepo combining:
 - **Docker Compose** local dev with fallback to host-side services when containers cannot reach SFTP
 - **Strict layered architecture** with dependency direction rules enforced from day one
 
+> **Note:** The version pins in this scaffold (Next.js 16+, React 19, Go 1.20+, next-auth v5, etc.) reflect the stack current as of when this skill was written. Before scaffolding a new project, verify current latest stable versions (e.g. `npm view next version`, `npm view react version`, `go version` / https://go.dev/dl/) rather than assuming the pinned versions here are still latest. The scaffold's *structure and patterns* (monorepo layout, adapter pattern, etc.) remain valid across version bumps even as specific version numbers change.
+
 ## Layout
 
 ```

@@ -34,6 +34,8 @@ Push to dev branch
 
 ## Workflow Template
 
+> **Note:** The Action versions pinned in the examples below (e.g. `actions/checkout@v4`, `aws-actions/configure-aws-credentials@v4`, `appleboy/ssh-action@v1.0.3`) are illustrative and may drift behind the current major release over time. Before copying them into a production workflow, verify the latest tagged release for each action (e.g. `gh release list --repo <owner>/<action-repo> -L 5` or the action's repo Releases page) rather than assuming the version shown here is current.
+
 ```yaml
 name: CI/CD Build and Deploy
 
