@@ -169,6 +169,20 @@ app.post('/orders', zValidator('json', createOrderSchema), async (c) => {
 - Handlers: validate boundary input (via `zValidator` or manual checks), call a use case, map the result to a response. No business rules, no direct ORM/DB calls, no vendor payloads returned raw.
 - Middleware for cross-cutting concerns (auth, logging, CORS) stays in Presentation too — it should not embed business rules either.
 
+## Migration Notes
+
+Canonical migration guide: `https://hono.dev/docs/MIGRATION` (mirrored at `https://github.com/honojs/hono/blob/main/docs/MIGRATION.md`). Before assuming an older or newer API pattern is correct, check this guide against the version range spanning the project's detected installed version and whatever version training data/memory might be biased toward.
+
+Known major breaking-change milestones:
+
+| Jump | Breaking changes |
+|---|---|
+| v3 → v4 | `c.jsonT()` removed → use `c.json()`; `c.stream()`/`c.streamText()` removed → use `stream()`/`streamText()` from `hono/streaming`; `c.env()` removed → use `getRuntimeKey()` from `hono/adapter`; `req.cookie()` removed → use `getCookie()` from `hono/cookie`; `app.showRoutes()` removed → use `showRoutes()` from `hono/dev`; Next.js adapter `hono/nextjs` removed → use `hono/vercel`; Cloudflare Workers `serveStatic` now requires a `manifest` option |
+| v2 → v3 | `c.req` changed from being (close to) a raw `Request` to `HonoRequest` — use `c.req.raw` for the underlying `Request`; `StaticRouter` removed; Validator Middleware API changed; `serveStatic` moved from middleware to per-runtime adapters (`hono/cloudflare-workers`, `hono/bun`, etc.) |
+| v4.3.x → v4.4.0 | No breaking change, but Deno distribution moved from `deno.land/x` to JSR (`jsr:@hono/hono`) — update Deno imports accordingly |
+
+This list is not exhaustive — always cross-check the official migration guide for the exact version jump in the project, since Hono ships breaking changes fairly often across majors.
+
 ## Quick Reference
 
 | Concern | API |
