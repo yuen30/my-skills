@@ -33,6 +33,8 @@ npx skills add yuen30/my-skills
 | [monorepo-scaffold-nextjs-go](./monorepo-scaffold-nextjs-go/) | Monorepo scaffold for Next.js 16+ App Router + Go 1.20+ microservices with shared infrastructure and swappable API adapters |
 | [angular](./angular/) | Angular framework — standalone components, signals, control flow syntax, dependency injection, version detection across major releases |
 | [react](./react/) | Plain (non-Next.js) React development — client-rendered SPA patterns, hooks, state management, and common anti-patterns |
+| [odoo-addons](./odoo-addons/) | Odoo addon/module development — models, views, security, wizards, version detection across major Odoo releases |
+| [frappe-framework](./frappe-framework/) | Frappe Framework and ERPNext — DocTypes, hooks.py, ORM, whitelisted API methods, bench CLI |
 
 ### Next.js และ React
 

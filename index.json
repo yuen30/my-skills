@@ -111,6 +111,14 @@
     {
       "name": "hono",
       "files": ["hono/SKILL.md"]
+    },
+    {
+      "name": "odoo-addons",
+      "files": ["odoo-addons/SKILL.md"]
+    },
+    {
+      "name": "frappe-framework",
+      "files": ["frappe-framework/SKILL.md"]
     }
   ]
 }

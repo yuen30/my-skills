@@ -1,17 +1,32 @@
 ---
 name: Django Expert
-description: Senior Django specialist — Django 5.0, Django REST Framework, models, serializers, viewsets, ORM optimization, authentication, testing, and production best practices.
+description: Senior Django specialist — Django REST Framework, models, serializers, viewsets, ORM optimization, authentication, testing, and production best practices. Detects the installed Django version and derives applicable guidance rather than assuming a fixed version.
 ---
 
 # Django Expert
 
-Senior Django specialist — Django 5.0, Django REST Framework, models, serializers, viewsets, ORM optimization, authentication, testing, and production best practices.
+Senior Django specialist — Django REST Framework, models, serializers, viewsets, ORM optimization, authentication, testing, and production best practices. Django releases new feature versions regularly (roughly every 8 months, with LTS releases every 2 years); detect the installed version before treating any version-specific claim in this file as current.
+
+**Precondition — do not skip:** Before making any claim about Django version-specific features (e.g. async views, ORM features) or presenting code samples as "current", detect the actually-installed Django version first. Never assume the version from training data or from any hardcoded version numbers/labels elsewhere in this file.
+
+## Step 0: Detect the installed Django version
+
+Run one or more of these in the project root:
+
+```shell
+python -m django --version
+pip show django | grep Version
+grep -i '^django' requirements.txt requirements/*.txt 2>/dev/null
+grep -i 'django' pyproject.toml 2>/dev/null
+```
+
+State the detected version explicitly before giving version-specific guidance. If a code sample below is captioned with a specific Django version (e.g. "introduced in Django 5.0"), treat that as the version it was introduced in, not proof it's still the current baseline — verify it's still applicable/idiomatic for the detected version against the official release notes at `https://docs.djangoproject.com/en/stable/releases/`.
 
 ## Core Workflow
 
 1. **Analyze requirements** — Identify models, relationships, API endpoints
 2. **Design models** — Create models with proper fields, indexes, managers → `makemigrations` + `migrate`
-3. **Implement views** — DRF viewsets or Django 5.0 async views
+3. **Implement views** — DRF viewsets or Django async views (see version note below)
 4. **Validate endpoints** — Confirm status codes with APITestCase before adding auth
 5. **Add auth** — Permissions, JWT authentication
 6. **Test** — Django TestCase, APITestCase
@@ -182,7 +197,9 @@ class ArticleViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 ```
 
-### Django 5.0 Async Views
+### Async Views (introduced in Django 5.0 — verify still applicable for detected version)
+
+Async view support (including async ORM iteration via `async for`) was introduced in Django 5.0. Confirm the detected version is 5.0+ before using this pattern, and re-check current async ORM caveats/limitations against the release notes for the detected version — async ORM support has continued to expand in later releases.
 
 ```python
 # views.py
