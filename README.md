@@ -18,7 +18,10 @@ npx skills add yuen30/my-skills
 | [react-three-fiber](./react-three-fiber/) | React Three Fiber (R3F), Three.js, and Drei helpers |
 | [tailwind-v4-shadcn](./tailwind-v4-shadcn/) | Tailwind CSS v4 + shadcn/ui components |
 | [shadcn-ui](./shadcn-ui/) | shadcn/ui — CLI, components, theming, customization, MCP server, registries |
+| [daisyui](./daisyui/) | daisyUI semantic component classes on Tailwind CSS — check project choice vs shadcn/ui before applying |
 | [go-fiber-v3](./go-fiber-v3/) | Go Fiber v3 — migration, Binding, Context interface, routing, client, services |
+| [hono](./hono/) | Hono backend framework — routing, middleware, Context API, runtime target selection (Workers, Deno, Bun, Node.js), zod validation, type-safe RPC |
+| [laravel](./laravel/) | Laravel (any recent major version) — patterns, breaking changes, and conventions across versions |
 | [github-actions-cicd](./github-actions-cicd/) | GitHub Actions CI/CD — AWS ECR, EC2 deploy, smoke test, multi-service, rollback |
 | [astro](./astro/) | Astro Framework — islands architecture, content collections, image optimization, hydration |
 | [frontend-aesthetics](./frontend-aesthetics/) | Frontend Aesthetics — bold design thinking, typography, color, motion, spatial composition |
@@ -26,6 +29,10 @@ npx skills add yuen30/my-skills
 | [prisma](./prisma/) | Prisma ORM — schema design, migrations, repository pattern, transactions, PostGIS |
 | [drizzle-orm](./drizzle-orm/) | Drizzle ORM — schema definition, drizzle-kit migrations, relational + SQL-like queries, type inference, relations, repository pattern |
 | [filament-ai-agents](./filament-ai-agents/) | Filament PHP workflow — resolve installed versions and read local bundled docs before implementing or reviewing code |
+| [frontend-layer](./frontend-layer/) | Frontend layer separation — components/, hooks/, helpers/, types/, lib/ organization and strict concern boundaries |
+| [monorepo-scaffold-nextjs-go](./monorepo-scaffold-nextjs-go/) | Monorepo scaffold for Next.js 16+ App Router + Go 1.20+ microservices with shared infrastructure and swappable API adapters |
+| [angular](./angular/) | Angular framework — standalone components, signals, control flow syntax, dependency injection, version detection across major releases |
+| [react](./react/) | Plain (non-Next.js) React development — client-rendered SPA patterns, hooks, state management, and common anti-patterns |
 
 ### Next.js และ React
 
@@ -39,3 +46,13 @@ Next.js skills ชุดนี้ไม่ทำหน้าที่เป็�
 | [nextjs-production-checklist](./nextjs-production-checklist/) | Production review — correctness, security, performance, caching, accessibility, SEO และ operations |
 | [nextjs-upgrading](./nextjs-upgrading/) | Upgrade workflow — bundled migration guides, codemods, regression checks และ rollback |
 | [nextjs-pages-router](./nextjs-pages-router/) | Legacy/hybrid Pages Router maintenance และ incremental migration |
+
+### Meta / Internal Tooling
+
+Tools and systems for managing this user's own Claude Code setup, agent configuration, and development workflow — not application frameworks or libraries.
+
+| Skill | Description |
+|-------|-------------|
+| [my-agent](./my-agent/) | Backup and restore persona systems — Claude Code subagents, Codex CLI config, and opencode editor personas |
+| [project-memory](./project-memory/) | Per-project memory notes — avoid re-deriving facts, decisions, and learnings across sessions |
+| [ship](./ship/) | Shipping workflow — /ship slash command for commit + push + close GitHub issue automation |
