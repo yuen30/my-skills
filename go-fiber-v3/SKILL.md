@@ -7,6 +7,14 @@ description: Expert guidance on Go Fiber v3 — migration from v2, new Binding s
 
 Expert guidance on Go Fiber v3 — migration from v2, new Binding system, Context interface, route chaining, domain routing, client package, services, and middleware changes.
 
+**Precondition:** This skill's guidance targets Fiber **v3** (`github.com/gofiber/fiber/v3`). Before applying it, verify the installed Fiber major version:
+
+```shell
+grep gofiber/fiber go.mod
+```
+
+If `go.mod` shows a different major (`v2`, or a future `v4`+), this skill's API specifics may not apply — flag the discrepancy rather than assuming v3 patterns are current.
+
 ## Requirements
 
 - **Go 1.25+** required

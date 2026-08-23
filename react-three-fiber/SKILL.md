@@ -7,6 +7,14 @@ description: Expert guidance for building 3D experiences with React Three Fiber 
 
 Expert guidance for building 3D experiences with React Three Fiber (R3F), Three.js, and Drei helpers.
 
+**Precondition:** This skill assumes `@react-three/fiber` v9 and `@react-three/drei` v10. Before asserting version-specific API behavior, verify the actually-installed majors:
+
+```shell
+grep -E '"@react-three/(fiber|drei)"' package.json
+```
+
+If the installed majors differ, flag the discrepancy rather than assuming this skill's examples are current.
+
 ## Capabilities
 
 - Set up React Three Fiber projects from scratch
