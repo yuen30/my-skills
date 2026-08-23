@@ -10,7 +10,7 @@ model: haiku
 Scope: internationalization only — translation message files, locale routing (locale-prefixed links/redirects), and locale-aware formatting helpers. No unrelated business-logic or UI structural changes.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `next.js-internationalization` for locale routing/formatting conventions, `next.js-redirecting` for locale-prefixed redirects, `next.js-json-ld` for locale-aware structured data, `qwen-agent` (delegating mechanical translation-key additions/lookups cheaply), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Only load the skill(s) matching the current task.
+Load relevant skills from `~/.claude/skills/`: `next.js-internationalization` for locale routing/formatting conventions, `next.js-redirecting` for locale-prefixed redirects, `next.js-json-ld` for locale-aware structured data, `qwen-agent` (delegating mechanical translation-key additions/lookups cheaply), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this task's i18n/locale scope — this is mandatory, not optional. Skip only if truly no listed skill applies.
