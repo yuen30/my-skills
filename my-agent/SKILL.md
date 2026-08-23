@@ -1,14 +1,15 @@
 ---
 name: my-agent
-description: Backup and restore two persona systems (Claude Code subagents 14-file set in ~/.claude/agents/ + Codex CLI persona config in ~/.codex/AGENTS.md and ~/.agents/agents/AGENTS.md) after a machine reset.
+description: Backup and restore three persona systems (Claude Code subagents 14-file set in ~/.claude/agents/, Codex CLI persona config in ~/.codex/AGENTS.md and ~/.agents/agents/AGENTS.md, and opencode persona config in ~/.config/opencode/) after a machine reset.
 ---
 
 # my-agent: Personal Persona Backup & Restore
 
-Backup and restore mechanism for two complementary persona systems:
+Backup and restore mechanism for three complementary persona systems:
 
 1. **Claude Code subagents**: 13 specialist personas (Boss, Art, Boy, Toey, Oat, Keng, Joy, Safe, Poo, Note, Nine, Fah, Bank) plus the khun-abe global orchestrator
 2. **Codex CLI persona config**: Single unified persona configuration file powering alternative CLI agent system
+3. **opencode persona config**: Persona system for opencode editor with per-persona YAML configuration
 
 On a fresh machine, this skill lets you instantly restore all persona definitions without manual recreation.
 
@@ -32,6 +33,13 @@ This is a **living backup** of your multi-agent development system across two di
 - **Format**: Single consolidated config file (not per-persona) with frontmatter (`alwaysApply: true`) and full persona definitions
 - **Model naming**: Uses `gpt-5.6-sol`, `gpt-5.6-terra` naming (different from Claude's opus/sonnet/haiku)
 - **Purpose**: Powers the Codex CLI persona system with same persona definitions in a different format
+
+### opencode Persona Config (per-persona YAML files)
+
+- **Location**: `~/.config/opencode/AGENTS.md` (unified orchestrator) and `~/.config/opencode/agents/*.md` (per-persona definitions)
+- **Format**: Central AGENTS.md file with all personas listed + separate `.md` files for each persona with YAML frontmatter (description, mode: subagent, color: #hex, permission: {edit, bash})
+- **Structure**: 13 core personas (art, boy, joy, keng, note, oat, poo, safe, toey, nine, fah, bank) plus 3 cavecrew helper subagents
+- **Purpose**: Powers the opencode editor's persona switching with role-specific instructions and visual identity (color coding)
 
 ## Persona Roster
 
@@ -88,7 +96,17 @@ cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.agent
 
 This restores the Codex CLI persona configuration. **Important:** Both destination files (`~/.codex/AGENTS.md` and `~/.agents/agents/AGENTS.md`) must remain identical — Codex CLI reads from both locations interchangeably. If you edit one manually, you **must manually sync the other** to prevent configuration drift.
 
-### Step 4: Start a New Claude Code Session
+### Step 5: Restore opencode Persona Config
+
+```bash
+mkdir -p ~/.config/opencode/agents
+cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/agents/*.md ~/.config/opencode/agents/
+```
+
+This restores the opencode persona configuration, including all 13 core personas and 3 cavecrew helper subagents with YAML metadata (color coding, permissions).
+
+### Step 7: Start a New Claude Code Session
 
 Claude Code configurations are scanned at session start. After restoring the persona files and updating `CLAUDE.md`, open Claude Code in a fresh terminal window or close and reopen the existing one. All 14 personas should now be available.
 
@@ -125,6 +143,21 @@ diff ~/.codex/AGENTS.md ~/.agents/agents/AGENTS.md
 ```
 
 If `diff` returns no output, they are synced correctly.
+
+**opencode Persona Config:**
+```bash
+ls -la ~/.config/opencode/AGENTS.md
+ls ~/.config/opencode/agents/ | wc -l
+```
+
+You should see `AGENTS.md` exist and the `agents/` folder should contain 15 files (13 core + 3 cavecrew):
+```
+art.md  bank.md  boy.md  cavecrew-builder.md  cavecrew-investigator.md
+cavecrew-reviewer.md  fah.md  joy.md  keng.md  nine.md  note.md  oat.md
+poo.md  safe.md  toey.md
+```
+
+If all files are present, the opencode restore was successful.
 
 ## Important: Dependent Skills
 
@@ -187,6 +220,20 @@ cp ~/.agents/agents/AGENTS.md ~/.codex/AGENTS.md
 
 Then commit the updated backup file to your `my-skills` git repository.
 
+### opencode Persona Config
+
+When you edit `~/.config/opencode/AGENTS.md` or any persona file in `~/.config/opencode/agents/`, **re-copy them into this skill's backup**:
+
+```bash
+# Copy the main AGENTS.md:
+cp ~/.config/opencode/AGENTS.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/AGENTS.md
+
+# Copy all agent files:
+cp ~/.config/opencode/agents/*.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/agents/
+```
+
+Then commit the updated files to your `my-skills` git repository.
+
 ## Troubleshooting
 
 ### Claude Code: Personas not showing up after restore
@@ -205,6 +252,12 @@ Then commit the updated backup file to your `my-skills` git repository.
 
 The persona .md files list skills they expect to find in `~/.claude/skills/`. If those skills are missing, the persona loads without them but still works. See the "Dependent Skills" section above for how to restore skills.
 
+### opencode: Personas not loaded or out of sync
+
+1. Did you restore both `~/.config/opencode/AGENTS.md` and all files in `~/.config/opencode/agents/`? Run: `ls ~/.config/opencode/agents/ | wc -l` — should be 15 (13 core + 3 cavecrew).
+2. Did you restart the opencode editor? The editor scans configuration at startup; a running editor won't pick up newly restored files.
+3. Are the YAML frontmatters in each `.md` file properly formatted (description, mode: subagent, color, permission)? Check a known-good file like `art.md` for reference.
+
 ### Persona file conflicts
 
 If you've edited a persona locally and also restored from this backup, the restored version will overwrite. To merge manually:
@@ -216,7 +269,7 @@ If you've edited a persona locally and also restored from this backup, the resto
 
 ## Summary
 
-This skill is a **unified restore mechanism** for both persona systems. Quick reference:
+This skill is a **unified restore mechanism** for all three persona systems. Quick reference:
 
 ### Claude Code Restore
 ```bash
@@ -233,8 +286,16 @@ cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.codex
 cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.agents/agents/AGENTS.md
 ```
 
+### opencode Persona Config Restore
+```bash
+mkdir -p ~/.config/opencode/agents && \
+cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/AGENTS.md ~/.config/opencode/AGENTS.md && \
+cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/agents/*.md ~/.config/opencode/agents/
+```
+
 **Key points:**
 - This backup is only as current as the last time you copied the persona files into it.
 - **Keep Claude files current** by re-copying whenever you edit a persona in `~/.claude/agents/`, and commit changes to `my-skills` git repo.
 - **Keep Codex file current** by re-copying whenever you edit `~/.codex/AGENTS.md` or `~/.agents/agents/AGENTS.md`, and commit to `my-skills` git repo.
 - **Keep both Codex locations synced** — they must always be identical. If you edit one, copy it to the other manually.
+- **Keep opencode files current** by re-copying whenever you edit `~/.config/opencode/AGENTS.md` or any persona in `~/.config/opencode/agents/`, and commit to `my-skills` git repo.
