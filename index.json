@@ -91,6 +91,26 @@
     {
       "name": "ship",
       "files": ["ship/SKILL.md"]
+    },
+    {
+      "name": "laravel",
+      "files": ["laravel/SKILL.md"]
+    },
+    {
+      "name": "angular",
+      "files": ["angular/SKILL.md"]
+    },
+    {
+      "name": "react",
+      "files": ["react/SKILL.md"]
+    },
+    {
+      "name": "daisyui",
+      "files": ["daisyui/SKILL.md"]
+    },
+    {
+      "name": "hono",
+      "files": ["hono/SKILL.md"]
     }
   ]
 }

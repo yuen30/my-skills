@@ -62,16 +62,18 @@ This is a **living backup** of your multi-agent development system across two di
 
 ## Restore Instructions
 
+**Placeholder note:** In all command examples below, replace `<skill-path>` with the absolute local path to the directory containing this SKILL.md file (the `my-agent/` directory).
+
 ### Prerequisites
 
 - Claude Code is installed and initialized (at least one session completed to create `~/.claude/` directory)
-- You have this skill in your skills library: `/Users/taweechai/Documents/GitHub/my-skills/my-agent/`
+- You have this skill in your skills library (cloned to a local directory)
 
 ### Step 1: Copy Agent Files
 
 ```bash
 mkdir -p ~/.claude/agents
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/agents/*.md ~/.claude/agents/
+cp <skill-path>/agents/*.md ~/.claude/agents/
 ```
 
 This restores all 14 persona `.md` files to their canonical location.
@@ -80,7 +82,7 @@ This restores all 14 persona `.md` files to their canonical location.
 
 Your fresh `~/.claude/CLAUDE.md` will already have a basic `## Personas` table (with default entries). Replace it with the one from this skill:
 
-1. Open `/Users/taweechai/Documents/GitHub/my-skills/my-agent/PERSONAS_TABLE.md` — copy the full table (both roster and model tiers sections).
+1. Open `<skill-path>/PERSONAS_TABLE.md` — copy the full table (both roster and model tiers sections).
 2. Open `~/.claude/CLAUDE.md` — find the existing `## Personas` section and replace the entire table with the copied content.
 3. Save.
 
@@ -90,8 +92,8 @@ Alternatively, if you want to preserve any other custom content in `~/.claude/CL
 
 ```bash
 mkdir -p ~/.codex ~/.agents/agents
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.codex/AGENTS.md
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.agents/agents/AGENTS.md
+cp <skill-path>/codex/AGENTS.md ~/.codex/AGENTS.md
+cp <skill-path>/codex/AGENTS.md ~/.agents/agents/AGENTS.md
 ```
 
 This restores the Codex CLI persona configuration. **Important:** Both destination files (`~/.codex/AGENTS.md` and `~/.agents/agents/AGENTS.md`) must remain identical — Codex CLI reads from both locations interchangeably. If you edit one manually, you **must manually sync the other** to prevent configuration drift.
@@ -100,8 +102,8 @@ This restores the Codex CLI persona configuration. **Important:** Both destinati
 
 ```bash
 mkdir -p ~/.config/opencode/agents
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/agents/*.md ~/.config/opencode/agents/
+cp <skill-path>/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+cp <skill-path>/opencode/agents/*.md ~/.config/opencode/agents/
 ```
 
 This restores the opencode persona configuration, including all 13 core personas and 3 cavecrew helper subagents with YAML metadata (color coding, permissions).
@@ -186,7 +188,7 @@ This skill intentionally does **not** attempt to auto-backup your entire `~/.cla
 When you edit a persona file in `~/.claude/agents/` (e.g., to add a new skill reference, refine a description, or update workflow rules), **re-copy that file into this skill folder** to keep the backup synchronized:
 
 ```bash
-cp ~/.claude/agents/<name>.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/agents/<name>.md
+cp ~/.claude/agents/<name>.md <skill-path>/agents/<name>.md
 ```
 
 Also update `PERSONAS_TABLE.md` if you:
@@ -202,10 +204,10 @@ When you edit `~/.codex/AGENTS.md` or `~/.agents/agents/AGENTS.md`, **re-copy th
 
 ```bash
 # If you edited ~/.codex/AGENTS.md:
-cp ~/.codex/AGENTS.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md
+cp ~/.codex/AGENTS.md <skill-path>/codex/AGENTS.md
 
 # If you edited ~/.agents/agents/AGENTS.md:
-cp ~/.agents/agents/AGENTS.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md
+cp ~/.agents/agents/AGENTS.md <skill-path>/codex/AGENTS.md
 ```
 
 **Important:** Keep both `~/.codex/AGENTS.md` and `~/.agents/agents/AGENTS.md` in sync by manually copying one to the other whenever you edit:
@@ -226,10 +228,10 @@ When you edit `~/.config/opencode/AGENTS.md` or any persona file in `~/.config/o
 
 ```bash
 # Copy the main AGENTS.md:
-cp ~/.config/opencode/AGENTS.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/AGENTS.md
+cp ~/.config/opencode/AGENTS.md <skill-path>/opencode/AGENTS.md
 
 # Copy all agent files:
-cp ~/.config/opencode/agents/*.md /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/agents/
+cp ~/.config/opencode/agents/*.md <skill-path>/opencode/agents/
 ```
 
 Then commit the updated files to your `my-skills` git repository.
@@ -263,7 +265,7 @@ The persona .md files list skills they expect to find in `~/.claude/skills/`. If
 If you've edited a persona locally and also restored from this backup, the restored version will overwrite. To merge manually:
 
 1. Back up your edited version: `cp ~/.claude/agents/<name>.md ~/.claude/agents/<name>.md.local`
-2. Restore from this skill: `cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/agents/<name>.md ~/.claude/agents/`
+2. Restore from this skill: `cp <skill-path>/agents/<name>.md ~/.claude/agents/`
 3. Open both files and manually merge the `## Skills` or `## Workflow` sections you customized.
 4. Commit the merged version and re-copy it into the skill folder for the next restore.
 
@@ -274,7 +276,7 @@ This skill is a **unified restore mechanism** for all three persona systems. Qui
 ### Claude Code Restore
 ```bash
 mkdir -p ~/.claude/agents && \
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/agents/*.md ~/.claude/agents/
+cp <skill-path>/agents/*.md ~/.claude/agents/
 ```
 
 Then merge the personas table into `~/.claude/CLAUDE.md`, restart Claude Code, and you're back to full persona capacity.
@@ -282,15 +284,15 @@ Then merge the personas table into `~/.claude/CLAUDE.md`, restart Claude Code, a
 ### Codex CLI Restore
 ```bash
 mkdir -p ~/.codex ~/.agents/agents && \
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.codex/AGENTS.md && \
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/codex/AGENTS.md ~/.agents/agents/AGENTS.md
+cp <skill-path>/codex/AGENTS.md ~/.codex/AGENTS.md && \
+cp <skill-path>/codex/AGENTS.md ~/.agents/agents/AGENTS.md
 ```
 
 ### opencode Persona Config Restore
 ```bash
 mkdir -p ~/.config/opencode/agents && \
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/AGENTS.md ~/.config/opencode/AGENTS.md && \
-cp /Users/taweechai/Documents/GitHub/my-skills/my-agent/opencode/agents/*.md ~/.config/opencode/agents/
+cp <skill-path>/opencode/AGENTS.md ~/.config/opencode/AGENTS.md && \
+cp <skill-path>/opencode/agents/*.md ~/.config/opencode/agents/
 ```
 
 **Key points:**

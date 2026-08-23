@@ -35,17 +35,19 @@ This ties together the `Note` persona's issue-filing discipline with safe git pr
 
 ## Restore Instructions
 
+**Placeholder note:** In all command examples below, replace `<skill-path>` with the absolute local path to the directory containing this SKILL.md file (the `ship/` directory).
+
 ### Prerequisites
 
 - Claude Code is installed and initialized (at least one session completed to create `~/.claude/` directory)
 - GitHub CLI (`gh`) is authenticated and configured
-- You have this skill in your skills library: `/Users/taweechai/Documents/GitHub/my-skills/ship/`
+- You have this skill in your skills library (cloned to a local directory)
 
 ### Step 1: Copy Command File
 
 ```bash
 mkdir -p ~/.claude/commands
-cp /Users/taweechai/Documents/GitHub/my-skills/ship/commands/ship.md ~/.claude/commands/
+cp <skill-path>/commands/ship.md ~/.claude/commands/
 ```
 
 This restores the `/ship` command file to its canonical location.
@@ -93,13 +95,13 @@ These are **prerequisites your workflow must already provide** — this skill do
 When you edit the `/ship` command in `~/.claude/commands/ship.md` (to refine the workflow, add new steps, or handle edge cases), **re-copy that file into this skill folder** to keep the backup synchronized:
 
 ```bash
-cp ~/.claude/commands/ship.md /Users/taweechai/Documents/GitHub/my-skills/ship/commands/ship.md
+cp ~/.claude/commands/ship.md <skill-path>/commands/ship.md
 ```
 
 Then commit the updated file to your `my-skills` git repository:
 
 ```bash
-cd /Users/taweechai/Documents/GitHub/my-skills
+cd <skill-path>/..
 git add ship/commands/ship.md
 git commit -m "update(ship): sync /ship command changes"
 git push
@@ -141,11 +143,11 @@ Together, they recreate your entire Claude Code environment (agents + commands) 
 
 ## Summary
 
-This skill is a **one-command restore** for your `/ship` automation:
+This skill is a **one-command restore** for your `/ship` automation (replace `<skill-path>` with the actual path to the skill directory):
 
 ```bash
 mkdir -p ~/.claude/commands && \
-cp /Users/taweechai/Documents/GitHub/my-skills/ship/commands/ship.md ~/.claude/commands/
+cp <skill-path>/commands/ship.md ~/.claude/commands/
 ```
 
 After that, restart Claude Code, and the `/ship` command is ready to use.
