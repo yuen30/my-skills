@@ -15,6 +15,7 @@ npx skills add yuen30/my-skills
 | Skill | Description |
 |-------|-------------|
 | [docker](./docker/) | Docker & Docker Compose best practices, templates, and troubleshooting |
+| [http-status-codes](./http-status-codes/) | HTTP Status Codes — 1xx-5xx reference, REST API conventions, frontend/backend error handling |
 | [react-three-fiber](./react-three-fiber/) | React Three Fiber (R3F), Three.js, and Drei helpers |
 | [tailwind-v4-shadcn](./tailwind-v4-shadcn/) | Tailwind CSS v4 + shadcn/ui components |
 | [shadcn-ui](./shadcn-ui/) | shadcn/ui — CLI, components, theming, customization, MCP server, registries |

@@ -17,6 +17,10 @@
       "files": ["docker/SKILL.md"]
     },
     {
+      "name": "http-status-codes",
+      "files": ["http-status-codes/SKILL.md"]
+    },
+    {
       "name": "nextjs-clean-code",
       "files": ["nextjs-clean-code/SKILL.md"]
     },
