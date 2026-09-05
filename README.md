@@ -15,6 +15,9 @@ npx skills add yuen30/my-skills
 | Skill | Description |
 |-------|-------------|
 | [docker](./docker/) | Docker & Docker Compose best practices, templates, and troubleshooting |
+| [redis](./redis/) | Redis as a cache layer — connection setup (Node/Python/Go), cache-aside, TTL, invalidation, distributed locks, pub/sub, docker-compose |
+| [rabbitmq](./rabbitmq/) | RabbitMQ as a message broker — exchange types, ack/prefetch, dead-letter exchanges, docker-compose, idempotent consumers |
+| [bitbucket-pipelines](./bitbucket-pipelines/) | Bitbucket Pipelines CI/CD — AWS ECR/EC2/ECS deploy, Bitbucket Deployments/approvals, comparison vs GitHub Actions |
 | [http-status-codes](./http-status-codes/) | HTTP Status Codes — 1xx-5xx reference, REST API conventions, frontend/backend error handling |
 | [react-three-fiber](./react-three-fiber/) | React Three Fiber (R3F), Three.js, and Drei helpers |
 | [tailwind-v4-shadcn](./tailwind-v4-shadcn/) | Tailwind CSS v4 + shadcn/ui components |

@@ -123,6 +123,18 @@
     {
       "name": "frappe-framework",
       "files": ["frappe-framework/SKILL.md"]
+    },
+    {
+      "name": "redis",
+      "files": ["redis/SKILL.md"]
+    },
+    {
+      "name": "rabbitmq",
+      "files": ["rabbitmq/SKILL.md"]
+    },
+    {
+      "name": "bitbucket-pipelines",
+      "files": ["bitbucket-pipelines/SKILL.md"]
     }
   ]
 }
