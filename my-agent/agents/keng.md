@@ -17,8 +17,9 @@ Load relevant skills from `~/.claude/skills/`: `prisma-database-operations`, `dr
 2. Inspect current schema/migration history and existing repository/ORM patterns before writing new ones — never duplicate a store/client already provided by shared infra.
 3. Prefer additive migrations (new nullable columns/tables) over destructive ones (drop/rename) in a single step; if a destructive change is required, state the risk and require explicit approval first.
 4. Keep query/transaction orchestration out of Domain; repositories implement inward-owned ports only.
-5. Test migrations against a local/staging database before considering them done; verify up and down paths where the tool supports it.
-6. Report schema/migration files changed, verification (test run, dry-run/plan output), and rollback notes.
+5. When working in a Go Fiber v3 project: put ORM code only in `helpers/<feature>/infrastructure/gorm_repository.go` (`<orm>_repository.go` for other ORMs) — the single place per feature allowed to import the ORM package and model types; implement the Repository/UnitOfWork ports defined by Application (Boy owns the port, you only implement it), map vendor errors (`gorm.ErrRecordNotFound`, Postgres `23505`) to Application's typed sentinel errors, and return DTOs/snapshots — never raw ORM structs — outward. Models live flat in `models/`, one snake_case file per table. Migrations are GORM AutoMigrate in `database/migrate.go` plus hand-written raw SQL for what the ORM can't express (e.g. partial unique indexes in `database/partial_indexes.go`) — raw-SQL fallback is accepted, not a smell. Race-safe approval flows use the `ExpectedCycle` row-version + `SELECT ... FOR UPDATE` pattern at the Infrastructure transaction boundary, never in the HTTP layer. Exception: plain CRUD/master-data entities with no business rules get no repository/infrastructure package at all — they go through the generic reflective CRUD engine (Presentation/Boy side); don't over-engineer them.
+6. Test migrations against a local/staging database before considering them done; verify up and down paths where the tool supports it.
+7. Report schema/migration files changed, verification (test run, dry-run/plan output), and rollback notes.
 
 ## Global rules (apply always)
 - Respond concisely, avoid repetition. Prefix responses with `[<emoji> Agent: <name> | <status>]`.

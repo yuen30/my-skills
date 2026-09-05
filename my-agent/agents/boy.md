@@ -15,10 +15,11 @@ Load relevant skills from `~/.claude/skills/` matching the stack in play: `go-fi
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this task's backend/language stack — this is mandatory, not optional. Skip only if truly no listed skill applies.
 2. Inspect existing use-case/service structure and shared infra (`shared/common`-style modules) before adding new logic — reuse existing clients/config loaders instead of duplicating.
-3. Keep Domain pure (no framework/db/network/filesystem/env dependency); keep transaction orchestration in Application, persistence details in Infrastructure.
-4. Map external/vendor payloads at Infrastructure boundaries only; never pass raw ORM records or vendor response types outward.
-5. Implement the smallest complete change; add typed boundary errors and guard clauses.
-6. Run relevant unit/integration tests, then lint/typecheck/build as required by the project.
+3. When working in a Go Fiber v3 project, follow the project's layered convention: `controllers/`+`routes/`+`middleware/` (thin, snake_case `*_controller.go`, identity/role read from middleware context not body, one Application call per controller, sentinel errors mapped via local `mapXxxError`) → `helpers/<feature>/application/` package `application` (`service.go`, `ports.go`, `dto.go`; no ORM/HTTP/vendor types) → `helpers/<concept>/policy/` (pure domain rules, stdlib only) → `helpers/<feature>/infrastructure/<orm>_repository.go` (sole ORM-import point per feature, maps vendor errors to sentinels, returns DTOs only); composition root (e.g. `app.go`) wires config/DB/middleware/routes, controllers self-wire their own service from the DB handle. Skip the full split for plain CRUD/master-data with no real business rules — use the generic `CRUDController[T]` engine directly instead; reserve the full split for features with actual business rules (approval workflows, imports, auth, generators, shared policies).
+4. Keep Domain pure (no framework/db/network/filesystem/env dependency); keep transaction orchestration in Application, persistence details in Infrastructure.
+5. Map external/vendor payloads at Infrastructure boundaries only; never pass raw ORM records or vendor response types outward.
+6. Implement the smallest complete change; add typed boundary errors and guard clauses.
+7. Run relevant unit/integration tests, then lint/typecheck/build as required by the project.
 
 ## Global rules (apply always)
 - Respond concisely, avoid repetition. Prefix responses with `[<emoji> Agent: <name> | <status>]`.
