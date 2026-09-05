@@ -86,25 +86,26 @@ Apply model routing only when delegating to a separate agent. Keep the current m
 Before delegating, assess complexity, risk, ambiguity, scope, context size, and verification needs:
 
 - Prefer `gpt-5.6-terra` for bounded implementation, established patterns, routine CI/CD changes, documentation, i18n, and focused verification.
-- Prefer `gpt-5.6-sol` for architecture, cross-layer or cross-service work, unclear root causes, production incidents, security-sensitive work, destructive data operations, and decisions requiring complex judgment.
+- Prefer `gpt-5.6-sol` for complex everyday work, cross-layer or cross-service changes, unclear root causes, and decisions requiring substantial judgment.
+- Prefer `gpt-6-astra` for the most demanding work: ambiguous architecture, major production incidents, security or authentication redesign, destructive data recovery, and high-risk multi-system decisions.
 - Use low reasoning for deterministic edits, medium for bounded implementation and tests, high for integration and diagnosis, and xhigh only for ambiguous high-risk or multi-system work.
 - Start with the least expensive model and reasoning level that can reliably complete the task. Escalate when evidence shows broader judgment is required; do not downgrade when preserving full context is more important than specialization.
 - If a named model is unavailable, inherit the current model instead of blocking the task.
 
 | Persona | Assigned default model | Default reasoning | Override when |
 |---|---|---|---|
-| 👑 Boss | `gpt-5.6-sol` | high | Use terra for bounded coordination; xhigh for ambiguous architecture or multi-system incidents |
+| 👑 Boss | `gpt-5.6-sol` | high | Use terra for bounded coordination; use astra/xhigh for ambiguous architecture or multi-system incidents |
 | 🎨 Art | `gpt-5.6-terra` | medium | Use sol/high for novel design systems or complex interaction architecture |
 | ⚙️ Boy | `gpt-5.6-terra` | high | Use sol for cross-service contracts, concurrency, or difficult domain logic |
 | 🧪 Toey | `gpt-5.6-terra` | medium | Use sol/high for flaky tests, nondeterminism, or multi-layer failure diagnosis |
 | 🐳 Oat | `gpt-5.6-terra` | high | Use sol for production incidents, security-sensitive infrastructure, or distributed systems |
-| 💾 Keng | `gpt-5.6-sol` | high | Use terra for safe additive schema work; xhigh for destructive migrations, recovery, or concurrency risk |
+| 💾 Keng | `gpt-5.6-sol` | high | Use terra for safe additive schema work; use astra/xhigh for destructive migrations, recovery, or concurrency risk |
 | 🌐 Joy | `gpt-5.6-terra` | low | Use medium or sol when locale routing and formatting span frameworks |
-| 🛡️ Safe | `gpt-5.6-sol` | high | Use xhigh for threat modeling, auth redesign, or exploitable findings |
+| 🛡️ Safe | `gpt-5.6-sol` | high | Use astra/xhigh for threat modeling, auth redesign, or exploitable findings |
 | 📊 Poo | `gpt-5.6-terra` | high | Use sol/xhigh for complex profiling, query plans, or correctness-sensitive analytics |
 | 📄 Note | `gpt-5.6-terra` | low | Use medium or sol for large API contracts, migration runbooks, or cross-system handovers |
 | 📱 Nine | `gpt-5.6-terra` | medium | Use sol/high for complex native-module integration or cross-platform architecture |
-| 🚨 Fah | `gpt-5.6-sol` | high | Use xhigh for major production incidents or ambiguous root-cause investigation |
+| 🚨 Fah | `gpt-5.6-sol` | high | Use astra/xhigh for major production incidents or ambiguous root-cause investigation |
 | 🤖 Bank | `gpt-5.6-terra` | high | Use sol for model training/serving architecture, ML infra design, or accuracy-critical inference logic |
 
 Record a brief reason whenever the delegated model or reasoning differs from the persona default. Pass only the context needed for that bounded task; use inherited model/context when preserving full conversation history matters more than specialization.
