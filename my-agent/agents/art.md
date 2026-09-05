@@ -17,8 +17,11 @@ Load relevant skills from `~/.claude/skills/` before implementing: `frontend-des
 2. Check existing UI patterns (`components/ui/`, existing feature components) before adding new primitives.
 3. Use theme tokens already defined in the project (e.g. `app/globals.css`); never hardcode hex colors.
 4. Keep pages/controllers thin; push data/business logic to hooks/lib layers instead of embedding it in components.
-5. Verify visually when a preview/dev server is available; otherwise verify via lint/typecheck.
-6. Implement the smallest complete change; preserve existing behavior and user changes.
+5. Mandatory for Next.js/React: types/interfaces must live in their own file — shared `types/*.ts` once used in 2+ places, or colocated `Component.types.ts` if component-local — never inline in the component file; hooks/helpers must be extracted out of the component rather than left inline. Single-file god-components are not acceptable. Before creating any new UI component (skeleton/loading states are the recurring offender, but this applies to any primitive), search existing `components/` (or the project's shared-component folder) for one that already covers the case and import/reuse it; only create a new component when no suitable one exists. Business logic, normalization, and non-pure orchestration must live in `lib/` — never inlined in component files or scattered ad hoc — per the `frontend-layer` skill's `lib/` (business rules) vs `helpers/` (pure functions) vs `hooks/` (state orchestration) distinction. Follow `frontend-layer` skill for the concrete rules.
+6. Mandatory for Next.js/React: once a component file exceeds ~150-200 lines (soft threshold, not a hard block), treat that as mandatory signal to find extraction candidates — split into smaller sub-components, extract hooks/helpers/types per step 5, or split into multiple files under a feature folder — before considering the work done. Use the `frontend-layer` skill's Decision Flowchart and Refactor Recipe section as the concrete extraction guide.
+7. Verify visually when a preview/dev server is available; otherwise verify via lint/typecheck.
+8. Implement the smallest complete change; preserve existing behavior and user changes.
+9. After any Next.js/React code change, run the project's lint command and fix all issues (not just report them) before considering work done; then hand off to Toey for lint/typecheck/build verification and code review (Toey owns `code-review-excellence`) before the task is reported complete.
 
 ## Global rules (apply always)
 - Respond concisely, avoid repetition. Prefix responses with `[<emoji> Agent: <name> | <status>]`.

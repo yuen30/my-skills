@@ -759,7 +759,81 @@ export async function fetchCustomers(): Promise<Customer[]> {
 
 ---
 
+### Smell #7: Duplicate Skeleton/Loading Components
+
+```tsx
+// ❌ WRONG — same skeleton markup recreated per page/feature
+// components/orders/OrderDetailSkeleton.tsx
+function OrderDetailSkeleton() {
+  return <div className="animate-pulse h-24 rounded bg-gray-200" />
+}
+
+// components/customers/CustomerListSkeleton.tsx
+function CustomerListSkeleton() {
+  return <div className="animate-pulse h-24 rounded bg-gray-200" />  // same markup, copy-pasted
+}
+
+// ✅ CORRECT
+// components/ui/Skeleton.tsx
+export interface SkeletonProps {
+  variant?: 'text' | 'card' | 'avatar'
+  className?: string
+}
+
+export function Skeleton({ variant = 'text', className }: SkeletonProps) {
+  return <div className={cn('animate-pulse rounded bg-gray-200', variantClass[variant], className)} />
+}
+
+// components/orders/OrderDetail.tsx
+import { Skeleton } from '@/components/ui/Skeleton'
+if (isLoading) return <Skeleton variant="card" />
+```
+
+**Fix:** Keep one shared `<Skeleton />` (or feature-parameterized `<XSkeleton />`) component in `components/ui/`, imported wherever a loading state is needed, and drive variant differences via props instead of copy-pasting markup per feature.
+
+---
+
+### Smell #8: Business Logic Inlined in Component Instead of `lib/`
+
+```tsx
+// ❌ WRONG — normalization + business rule scattered inline in the component
+function OrderDetail({ rawOrder }) {
+  // ❌ Mapping snake_case API shape to domain shape, inline
+  const order = {
+    id: rawOrder.id,
+    number: rawOrder.order_number,
+    isEditable: rawOrder.status !== 'SHIPPED' && rawOrder.status !== 'DELIVERED', // ❌ business rule inline
+  }
+
+  return <div>{order.number}</div>
+}
+
+// ✅ CORRECT
+// lib/normalizers/order.ts
+export function normalizeOrder(raw: RawOrder): Order {
+  return {
+    id: raw.id,
+    number: raw.order_number,
+    isEditable: !['SHIPPED', 'DELIVERED'].includes(raw.status),
+  }
+}
+
+// components/orders/OrderDetail.tsx
+import { normalizeOrder } from '@/lib/normalizers/order'
+
+function OrderDetail({ rawOrder }: { rawOrder: RawOrder }) {
+  const order = normalizeOrder(rawOrder)
+  return <div>{order.number}</div>
+}
+```
+
+**Fix:** Move normalization/business-rule code to `lib/` (not `helpers/` — it carries domain meaning, not a pure generic utility) and call it from the component or the hook that feeds the component. Do not scatter the same rule across multiple components.
+
+---
+
 ## Refactor Recipe: Breaking Apart a Fat Component
+
+**Size threshold (soft, not a hard block):** once a component file exceeds ~150-200 lines, treat it as a signal to look for extraction candidates using the recipe below, rather than continuing to grow it.
 
 **Scenario:** You have a component doing too much — rendering, fetching, calculating, and managing complex state.
 
@@ -962,6 +1036,37 @@ When reviewing code, ask:
 - [ ] **types/** — Is this type only used in one file? (Should be local, not in types/)
 - [ ] **lib/** — Does it import from components or hooks? (Dependency inversion — lib must never know about UI)
 - [ ] **Overall** — Could the same parsing/formatting/validation logic be unit-tested without mocking anything? (If no, move it to lib/ or helpers/)
+
+---
+
+## Common Hook Recipes
+
+**When to extract to a hook:** the state/effect logic is reused in 2+ components, OR a single component combines 2+ pieces of state/effect logic (e.g. a subscription + a derived value + a cleanup) that would otherwise clutter the component body. Below that threshold, keep `useState`/`useEffect` inline.
+
+Senior React/Next.js devs reach for these often — extract on first real need, don't pre-build a library of them:
+
+- **`useDebounce(value, delayMs)`** — delays reflecting a fast-changing value (search input) until it settles. `function useDebounce<T>(value: T, delayMs: number): T`
+- **`useLocalStorage(key, initialValue)`** — syncs state with `localStorage`, SSR-safe (guard `typeof window`). `function useLocalStorage<T>(key: string, initialValue: T): [T, (v: T) => void]`
+- **`useMediaQuery(query)`** — subscribes to a CSS media query for responsive logic in JS. `function useMediaQuery(query: string): boolean`
+- **`usePrevious(value)`** — returns the value from the previous render, via a ref updated in `useEffect`. `function usePrevious<T>(value: T): T | undefined`
+- **`useToggle(initial?)`** — boolean state with a stable toggle callback. `function useToggle(initial = false): [boolean, () => void]`
+- **`useIntersectionObserver(ref, options?)`** — reports whether an element is in viewport (lazy-load, infinite scroll, animation triggers). `function useIntersectionObserver(ref: RefObject<Element>, options?: IntersectionObserverInit): boolean`
+- **`useClickOutside(ref, onOutside)`** — fires a callback when a click/touch happens outside the referenced element (dropdowns, modals). `function useClickOutside(ref: RefObject<HTMLElement>, onOutside: () => void): void`
+
+These are shape sketches, not full implementations — write the minimal version each project actually needs.
+
+---
+
+## Type Guards & Colocated Types Naming
+
+**Type predicates (`isX`):** narrowing functions of the form `function isX(value: unknown): value is X` live next to the type they narrow — same file as the type definition (`types/order.ts` exports both `Order` and `isOrder`). If a component/feature accumulates several unrelated guards, consolidate into `types/guards.ts` rather than scattering them across feature files.
+
+**Naming convention for where types live** (extends the 2+/1 rule above):
+- Used in exactly 1 file → keep local, no separate file.
+- Used only within one component but the inline definition clutters the component (props + several derived shapes) → colocate as `ComponentName.types.ts` next to `ComponentName.tsx`.
+- Used across 2+ files/components → shared `types/domain.ts` (e.g. `types/order.ts`), never duplicated per-file.
+
+Never mix the two: a type that has grown a second consumer must move out of `Component.types.ts` and into the shared `types/` file, updating both call sites to import from the new location.
 
 ---
 
