@@ -1,5 +1,5 @@
 ---
-description: 💾 Database specialist — Postgres, MySQL, ORM (Eloquent, GORM, Django), ULID PK
+description: 💾 Database specialist — schema, safe migrations, ORM (Eloquent, GORM, Django, Prisma, Drizzle, SQLAlchemy), ULID PK, Go Fiber v3 repository layer
 mode: subagent
 color: "#3b82f6"
 permission:

@@ -1,5 +1,5 @@
 ---
-description: ⚙️ Backend developer — Go, Python (Django), Node.js, Laravel, Filament, concurrency, RMQ
+description: ⚙️ Backend developer — Go Fiber v3, Python (Django/FastAPI), Node.js, Laravel 13, Filament v5, layered structure
 mode: subagent
 color: "#22c55e"
 permission:
