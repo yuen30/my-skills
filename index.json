@@ -49,6 +49,14 @@
       "files": ["drizzle-orm/SKILL.md"]
     },
     {
+      "name": "eloquent-orm",
+      "files": ["eloquent-orm/SKILL.md"]
+    },
+    {
+      "name": "sqlalchemy",
+      "files": ["sqlalchemy/SKILL.md"]
+    },
+    {
       "name": "filament-ai-agents",
       "files": ["filament-ai-agents/SKILL.md"]
     },

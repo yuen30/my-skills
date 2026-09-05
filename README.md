@@ -32,6 +32,8 @@ npx skills add yuen30/my-skills
 | [django](./django/) | Django Expert — Django 5.0, DRF, models, serializers, viewsets, ORM, JWT, testing |
 | [prisma](./prisma/) | Prisma ORM — schema design, migrations, repository pattern, transactions, PostGIS |
 | [drizzle-orm](./drizzle-orm/) | Drizzle ORM — schema definition, drizzle-kit migrations, relational + SQL-like queries, type inference, relations, repository pattern |
+| [eloquent-orm](./eloquent-orm/) | Laravel Eloquent ORM — models, casts, relationships, eager loading, schema migrations, scopes, observers, soft deletes, repository pattern, factories |
+| [sqlalchemy](./sqlalchemy/) | SQLAlchemy 2.0 for FastAPI — typed declarative models, loader strategies, async sessions, Alembic migrations, repository pattern, unit of work |
 | [filament-ai-agents](./filament-ai-agents/) | Filament PHP workflow — resolve installed versions and read local bundled docs before implementing or reviewing code |
 | [frontend-layer](./frontend-layer/) | Frontend layer separation — components/, hooks/, helpers/, types/, lib/ organization and strict concern boundaries |
 | [monorepo-scaffold-nextjs-go](./monorepo-scaffold-nextjs-go/) | Monorepo scaffold for Next.js 16+ App Router + Go 1.20+ microservices with shared infrastructure and swappable API adapters |
