@@ -8,6 +8,24 @@
 npx skills add yuen30/my-skills
 ```
 
+## Fresh Machine Setup
+
+หลังลง macOS/OS ใหม่ หรือย้ายเครื่อง ให้ restore Claude Code setup ทั้งหมดด้วยคำสั่งเดียว:
+
+```bash
+git clone https://github.com/yuen30/my-skills.git
+cd my-skills
+./install.sh
+```
+
+`install.sh` จะ:
+
+- Copy skill folder ทุกตัวที่มี `SKILL.md` (ค้นหาแบบ dynamic ไม่ hardcode รายชื่อ) ไปที่ `~/.claude/skills/<name>/`
+- Copy persona agent config (`my-agent/agents/*.md`) ไปที่ `~/.claude/agents/`
+- Idempotent — รันซ้ำได้ปลอดภัย ไม่มี prompt
+
+Mirror ของ codex/opencode ใน `my-agent/codex/` และ `my-agent/opencode/` เป็น reference เท่านั้น ไม่ได้อยู่ใน scope ของสคริปต์นี้ (คนละ path/format กับ Claude Code) — ต้อง restore เอง ถ้าต้องใช้
+
 ## รายการ Skills
 
 ### General
@@ -64,3 +82,4 @@ Tools and systems for managing this user's own Claude Code setup, agent configur
 | [my-agent](./my-agent/) | Backup and restore persona systems — Claude Code subagents, Codex CLI config, and opencode editor personas |
 | [project-memory](./project-memory/) | Per-project memory notes — avoid re-deriving facts, decisions, and learnings across sessions |
 | [ship](./ship/) | Shipping workflow — /ship slash command for commit + push + close GitHub issue automation |
+| [context7-auto-research](./context7-auto-research/) | Auto-fetch current library/framework docs via the Context7 API before implementing — avoids outdated/hallucinated API usage |

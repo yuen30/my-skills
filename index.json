@@ -143,6 +143,10 @@
     {
       "name": "bitbucket-pipelines",
       "files": ["bitbucket-pipelines/SKILL.md"]
+    },
+    {
+      "name": "context7-auto-research",
+      "files": ["context7-auto-research/SKILL.md"]
     }
   ]
 }
