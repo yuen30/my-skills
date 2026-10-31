@@ -1,6 +1,6 @@
 ---
 name: abe-framework
-description: Framework guidance for Next.js, Astro, Angular, React (Vite SPA), React Three Fiber/Three.js, Go Fiber v3, Hono, Laravel, Filament, Django/DRF, Odoo addons and Frappe/ERPNext. Use when writing, reviewing, upgrading or debugging code in Next.js, Astro, Angular, React, R3F, Fiber, Hono, Laravel, Filament, Django, Odoo or Frappe, or when you see next.config, angular.json, astro.config, go.mod with gofiber, artisan, manage.py, __manifest__.py or hooks.py.
+description: "Framework skill for Next.js, Astro, Angular, React (Vite SPA), React Three Fiber, Go Fiber v3, Hono, Laravel, Filament, Django/DRF, Odoo and Frappe/ERPNext. Use when adding endpoints, handlers, routes, pages or components, or writing, reviewing, upgrading or debugging code in these frameworks (next.config, angular.json, astro.config, go.mod with gofiber, artisan, manage.py, __manifest__.py, hooks.py)."
 ---
 
 # ABE Framework

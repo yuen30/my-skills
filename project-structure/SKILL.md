@@ -1,6 +1,6 @@
 ---
 name: project-structure
-description: Single entry point for where code and folders go, across stacks. Use when creating or placing files/folders, scaffolding, reviewing layering, or splitting fat modules in any stack. Not for framework API usage (use the framework skill).
+description: "Single entry point for where code and folders go, across stacks. Use when asked where a file, helper, hook, component, service or module should go, when creating or placing files/folders, scaffolding, reviewing layering, or splitting fat modules. Not for framework API usage (use abe-framework)."
 ---
 
 # Project Structure

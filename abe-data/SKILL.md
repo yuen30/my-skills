@@ -1,6 +1,6 @@
 ---
 name: abe-data
-description: Data-layer guidance for Prisma, Drizzle ORM, Laravel Eloquent and SQLAlchemy/Alembic. Use when writing or reviewing schema, migrations, queries, relations, transactions or the repository pattern in a TypeScript, Laravel or Python/FastAPI project.
+description: "ORM and database-layer skill for Prisma (schema.prisma), Drizzle ORM, Laravel Eloquent and SQLAlchemy/Alembic. Use when adding or changing a model, column, relation or migration, writing queries or transactions, or reviewing the repository layer in a TypeScript, Laravel or Python/FastAPI project."
 ---
 
 # ABE Data
