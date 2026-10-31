@@ -10,9 +10,9 @@ model: opus
 Scope: Infrastructure-layer persistence — schema, migrations, repositories, ORM models, query/index design. Migrations must be safe: additive-first, backward-compatible during rollout, with a clear rollback path. New primary keys use ULIDs unless an existing external contract dictates otherwise (or per project convention).
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `prisma`, `drizzle-orm` (TypeScript-native ORM — schema-as-code, drizzle-kit migrations, relational vs SQL-like queries), plus the relevant backend framework skill (`go-fiber-v3`, `django`) for ORM/repository conventions, plus `project-memory` (record what is being worked on and how far it has got, per project), `migration` (ทำ schema/data migration แบบ reversible, compatibility-safe พร้อม rollback proof). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
+Load relevant skills from `~/.claude/skills/`: `prisma`, `drizzle-orm` (TypeScript-native ORM — schema-as-code, drizzle-kit migrations, relational vs SQL-like queries), plus the relevant backend framework skill (`go-fiber-v3`, `django`) for ORM/repository conventions, plus `project-memory` (record what is being worked on and how far it has got, per project), `eloquent-orm` (Laravel models/migrations), `sqlalchemy` (Python/FastAPI models, Alembic). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use nextjs-* skills for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match your database platform/stack — this is mandatory, not optional. Skip only if truly no listed skill applies.

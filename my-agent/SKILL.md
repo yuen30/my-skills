@@ -165,10 +165,10 @@ If all files are present, the opencode restore was successful.
 
 Many persona files reference specific skills in their `## Skills` sections. After restoring agents, **check that those referenced skills are also installed**:
 
-- **Art** references: `tailwind-v4-shadcn`, `frontend-design`, etc.
+- **Art** references: `abe-ui`, `frontend-design`, etc.
 - **Boy** references: `go-fiber-v3`, etc.
 - **Keng** references: `drizzle-orm`, `prisma`, etc.
-- **Oat** references: `docker`, `github-actions-cicd`, etc.
+- **Oat** references: `docker`, `ci-cd`, etc.
 - **Note** references: various documentation skills
 
 If a skill is missing from `~/.claude/skills/`, the persona will load without that skill's context. To restore all skills as well:

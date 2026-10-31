@@ -5,10 +5,6 @@
       "files": ["frontend-aesthetics/SKILL.md"]
     },
     {
-      "name": "nextjs-pages-router",
-      "files": ["nextjs-pages-router/SKILL.md"]
-    },
-    {
       "name": "docker",
       "files": ["docker/SKILL.md"]
     },
@@ -17,20 +13,8 @@
       "files": ["http-status-codes/SKILL.md"]
     },
     {
-      "name": "shadcn-ui",
-      "files": ["shadcn-ui/SKILL.md", "shadcn-ui/references/components.md", "shadcn-ui/references/dark-mode.md", "shadcn-ui/references/mcp-registry.md", "shadcn-ui/references/patterns.md", "shadcn-ui/references/setup.md", "shadcn-ui/references/theming.md"]
-    },
-    {
-      "name": "nextjs-ai-agents",
-      "files": ["nextjs-ai-agents/SKILL.md"]
-    },
-    {
       "name": "go-fiber-v3",
       "files": ["go-fiber-v3/SKILL.md"]
-    },
-    {
-      "name": "tailwind-v4-shadcn",
-      "files": ["tailwind-v4-shadcn/SKILL.md"]
     },
     {
       "name": "prisma",
@@ -53,32 +37,16 @@
       "files": ["filament-ai-agents/SKILL.md"]
     },
     {
-      "name": "github-actions-cicd",
-      "files": ["github-actions-cicd/SKILL.md", "github-actions-cicd/references/key-patterns.md", "github-actions-cicd/references/production-pipeline.md", "github-actions-cicd/references/workflow-template.md"]
-    },
-    {
       "name": "astro",
       "files": ["astro/SKILL.md", "astro/references/components.md", "astro/references/content-collections.md", "astro/references/data-fetching.md", "astro/references/deployment.md"]
-    },
-    {
-      "name": "nextjs-upgrading",
-      "files": ["nextjs-upgrading/SKILL.md"]
     },
     {
       "name": "react-three-fiber",
       "files": ["react-three-fiber/SKILL.md"]
     },
     {
-      "name": "nextjs-production-checklist",
-      "files": ["nextjs-production-checklist/SKILL.md"]
-    },
-    {
       "name": "django",
       "files": ["django/SKILL.md"]
-    },
-    {
-      "name": "nextjs-data-security",
-      "files": ["nextjs-data-security/SKILL.md"]
     },
     {
       "name": "monorepo-scaffold-nextjs-go",
@@ -109,10 +77,6 @@
       "files": ["react/SKILL.md"]
     },
     {
-      "name": "daisyui",
-      "files": ["daisyui/SKILL.md"]
-    },
-    {
       "name": "hono",
       "files": ["hono/SKILL.md"]
     },
@@ -133,16 +97,32 @@
       "files": ["rabbitmq/SKILL.md"]
     },
     {
-      "name": "bitbucket-pipelines",
-      "files": ["bitbucket-pipelines/SKILL.md"]
-    },
-    {
       "name": "context7-auto-research",
       "files": ["context7-auto-research/SKILL.md"]
     },
     {
       "name": "project-structure",
       "files": ["project-structure/SKILL.md", "project-structure/references/astro.md", "project-structure/references/django.md", "project-structure/references/frappe.md", "project-structure/references/frontend-layers.md", "project-structure/references/frontend-smells-and-refactor.md", "project-structure/references/go-fiber.md", "project-structure/references/monorepo-nextjs-go.md", "project-structure/references/nextjs.md", "project-structure/references/odoo.md"]
+    },
+    {
+      "name": "nextjs",
+      "files": ["nextjs/SKILL.md", "nextjs/references/ai-agents.md", "nextjs/references/data-security.md", "nextjs/references/pages-router.md", "nextjs/references/production-checklist.md", "nextjs/references/upgrading.md"]
+    },
+    {
+      "name": "ci-cd",
+      "files": ["ci-cd/SKILL.md", "ci-cd/references/bitbucket.md", "ci-cd/references/github-key-patterns.md", "ci-cd/references/github-production-pipeline.md", "ci-cd/references/github-workflow-template.md"]
+    },
+    {
+      "name": "abe-ui",
+      "files": ["abe-ui/SKILL.md", "abe-ui/references/components.md", "abe-ui/references/daisyui.md", "abe-ui/references/dark-mode.md", "abe-ui/references/mcp-registry.md", "abe-ui/references/patterns.md", "abe-ui/references/setup.md", "abe-ui/references/shadcn-cli.md", "abe-ui/references/tailwind-v4.md", "abe-ui/references/theming.md"]
+    },
+    {
+      "name": "find-skills",
+      "files": ["find-skills/SKILL.md"]
+    },
+    {
+      "name": "web-research",
+      "files": ["web-research/SKILL.md"]
     }
   ]
 }

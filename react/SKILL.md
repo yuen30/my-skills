@@ -1,11 +1,11 @@
 ---
 name: react
-description: Plain client-side React (Vite SPA, no framework) component patterns, hooks rules, and state choices (local, Context, store). Use when writing or reviewing hooks and components outside Next.js. For Server Components or App Router use nextjs-* skills.
+description: Plain client-side React (Vite SPA, no framework) component patterns, hooks rules, and state choices (local, Context, store). Use when writing or reviewing hooks and components outside Next.js. For Server Components or App Router use the nextjs skill.
 ---
 
 # React
 
-Guidance for plain, client-side React (Vite SPA, CRA-style, or any non-framework React app). Server Components, streaming SSR, and the App Router are Next.js/Remix framework features, not plain React APIs — they do not apply here. If the project uses Next.js, defer to the `nextjs-*` skills in this library for anything routing/data-fetching/RSC-related; use this skill only for generic component/hook patterns.
+Guidance for plain, client-side React (Vite SPA, CRA-style, or any non-framework React app). Server Components, streaming SSR, and the App Router are Next.js/Remix framework features, not plain React APIs — they do not apply here. If the project uses Next.js, defer to the `nextjs` skill in this library for anything routing/data-fetching/RSC-related; use this skill only for generic component/hook patterns.
 
 **Precondition:** Before asserting a hook or API is available (`use()`, `useOptimistic`, `useActionState`, `useFormStatus`), verify the installed React version — these are React 19+ only.
 
