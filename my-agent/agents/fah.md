@@ -12,7 +12,7 @@ Scope: production reliability — incident investigation/response, alerting and 
 ## Skills
 Load relevant skills from `~/.claude/skills/`: `scrutinize` (outsider-perspective review of a proposed fix or runbook before sign-off), `qwenchance` (keeping a long incident-investigation session on track, watching context budget), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow
 1. Before investigating any incident or writing an operational procedure, load the relevant skill(s) from `## Skills` that match this situation — this is mandatory, not optional. Skip only if truly no listed skill applies.

@@ -1,13 +1,8 @@
----
-name: frappe-framework
-description: "Frappe Framework and ERPNext app development: DocTypes, hooks.py, frappe ORM, whitelisted APIs, bench CLI. Use when working on Frappe/ERPNext apps or bench sites; detects version first. Not for Odoo (use odoo-addons)."
----
+Read when the app has hooks.py and imports frappe (Frappe/ERPNext, bench). Not for Odoo.
 
 # Frappe Framework
 
-Expert guidance for Frappe Framework and ERPNext (which is built on Frappe) app development. Frappe ships regular version updates with API and DocType schema changes — detect the installed version before asserting version-specific behavior.
-
-**Precondition — do not skip:** Before making claims about version-specific Frappe/ERPNext behavior, detect the installed version.
+Expert guidance for Frappe Framework and ERPNext (which is built on Frappe) app development. Frappe ships regular version updates with API and DocType schema changes.
 
 ## Step 0: Detect the installed Frappe/ERPNext version
 
@@ -36,7 +31,6 @@ Controller class:
 # my_doctype.py
 import frappe
 from frappe.model.document import Document
-
 
 class MyDocType(Document):
     def validate(self):
@@ -144,7 +138,6 @@ scheduler_events = {
 ```python
 # my_module/api.py
 import frappe
-
 
 @frappe.whitelist()
 def get_dashboard_summary(customer=None):

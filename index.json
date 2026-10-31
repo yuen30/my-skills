@@ -13,10 +13,6 @@
       "files": ["http-status-codes/SKILL.md"]
     },
     {
-      "name": "go-fiber-v3",
-      "files": ["go-fiber-v3/SKILL.md"]
-    },
-    {
       "name": "prisma",
       "files": ["prisma/SKILL.md"]
     },
@@ -31,22 +27,6 @@
     {
       "name": "sqlalchemy",
       "files": ["sqlalchemy/SKILL.md"]
-    },
-    {
-      "name": "filament-ai-agents",
-      "files": ["filament-ai-agents/SKILL.md"]
-    },
-    {
-      "name": "astro",
-      "files": ["astro/SKILL.md", "astro/references/components.md", "astro/references/content-collections.md", "astro/references/data-fetching.md", "astro/references/deployment.md"]
-    },
-    {
-      "name": "react-three-fiber",
-      "files": ["react-three-fiber/SKILL.md"]
-    },
-    {
-      "name": "django",
-      "files": ["django/SKILL.md"]
     },
     {
       "name": "monorepo-scaffold-nextjs-go",
@@ -65,30 +45,6 @@
       "files": ["ship/SKILL.md"]
     },
     {
-      "name": "laravel",
-      "files": ["laravel/SKILL.md"]
-    },
-    {
-      "name": "angular",
-      "files": ["angular/SKILL.md"]
-    },
-    {
-      "name": "react",
-      "files": ["react/SKILL.md"]
-    },
-    {
-      "name": "hono",
-      "files": ["hono/SKILL.md"]
-    },
-    {
-      "name": "odoo-addons",
-      "files": ["odoo-addons/SKILL.md"]
-    },
-    {
-      "name": "frappe-framework",
-      "files": ["frappe-framework/SKILL.md"]
-    },
-    {
       "name": "redis",
       "files": ["redis/SKILL.md"]
     },
@@ -105,10 +61,6 @@
       "files": ["project-structure/SKILL.md", "project-structure/references/astro.md", "project-structure/references/django.md", "project-structure/references/frappe.md", "project-structure/references/frontend-layers.md", "project-structure/references/frontend-smells-and-refactor.md", "project-structure/references/go-fiber.md", "project-structure/references/monorepo-nextjs-go.md", "project-structure/references/nextjs.md", "project-structure/references/odoo.md"]
     },
     {
-      "name": "nextjs",
-      "files": ["nextjs/SKILL.md", "nextjs/references/ai-agents.md", "nextjs/references/data-security.md", "nextjs/references/pages-router.md", "nextjs/references/production-checklist.md", "nextjs/references/upgrading.md"]
-    },
-    {
       "name": "ci-cd",
       "files": ["ci-cd/SKILL.md", "ci-cd/references/bitbucket.md", "ci-cd/references/github-key-patterns.md", "ci-cd/references/github-production-pipeline.md", "ci-cd/references/github-workflow-template.md"]
     },
@@ -123,6 +75,10 @@
     {
       "name": "web-research",
       "files": ["web-research/SKILL.md"]
+    },
+    {
+      "name": "abe-framework",
+      "files": ["abe-framework/SKILL.md", "abe-framework/references/angular.md", "abe-framework/references/astro-components.md", "abe-framework/references/astro-content-collections.md", "abe-framework/references/astro-data-fetching.md", "abe-framework/references/astro-deployment.md", "abe-framework/references/astro.md", "abe-framework/references/django.md", "abe-framework/references/filament.md", "abe-framework/references/frappe.md", "abe-framework/references/go-fiber.md", "abe-framework/references/hono.md", "abe-framework/references/laravel.md", "abe-framework/references/nextjs-ai-agents.md", "abe-framework/references/nextjs-data-security.md", "abe-framework/references/nextjs-pages-router.md", "abe-framework/references/nextjs-production-checklist.md", "abe-framework/references/nextjs-upgrading.md", "abe-framework/references/nextjs.md", "abe-framework/references/odoo.md", "abe-framework/references/react-three-fiber.md", "abe-framework/references/react.md"]
     }
   ]
 }

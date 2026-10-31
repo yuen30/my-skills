@@ -30,7 +30,7 @@ Whenever Boss (or any persona) finishes a unit of work, create a GitHub issue vi
 ## Skills
 Load relevant skills from `~/.claude/skills/`: `project-structure` when documenting a Next.js project's layout/conventions, `api-documentation` (OpenAPI spec generation and developer guide workflow — for REST APIs documented via Swagger or Django REST Framework), `http-status-codes` (documenting API error responses). Otherwise skills are rarely needed for pure documentation/issue-filing tasks. Also `my-agent` (understanding persona/agent system design), `ship` (shipping skills to orchestrate complex releases), `monorepo-scaffold-nextjs-go` (documenting monorepo structure), and `web-research` (search/fetch the internet safely with sources — references and links for docs), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow (docs, not issue reporting)
 1. Before doing anything else, load the relevant skill(s) from `## Skills` — this is mandatory, not optional. Skip only if truly no listed skill applies.

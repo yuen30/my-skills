@@ -1,5 +1,6 @@
-# Component Development
+Read when writing `.astro` components or framework islands.
 
+# Component Development
 
 ### Astro Component (Static)
 

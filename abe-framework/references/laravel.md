@@ -1,13 +1,8 @@
----
-name: laravel
-description: "Laravel across major versions: detects installed version and derives current vs legacy patterns. Use when developing or reviewing Laravel apps, artisan, routes, Eloquent, middleware, upgrades, or choosing old vs new conventions."
----
+Read when the project has artisan or laravel/framework in composer.json.
 
 # Laravel
 
-Use this skill to navigate Laravel across major versions. The skill detects your project's installed Laravel version and derives applicable patterns and breaking changes for that version — not just from memory. Laravel evolves fast; your training data may be stale. When in doubt, derive from the official laravel/docs repo for the detected version — see Detect Version & Derive Guidance below.
-
-**Precondition — do not skip:** Before making any claim about Laravel patterns, breaking changes, or reviewing code against 'current' Laravel conventions, you MUST first run Step 1 below to detect the actual installed version in this project. Never assume the version from the user's phrasing, training data, or the presence of the 'Laravel 13 Reference' section in this file. State the detected version explicitly before giving version-specific guidance. If detection is impossible (e.g. no project context, greenfield question), say so explicitly instead of guessing a version.
+Use this skill to navigate Laravel across major versions. The skill detects your project's installed Laravel version and derives applicable patterns and breaking changes for that version — not just from memory. When in doubt, derive from the official laravel/docs repo for the detected version — see Detect Version & Derive Guidance below.
 
 ## Detect Version & Derive Guidance
 

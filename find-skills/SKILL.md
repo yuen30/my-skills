@@ -19,7 +19,7 @@ done
 Plugin skills are also available; they show up in the session's skill list.
 
 - Match on the task's stack and activity (e.g. "Go Fiber handler", "Tailwind UI", "deploy to ECS").
-- Structure/placement questions → `project-structure`; Next.js → `nextjs`; UI kit → `abe-ui`; CI/CD → `ci-cd`.
+- Structure/placement questions → `project-structure`; framework code (Next.js, Go Fiber, Laravel, Django, ...) → `abe-framework`; UI kit → `abe-ui`; CI/CD → `ci-cd`.
 - A match found → load its SKILL.md and stop here.
 
 ## 2. Search the registry (only if nothing local fits)

@@ -1,13 +1,8 @@
----
-name: odoo-addons
-description: "Odoo addon/module development (Python models, XML views, security, wizards, controllers, __manifest__.py). Use when building or reviewing Odoo modules; detects Odoo version first. Not for Frappe/ERPNext (use frappe-framework)."
----
+Read when the code has __manifest__.py (Odoo addon). Not for Frappe/ERPNext.
 
 # Odoo Addons
 
-Expert guidance for building and reviewing Odoo addon (module) code. Odoo ships a new major version every year with real breaking changes across the ORM, view syntax, and JS framework — do not assume a version from memory.
-
-**Precondition — do not skip:** Before asserting any version-specific API behavior (especially view `attrs`/`states` vs direct Python expressions), detect the installed Odoo version.
+Expert guidance for building and reviewing Odoo addon (module) code. Odoo ships a new major version every year with real breaking changes across the ORM, view syntax, and JS framework.
 
 ## Step 0: Detect the installed Odoo version
 
@@ -57,7 +52,6 @@ Addon layout → use the `project-structure` skill (references/odoo.md).
 ```python
 from odoo import models, fields, api
 
-
 # Create a brand-new model
 class MyModel(models.Model):
     _name = "my.model"
@@ -67,7 +61,6 @@ class MyModel(models.Model):
     partner_id = fields.Many2one("res.partner", string="Partner")
     line_ids = fields.One2many("my.model.line", "model_id", string="Lines")
     active = fields.Boolean(default=True)
-
 
 # Extend an existing model (adds fields/methods to it, does not create a new table)
 class SaleOrder(models.Model):
@@ -106,7 +99,6 @@ class MyModel(models.Model):
 
 ```python
 from odoo.exceptions import ValidationError
-
 
 class MyModel(models.Model):
     _name = "my.model"

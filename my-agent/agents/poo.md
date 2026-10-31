@@ -12,7 +12,7 @@ Scope: ETL/data-pipeline logic, analytics/report generation, and server-side per
 ## Skills
 Load relevant skills from `~/.claude/skills/`: `web-research` (search/fetch the internet safely with sources — external data sources, benchmarks, current figures), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this task's data/performance domain — this is mandatory, not optional. Skip only if truly no listed skill applies.

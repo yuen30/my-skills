@@ -1,13 +1,8 @@
----
-name: angular
-description: Modern Angular guidance covering standalone components, signals, @if/@for control flow, inject() DI, and old vs new patterns by version. Use when writing or migrating Angular code (NgModule, *ngIf, RxJS, signals). Detects the installed version first.
----
+Read when the project has angular.json or @angular/core.
 
 # Angular
 
-Angular ships a new major roughly every 6 months and has changed its idiomatic component/state/DI patterns significantly since v14. Training-data knowledge of Angular is likely stale — always verify against the installed version and `https://angular.dev` (the canonical, current doc source) before asserting a pattern is available or "current."
-
-**Precondition — do not skip:** Before giving version-specific guidance (e.g. "use signals," "use `@if`"), detect the installed version first.
+Angular ships a new major roughly every 6 months and has changed its idiomatic component/state/DI patterns significantly since v14.
 
 ## Detect Version & Derive Guidance
 

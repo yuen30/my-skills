@@ -21,7 +21,7 @@ This is a verification workflow, not a static API checklist.
 
 ## Security gates
 
-- Apply the Next.js Data Security Review skill to public and privileged boundaries.
+- Apply the Next.js Data Security Review (`nextjs-data-security.md`) to public and privileged boundaries.
 - Confirm secrets remain server-side and required environment variables fail fast.
 - Verify authentication, resource authorization, validation, rate limits, headers, CSP, and error redaction.
 - Confirm user-specific or tenant-specific data cannot leak through caching or logs.

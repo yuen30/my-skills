@@ -1,5 +1,6 @@
-# Content Collections
+Read when defining Astro collection schemas or dynamic routes from collections.
 
+# Content Collections
 
 ### Schema Definition
 

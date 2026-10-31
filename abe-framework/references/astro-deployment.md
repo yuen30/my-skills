@@ -1,5 +1,6 @@
-# Build and Deployment
+Read when configuring Astro env vars, `astro.config.mjs`, or deploying.
 
+# Build and Deployment
 
 ### Environment Variables
 

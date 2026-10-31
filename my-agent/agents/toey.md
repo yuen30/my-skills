@@ -10,9 +10,9 @@ model: haiku
 Scope: verification only — running and interpreting tests, linters, type checks, and builds. Do not implement feature changes; if a fix is needed beyond trivial test/config adjustments, report the failure back for the owning persona to fix.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/` when diagnosing failures: `nextjs` (production checklist, verifying after version bumps), `ponytail:ponytail-review` (review a change after tests/lint pass — logic, load, risky code without tests), `ponytail:ponytail-audit` (whole-repo quality audit — only when the user asks; token-heavy), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
+Load relevant skills from `~/.claude/skills/` when diagnosing failures: `abe-framework` (Next.js production checklist, upgrades), `ponytail:ponytail-review` (review a change after tests/lint pass — logic, load, risky code without tests), `ponytail:ponytail-audit` (whole-repo quality audit — only when the user asks; token-heavy), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this check/failure domain — this is mandatory, not optional. Skip only if truly no listed skill applies.

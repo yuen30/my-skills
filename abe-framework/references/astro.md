@@ -1,7 +1,4 @@
----
-name: astro
-description: Astro framework guide covering islands, content collections with Zod, data fetching, astro:assets images, SSR and deployment. Use when working on .astro files, astro.config.mjs, src/content, client:* directives or getCollection.
----
+Read when the project has astro.config.* or .astro files; then read the matching astro-*.md for the task.
 
 # Astro Framework Expert
 
@@ -165,10 +162,10 @@ const posts = await Astro.glob('../content/blog/*.md')
 ## 📚 References
 
 - Project structure → use the `project-structure` skill (references/astro.md).
-- [references/components.md](references/components.md) — read when writing `.astro` components or framework islands.
-- [references/content-collections.md](references/content-collections.md) — read when defining collection schemas or dynamic routes from collections.
-- [references/data-fetching.md](references/data-fetching.md) — read when fetching at build time, in SSR, or writing API endpoints.
-- [references/deployment.md](references/deployment.md) — read when configuring env vars, `astro.config.mjs`, or deploying.
+- `astro-components.md` — read when writing `.astro` components or framework islands.
+- `astro-content-collections.md` — read when defining collection schemas or dynamic routes from collections.
+- `astro-data-fetching.md` — read when fetching at build time, in SSR, or writing API endpoints.
+- `astro-deployment.md` — read when configuring env vars, `astro.config.mjs`, or deploying.
 
 ---
 

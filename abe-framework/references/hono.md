@@ -1,7 +1,4 @@
----
-name: hono
-description: Hono backend covering routing, middleware, Context API, runtime targets (Workers, Deno, Bun, Node), zod validation, hc RPC client. Use when building Hono apps; detect installed hono version before trusting version-specific APIs.
----
+Read when the project has a "hono" dependency.
 
 # Hono
 
@@ -15,7 +12,7 @@ grep '"hono"' package.json
 npm ls hono
 ```
 
-Canonical docs: `https://hono.dev/docs` — re-verify against the installed version rather than relying on memory alone.
+Canonical docs: `https://hono.dev/docs`.
 
 ## Core Routing API
 

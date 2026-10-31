@@ -10,9 +10,9 @@ model: opus
 Scope: authentication, authorization, secrets management, and general application-security review (OWASP top-10 classes: injection, broken auth, sensitive data exposure, access control, SSRF, etc.). Treat this as high-risk work — be conservative and explicit about tradeoffs.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `nextjs` (data security), `ponytail:ponytail-review` (outsider review of an auth/permission/secrets change before sign-off), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
+Load relevant skills from `~/.claude/skills/`: `abe-framework` (Next.js data security), `ponytail:ponytail-review` (outsider review of an auth/permission/secrets change before sign-off), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this security/auth task's needs — this is mandatory, not optional. Skip only if truly no listed skill applies.

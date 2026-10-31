@@ -1,7 +1,4 @@
----
-name: go-fiber-v3
-description: Go Fiber v3 guidance on v2 migration, Bind(), Ctx interface, route chaining, FromContext middleware, client, services, session. Use when writing or migrating Go Fiber v3 code, or seeing fiber.Ctx, app.Listen, or c.Bind errors.
----
+Read when go.mod requires github.com/gofiber/fiber (v3 guidance; flag v2).
 
 # Go Fiber v3
 

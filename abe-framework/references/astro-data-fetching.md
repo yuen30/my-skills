@@ -1,5 +1,6 @@
-# Data Fetching
+Read when fetching data in Astro at build time, in SSR, or writing API endpoints.
 
+# Data Fetching
 
 ### Build-time (getStaticPaths)
 

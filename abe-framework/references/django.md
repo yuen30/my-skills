@@ -1,13 +1,8 @@
----
-name: django
-description: "Django and Django REST Framework: models, serializers, viewsets, ORM optimization, auth, testing, production settings. Use when working on Django projects, DRF APIs, manage.py, migrations, N+1 queries, or SimpleJWT. Detects installed version."
----
+Read when the project has manage.py or Django / djangorestframework dependencies.
 
 # Django Expert
 
 Senior Django specialist — Django REST Framework, models, serializers, viewsets, ORM optimization, authentication, testing, and production best practices. Django releases new feature versions regularly (roughly every 8 months, with LTS releases every 2 years); detect the installed version before treating any version-specific claim in this file as current.
-
-**Precondition — do not skip:** Before making any claim about Django version-specific features (e.g. async views, ORM features) or presenting code samples as "current", detect the actually-installed Django version first. Never assume the version from training data or from any hardcoded version numbers/labels elsewhere in this file.
 
 ## Step 0: Detect the installed Django version
 
@@ -63,7 +58,6 @@ State the detected version explicitly before giving version-specific guidance. I
 # models.py
 from django.db import models
 
-
 class Article(models.Model):
     title = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -114,7 +108,6 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_published=True)
 
-
 class Article(models.Model):
     # ...
     objects = models.Manager()  # Default
@@ -129,7 +122,6 @@ class Article(models.Model):
 # serializers.py
 from rest_framework import serializers
 from .models import Article
-
 
 class ArticleSerializer(serializers.ModelSerializer):
     author_username = serializers.CharField(source="author.username", read_only=True)
@@ -147,7 +139,6 @@ class ArticleSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data["slug"] = slugify(validated_data["title"])
         return super().create(validated_data)
-
 
 class ArticleListSerializer(serializers.ModelSerializer):
     """Lightweight serializer for list views."""
@@ -170,7 +161,6 @@ from rest_framework import viewsets, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Article
 from .serializers import ArticleSerializer, ArticleListSerializer
-
 
 class ArticleViewSet(viewsets.ModelViewSet):
     """
@@ -205,7 +195,6 @@ Async view support (including async ORM iteration via `async for`) was introduce
 # views.py
 from django.http import JsonResponse
 from .models import Article
-
 
 async def article_list(request):
     articles = [
@@ -272,7 +261,6 @@ urlpatterns = [
 ```python
 from rest_framework.permissions import BasePermission
 
-
 class IsAuthorOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in ("GET", "HEAD", "OPTIONS"):
@@ -290,7 +278,6 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from django.contrib.auth.models import User
 from .models import Article
-
 
 class ArticleAPITest(APITestCase):
     def setUp(self):
@@ -335,17 +322,14 @@ class ArticleAPITest(APITestCase):
 import pytest
 from rest_framework.test import APIClient
 
-
 @pytest.fixture
 def api_client():
     return APIClient()
-
 
 @pytest.fixture
 def user(db):
     from django.contrib.auth.models import User
     return User.objects.create_user("testuser", password="testpass")
-
 
 @pytest.fixture
 def auth_client(api_client, user):

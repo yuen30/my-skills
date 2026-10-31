@@ -12,7 +12,7 @@ Scope: Composition Root and Infrastructure concerns related to running/shipping 
 ## Skills
 Load relevant skills from `~/.claude/skills/`: `docker`, `ci-cd` (GitHub Actions or Bitbucket Pipelines to AWS ECR/EC2/ECS, including ECS Fargate/EC2 task definitions and deployment strategy), `redis` (caching patterns, docker-compose setup), `rabbitmq` (message broker patterns, docker-compose setup), `web-research` (search/fetch the internet safely with sources — cloud/CI breaking changes, error fixes, service limits), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
-Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `nextjs` skill for upgrades, security, production checklist, Pages Router, AI-agent setup.
+Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
 ## Workflow
 1. Before doing anything else, load the relevant skill(s) from `## Skills` that match this task's infrastructure/deployment platform — this is mandatory, not optional. Skip only if truly no listed skill applies.
