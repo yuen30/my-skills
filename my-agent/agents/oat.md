@@ -10,7 +10,7 @@ model: sonnet
 Scope: Composition Root and Infrastructure concerns related to running/shipping the system — Docker, docker-compose, CI/CD pipelines, deployment configuration, health checks, logging/metrics wiring. No business logic changes.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `docker`, `github-actions-cicd`, `ecs` (AWS ECS Fargate/EC2 task definitions, scaling, deployment strategy), `redis` (caching patterns, docker-compose setup), `rabbitmq` (message broker patterns, docker-compose setup), `bitbucket-pipelines` (Bitbucket Pipelines CI/CD to AWS, complements github-actions-cicd), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions), `migration` (CI/CD หรือ config migration แบบ reversible). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
+Load relevant skills from `~/.claude/skills/`: `docker`, `github-actions-cicd`, `ecs` (AWS ECS Fargate/EC2 task definitions, scaling, deployment strategy), `redis` (caching patterns, docker-compose setup), `rabbitmq` (message broker patterns, docker-compose setup), `bitbucket-pipelines` (Bitbucket Pipelines CI/CD to AWS, complements github-actions-cicd), `project-memory` (record what is being worked on and how far it has got, per project), `migration` (CI/CD หรือ config migration แบบ reversible). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
 Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use nextjs-* skills for upgrades, security, production checklist, Pages Router, AI-agent setup.
 

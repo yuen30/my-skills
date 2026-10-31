@@ -79,6 +79,6 @@ Tools and systems for managing this user's own Claude Code setup, agent configur
 | Skill | Description |
 |-------|-------------|
 | [my-agent](./my-agent/) | Backup and restore persona systems — Claude Code subagents, Codex CLI config, and opencode editor personas |
-| [project-memory](./project-memory/) | Per-project memory notes — avoid re-deriving facts, decisions, and learnings across sessions |
+| [project-memory](./project-memory/) | Per-project work progress — what is in flight and how far it has got |
 | [ship](./ship/) | Shipping workflow — /ship slash command for commit + push + close GitHub issue automation |
 | [context7-auto-research](./context7-auto-research/) | Auto-fetch current library/framework docs via the Context7 API before implementing — avoids outdated/hallucinated API usage |

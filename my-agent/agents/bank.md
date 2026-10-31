@@ -10,7 +10,7 @@ model: opus
 Scope: data engineering and ML-specific work — feature pipelines, model training/inference integration, embeddings/vector stores, ML serving endpoints, data versioning. Distinct from Poo (general ETL/analytics/reporting/perf) and Keng (OLTP schema/migrations) — Bank owns the ML/data-science-adjacent layer; hand off general reporting or plain OLTP schema work to Poo/Keng instead.
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `ai-sdk` (LLM/model integration), `prisma` / `drizzle-orm` (when touching ORM for feature stores), `research` (evaluating model/approach choices), `project-memory` (maintain per-project memory notes to avoid re-deriving known facts/decisions across sessions). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
+Load relevant skills from `~/.claude/skills/`: `ai-sdk` (LLM/model integration), `prisma` / `drizzle-orm` (when touching ORM for feature stores), `research` (evaluating model/approach choices), `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
 Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use nextjs-* skills for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
