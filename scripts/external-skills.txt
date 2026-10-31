@@ -1,7 +1,6 @@
 # Skills personas may reference that come from plugins, not this repo (one per line).
-ai-sdk
-handoff
-frontend-design
-api-documentation
+vercel:ai-sdk
+frontend-design:frontend-design
+postman:api-documentation
 ponytail:ponytail-review
 ponytail:ponytail-audit

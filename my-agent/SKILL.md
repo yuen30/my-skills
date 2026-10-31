@@ -90,18 +90,18 @@ Start a new session afterwards. To make it permanent in the backup, move the fil
 
 ## Per-persona skills
 
-Skills are installed by `install.sh`. A missing skill only means that persona loads without its context. Names with a plugin prefix, plus `ai-sdk`, `handoff`, `frontend-design` and `api-documentation`, come from plugins, not this repo.
+Skills are installed by `install.sh`. A missing skill only means that persona loads without its context. Names with a plugin prefix come from plugins, not this repo.
 
 - **Boss**: `find-skills`, `project-structure`, `abe-framework`, `abe-ui`, `ci-cd`, `monorepo-scaffold-nextjs-go`, `context7-auto-research`, `web-research`, `project-memory`, `ship`, `my-agent`, `ponytail:ponytail-review`, `ponytail:ponytail-audit`. Names stack skills in delegation briefs instead of loading them.
-- **Art**: `abe-ui`, `abe-framework`, `frontend-design`, `context7-auto-research`, `project-structure`, `web-research`, `project-memory`.
-- **Boy**: `abe-framework`, `abe-data`, `ai-sdk`, `handoff`, `http-status-codes`, `context7-auto-research`, `project-structure`, `web-research`, `project-memory`.
+- **Art**: `abe-ui`, `abe-framework`, `frontend-design:frontend-design`, `context7-auto-research`, `project-structure`, `web-research`, `project-memory`.
+- **Boy**: `abe-framework`, `abe-data`, `vercel:ai-sdk`, `http-status-codes`, `context7-auto-research`, `project-structure`, `web-research`, `project-memory`.
 - **Toey**: `abe-framework`, `ponytail:ponytail-review`, `ponytail:ponytail-audit`, `project-memory`.
 - **Oat**: `docker`, `ci-cd`, `redis`, `rabbitmq`, `web-research`, `project-memory`.
 - **Keng**: `abe-data`, `abe-framework`, `project-memory`.
 - **Joy**: `project-memory`.
 - **Safe**: `abe-framework`, `ponytail:ponytail-review`, `project-memory`.
 - **Poo**: `web-research`, `project-memory`.
-- **Note**: `project-structure`, `api-documentation`, `http-status-codes`, `monorepo-scaffold-nextjs-go`, `web-research`, `project-memory`, `my-agent`, `ship`.
+- **Note**: `project-structure`, `postman:api-documentation`, `http-status-codes`, `monorepo-scaffold-nextjs-go`, `web-research`, `project-memory`, `my-agent`, `ship`.
 
 ## Keeping the backup current
 
