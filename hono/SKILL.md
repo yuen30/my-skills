@@ -1,6 +1,6 @@
 ---
 name: hono
-description: Use when developing a Hono backend — routing, middleware, Context API, choosing/verifying a runtime target (Cloudflare Workers, Deno, Bun, Node.js), validation with zod, or generating a type-safe RPC client with hc. Detect installed hono version before trusting version-specific API claims.
+description: Hono backend covering routing, middleware, Context API, runtime targets (Workers, Deno, Bun, Node), zod validation, hc RPC client. Use when building Hono apps; detect installed hono version before trusting version-specific APIs.
 ---
 
 # Hono

@@ -1,6 +1,6 @@
 ---
-name: Eloquent ORM
-description: Expert guidance on Laravel Eloquent ORM — model definition, casts, relationships, eager loading, query builder, schema migrations, scopes, observers, soft deletes, repository pattern, factories and seeders.
+name: eloquent-orm
+description: Laravel Eloquent ORM (PHP) — models, casts, relationships, eager loading, migrations, scopes, observers, soft deletes, repository pattern, factories. Use when editing Laravel models, migrations, seeders or fixing N+1 queries.
 ---
 
 # Eloquent ORM
@@ -382,16 +382,3 @@ Category::query()->updateOrCreate(['slug' => 'electronics'], ['name' => 'Electro
 5. **Repository + mapper** — ไม่ปล่อย Eloquent Model เข้า Domain/Presentation
 6. **Transactions** — `DB::transaction()` ใน Application layer พร้อม `attempts`
 7. **Chunk สำหรับข้อมูลใหญ่** — `chunkById()` / `lazyById()` แทน `all()`
-
----
-
-## สรุป
-
-1. **Model** — `$fillable`, `casts()`, `HasUlids`, `SoftDeletes`
-2. **Relationships** — hasOne/hasMany/belongsTo/belongsToMany/morphMany
-3. **N+1** — `with()`, `withCount()`, `preventLazyLoading()`
-4. **Migrations** — schema builder, foreign keys, additive-first, `--pretend` + rollback
-5. **Scopes** — local scope + global scope (multi-tenant)
-6. **Observers** — side-effect เบา ๆ, ไม่ทำงานกับ bulk update
-7. **Repository** — port ที่ Domain, adapter ที่ Infrastructure, map เป็น entity
-8. **Testing** — factories + states, seeder แบบ idempotent

@@ -1,6 +1,6 @@
 ---
-name: Prisma Database Operations
-description: Expert guidance on Prisma ORM — schema design, migrations, repository pattern, query patterns, transactions, PostGIS, seeding, and best practices.
+name: prisma
+description: Prisma ORM for TypeScript — schema, migrations, repository pattern, queries, transactions, PostGIS, seeding. Use when editing schema.prisma, PrismaClient code, prisma migrate, $transaction or $queryRaw in Node/TS projects.
 ---
 
 # Prisma Database Operations
@@ -232,15 +232,3 @@ main()
 4. **Transactions** — สำหรับ related operations
 5. **Migration names** — descriptive (e.g., `add_product_inventory`)
 6. **Validate** — application layer ก่อน database operations
-
----
-
-## สรุป
-
-1. **Schema** — `cuid()` IDs, `@@map`, `@@index`, relations
-2. **Repository pattern** — injectable services, typed params
-3. **Queries** — filtering, pagination, include, orderBy
-4. **Transactions** — `$transaction` สำหรับ atomic operations
-5. **PostGIS** — `Unsupported` type + `$queryRaw`
-6. **Migrations** — dev → review → test → production
-7. **Seeding** — `upsert` to avoid duplicates

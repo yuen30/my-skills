@@ -1,6 +1,6 @@
 ---
-name: Go Fiber v3
-description: Expert guidance on Go Fiber v3 — migration from v2, new Binding system, Context interface, route chaining, domain routing, client package, services, and middleware changes.
+name: go-fiber-v3
+description: Go Fiber v3 guidance on v2 migration, Bind(), Ctx interface, route chaining, FromContext middleware, client, services, session. Use when writing or migrating Go Fiber v3 code, or seeing fiber.Ctx, app.Listen, or c.Bind errors.
 ---
 
 # Go Fiber v3
@@ -406,18 +406,3 @@ Hash passwords ด้วย bcrypt ก่อนใส่ config
 | `app.Listen(":3000")` | `app.Listen(fiber.ListenConfig{Addr: ":3000"})` |
 | Plaintext passwords | Hashed passwords only |
 | Session auto-release | `sess.Release()` required |
-
-## สรุป
-
-1. **Go 1.25+** required — `fiber migrate --to v3` สำหรับ auto-migration
-2. **Context = interface** — ลบ `*` ออกจาก `*fiber.Ctx`
-3. **Binding ใหม่** — `c.Bind().Body()` / `.Query()` / `.URI()` แทน Parser
-4. **FromContext** — type-safe middleware data access (ไม่ใช่ string keys)
-5. **Route Chaining** — Express-style `.Get().Post().Put()`
-6. **Domain Routing** — แยก routes ตาม hostname
-7. **Client rebuilt** — Cookie Jar, Hooks, Base URL
-8. **Services** — start/stop external services พร้อม app
-9. **Retry Addon** — exponential backoff built-in
-10. **BasicAuth** — hashed passwords only (ไม่รับ plaintext)
-11. **Session** — ต้อง `Release()` เอง
-12. **Timeout** — abandon mechanism (คืนทรัพยากรทันที)

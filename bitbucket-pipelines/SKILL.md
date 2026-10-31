@@ -1,6 +1,6 @@
 ---
-name: Bitbucket Pipelines CI/CD (AWS ECR + EC2/ECS)
-description: Bitbucket Pipelines CI/CD — bitbucket-pipelines.yml structure (pipelines/branches/custom, steps, caches, artifacts, services), deploying to AWS (ECR login + push, EC2 via SSH pipe, ECS service update), Bitbucket Deployments (staging/production environments with required approvals), and a comparison against GitHub Actions for choosing the right platform per repo.
+name: bitbucket-pipelines
+description: "Bitbucket Pipelines (bitbucket-pipelines.yml) CI/CD to AWS ECR, EC2 and ECS with Bitbucket Deployments and approvals. Use when the repo is on Bitbucket or the user mentions bitbucket-pipelines.yml, pipes, or deployment environments."
 ---
 
 # Bitbucket Pipelines CI/CD (AWS ECR + EC2/ECS)
@@ -228,12 +228,3 @@ not a 1:1 YAML port.
 | Deploy step runs without approval | Forgot to enable "deployment permissions" on the environment in repo settings |
 | Stale image cached across builds | `definitions.caches.docker-layer` persists `/var/lib/docker` — bust it via cache key change if a base image update isn't picked up |
 | Pipeline never deploys `main` | `pipelines.branches` block name must exactly match the branch (or use `pipelines.tags`/`custom` for other triggers) |
-
-## สรุป
-
-1. `pipelines.default` = lint/test on every push; `pipelines.branches.<name>` = build/deploy per branch; `pipelines.custom` = manual jobs (rollback)
-2. Use Atlassian pipes (`aws-ecr-push-image`, `ssh-run`, `aws-ecs-deploy`) for common AWS steps, or raw `aws`/`docker` CLI for finer control
-3. `deployment: staging|production` ties a step to a Bitbucket Deployment environment — gives environment-scoped secrets + optional required-approval gate
-4. Combine `trigger: manual` + environment approval for production deploys needing a human sign-off
-5. Same validate → build → deploy → rollback shape as GitHub Actions — pick the platform by where the repo lives, port the pattern not the YAML syntax
-6. `services: [docker]` required on any step running `docker build`

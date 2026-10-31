@@ -1,6 +1,6 @@
 ---
 name: frappe-framework
-description: Use when developing on Frappe Framework or ERPNext (built on Frappe) — DocTypes, hooks.py, ORM, whitelisted API methods, bench CLI. Detects the installed Frappe/ERPNext version first before giving version-specific guidance.
+description: "Frappe Framework and ERPNext app development: DocTypes, hooks.py, frappe ORM, whitelisted APIs, bench CLI. Use when working on Frappe/ERPNext apps or bench sites; detects version first. Not for Odoo (use odoo-addons)."
 ---
 
 # Frappe Framework

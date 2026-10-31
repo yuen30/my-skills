@@ -1,6 +1,6 @@
 ---
 name: laravel
-description: Use when developing on Laravel (any recent major version), deciding between old vs new patterns across versions, or reviewing whether code follows current Laravel conventions. Detects installed version and derives applicable guidance.
+description: "Laravel across major versions: detects installed version and derives current vs legacy patterns. Use when developing or reviewing Laravel apps, artisan, routes, Eloquent, middleware, upgrades, or choosing old vs new conventions."
 ---
 
 # Laravel

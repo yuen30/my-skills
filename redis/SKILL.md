@@ -1,6 +1,6 @@
 ---
-name: Redis (Cache Layer)
-description: Redis as a cache layer — connection setup for Node (ioredis/node-redis), Python (redis-py), Go (go-redis), cache-aside pattern, TTL strategy, invalidation/tagging, distributed locks, pub/sub, docker-compose setup, and common pitfalls (stampede, hot keys, unbounded growth).
+name: redis
+description: "Redis as a cache layer: cache-aside, TTL, invalidation, distributed locks, pub/sub, client setup for Node, Python, Go. Use when adding Redis caching, ioredis/redis-py/go-redis, locks, cache stampede issues, or Redis in docker-compose."
 ---
 
 # Redis (Cache Layer)
@@ -210,14 +210,3 @@ volumes:
 - Redis persistence config (RDB/AOF) is for recovery speed, not for treating Redis
   as the primary datastore for business-critical records — use PostgreSQL for that
   and Redis only as an accelerator/derived cache.
-
-## สรุป
-
-1. Cache-aside: read cache → miss → read DB → populate cache → return
-2. Always set TTL (with jitter for bulk-populated keys) — never cache forever
-3. Invalidate on write, don't try to keep cache in sync in place
-4. `SET NX PX` for distributed locks; release only if token matches (Lua)
-5. Pub/sub is fire-and-forget — use RabbitMQ when you need durability
-6. docker-compose: `requirepass` + healthcheck + volume for persistence if state matters
-7. Watch for cache stampede, hot keys, unbounded key growth
-8. Redis accelerates a source of truth — it is not one

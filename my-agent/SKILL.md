@@ -1,6 +1,6 @@
 ---
 name: my-agent
-description: Backup and restore three persona systems (Claude Code subagents 14-file set in ~/.claude/agents/, Codex CLI persona config in ~/.codex/AGENTS.md and ~/.agents/agents/AGENTS.md, and opencode persona config in ~/.config/opencode/) after a machine reset.
+description: Backs up and restores Claude Code, Codex CLI and opencode persona configs (~/.claude/agents, ~/.codex/AGENTS.md, ~/.config/opencode). Use when restoring or syncing personas after a machine reset.
 ---
 
 # my-agent: Personal Persona Backup & Restore
@@ -268,36 +268,3 @@ If you've edited a persona locally and also restored from this backup, the resto
 2. Restore from this skill: `cp <skill-path>/agents/<name>.md ~/.claude/agents/`
 3. Open both files and manually merge the `## Skills` or `## Workflow` sections you customized.
 4. Commit the merged version and re-copy it into the skill folder for the next restore.
-
-## Summary
-
-This skill is a **unified restore mechanism** for all three persona systems. Quick reference:
-
-### Claude Code Restore
-```bash
-mkdir -p ~/.claude/agents && \
-cp <skill-path>/agents/*.md ~/.claude/agents/
-```
-
-Then merge the personas table into `~/.claude/CLAUDE.md`, restart Claude Code, and you're back to full persona capacity.
-
-### Codex CLI Restore
-```bash
-mkdir -p ~/.codex ~/.agents/agents && \
-cp <skill-path>/codex/AGENTS.md ~/.codex/AGENTS.md && \
-cp <skill-path>/codex/AGENTS.md ~/.agents/agents/AGENTS.md
-```
-
-### opencode Persona Config Restore
-```bash
-mkdir -p ~/.config/opencode/agents && \
-cp <skill-path>/opencode/AGENTS.md ~/.config/opencode/AGENTS.md && \
-cp <skill-path>/opencode/agents/*.md ~/.config/opencode/agents/
-```
-
-**Key points:**
-- This backup is only as current as the last time you copied the persona files into it.
-- **Keep Claude files current** by re-copying whenever you edit a persona in `~/.claude/agents/`, and commit changes to `my-skills` git repo.
-- **Keep Codex file current** by re-copying whenever you edit `~/.codex/AGENTS.md` or `~/.agents/agents/AGENTS.md`, and commit to `my-skills` git repo.
-- **Keep both Codex locations synced** — they must always be identical. If you edit one, copy it to the other manually.
-- **Keep opencode files current** by re-copying whenever you edit `~/.config/opencode/AGENTS.md` or any persona in `~/.config/opencode/agents/`, and commit to `my-skills` git repo.

@@ -1,6 +1,6 @@
 ---
 name: daisyui
-description: Use when a project uses daisyUI semantic component classes (btn, card, modal, etc.) on top of Tailwind CSS. daisyUI and shadcn/ui are alternative, usually-not-combined approaches — before applying either, check which one the project already uses (tailwind.config.*/CSS `@plugin "daisyui"` vs components.json/@radix-ui) and flag the choice rather than silently mixing both.
+description: daisyUI semantic component classes (btn, card, modal, navbar, themes) on Tailwind CSS. Use when a project has the daisyui plugin or uses daisyUI classes. Check daisyUI vs shadcn/ui first, since they are alternatives and rarely mixed.
 ---
 
 # daisyUI

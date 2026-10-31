@@ -1,6 +1,6 @@
 ---
-name: RabbitMQ (Message Broker)
-description: RabbitMQ as a message broker — exchange types (direct/topic/fanout/headers), queues/bindings/routing keys, publisher/consumer patterns with manual ack and prefetch/QoS, dead-letter exchanges for retry, docker-compose setup with management UI, idempotent consumer design, and common pitfalls (unacked pileup, missing DLX, durability vs persistence).
+name: rabbitmq
+description: "RabbitMQ message broker: exchanges, queues, manual ack/prefetch, dead-letter retry, idempotent consumers, docker-compose setup. Use when adding async jobs or event fan-out with RabbitMQ, amqp consumers/publishers, DLX, or unacked-message issues."
 ---
 
 # RabbitMQ (Message Broker)
@@ -171,13 +171,3 @@ async function processOrder(payload: { orderId: string }) {
 | Durability vs persistence confusion | Queue declared `durable: true` but messages published without `persistent: true` — messages still lost on broker restart | Both flags are required together: durable queue AND persistent message |
 | Infinite retry loop | DLX retry hop back to original queue with no retry counter | Track attempt count in a message header; dead-letter to a final "failed" queue after N attempts |
 | Consumer processes duplicate messages | At-least-once delivery redelivers on crash/requeue | Design consumers to be idempotent (dedupe key / upsert) |
-
-## สรุป
-
-1. Exchange types: direct (exact match), topic (pattern), fanout (broadcast), headers (rare)
-2. Manual ack + `prefetch` — never `noAck: true` for anything that matters
-3. Durable queue + persistent message — both required to survive broker restart
-4. Always attach a DLX before `nack(..., false)` — otherwise failed messages vanish
-5. DLX + TTL hop = retry-with-delay pattern; cap attempts via header counter
-6. Consumers must be idempotent — at-least-once delivery means duplicates happen
-7. docker-compose: management image for UI, healthcheck via `rabbitmq-diagnostics ping`, never expose 15672 publicly unprotected

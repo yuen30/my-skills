@@ -1,6 +1,6 @@
 ---
 name: nextjs-pages-router
-description: Use only for existing Pages Router or hybrid Next.js applications, legacy pages and API Routes, or an explicitly requested incremental migration between Pages Router and App Router.
+description: Guidance for existing Pages Router or hybrid Next.js apps, covering pages/, getServerSideProps, getStaticProps, API Routes, _app/_document, and incremental migration to App Router. Use only for legacy or hybrid projects, not new App Router work.
 ---
 
 # Next.js Pages Router

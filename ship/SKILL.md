@@ -1,6 +1,6 @@
 ---
 name: ship
-description: Backup and restore the /ship slash command — commit + push + close GitHub issue workflow for issue-driven development
+description: Backs up and restores the /ship slash command (commit, push, close GitHub issue). Use when restoring or syncing ~/.claude/commands/ship.md, or after a machine reset.
 ---
 
 # ship: Personal Slash Command Backup & Restore
@@ -140,16 +140,3 @@ Together, they recreate your entire Claude Code environment (agents + commands) 
 - Verify `gh auth login` is completed: `gh auth status`
 - Verify the git remote is correct: `git remote -v`
 - Check that the target GitHub issue exists and you have permission to comment/close it
-
-## Summary
-
-This skill is a **one-command restore** for your `/ship` automation (replace `<skill-path>` with the actual path to the skill directory):
-
-```bash
-mkdir -p ~/.claude/commands && \
-cp <skill-path>/commands/ship.md ~/.claude/commands/
-```
-
-After that, restart Claude Code, and the `/ship` command is ready to use.
-
-**Key point:** This backup is only as current as the last time you copied the command file into it. Keep it in sync by re-copying whenever you refine the `/ship` workflow locally, and commit those changes to your `my-skills` git repo.

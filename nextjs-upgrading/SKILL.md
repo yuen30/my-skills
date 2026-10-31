@@ -1,6 +1,6 @@
 ---
 name: nextjs-upgrading
-description: Use when upgrading Next.js, React, or related tooling; planning a major-version migration; applying codemods; or resolving deprecations without relying on stale version-specific instructions.
+description: Upgrade workflow for Next.js, React, and related tooling using the installed package's migration guides, codemods, and deprecation fixes. Use when bumping a major version, running codemods, or fixing upgrade breakage. Not for pre-release review.
 ---
 
 # Next.js Upgrading

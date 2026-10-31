@@ -1,6 +1,6 @@
 ---
 name: angular
-description: Use when developing Angular applications — standalone components, signals, new control-flow syntax, dependency injection with inject(), and deciding old (NgModule/RxJS-heavy/*ngIf) vs new (standalone/signals/@if) patterns across versions. Detect the installed version before asserting API availability.
+description: Modern Angular guidance covering standalone components, signals, @if/@for control flow, inject() DI, and old vs new patterns by version. Use when writing or migrating Angular code (NgModule, *ngIf, RxJS, signals). Detects the installed version first.
 ---
 
 # Angular

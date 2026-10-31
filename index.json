@@ -6,7 +6,7 @@
     },
     {
       "name": "frontend-layer",
-      "files": ["frontend-layer/SKILL.md"]
+      "files": ["frontend-layer/SKILL.md", "frontend-layer/references/layers.md", "frontend-layer/references/refactor-recipe.md", "frontend-layer/references/violations.md"]
     },
     {
       "name": "nextjs-pages-router",
@@ -26,7 +26,7 @@
     },
     {
       "name": "shadcn-ui",
-      "files": ["shadcn-ui/SKILL.md"]
+      "files": ["shadcn-ui/SKILL.md", "shadcn-ui/references/components.md", "shadcn-ui/references/dark-mode.md", "shadcn-ui/references/mcp-registry.md", "shadcn-ui/references/patterns.md", "shadcn-ui/references/setup.md", "shadcn-ui/references/theming.md"]
     },
     {
       "name": "nextjs-ai-agents",
@@ -62,11 +62,11 @@
     },
     {
       "name": "github-actions-cicd",
-      "files": ["github-actions-cicd/SKILL.md"]
+      "files": ["github-actions-cicd/SKILL.md", "github-actions-cicd/references/key-patterns.md", "github-actions-cicd/references/production-pipeline.md", "github-actions-cicd/references/workflow-template.md"]
     },
     {
       "name": "astro",
-      "files": ["astro/SKILL.md"]
+      "files": ["astro/SKILL.md", "astro/references/components.md", "astro/references/content-collections.md", "astro/references/data-fetching.md", "astro/references/deployment.md", "astro/references/project-structure.md"]
     },
     {
       "name": "nextjs-upgrading",
@@ -90,7 +90,7 @@
     },
     {
       "name": "monorepo-scaffold-nextjs-go",
-      "files": ["monorepo-scaffold-nextjs-go/SKILL.md"]
+      "files": ["monorepo-scaffold-nextjs-go/SKILL.md", "monorepo-scaffold-nextjs-go/references/adapters.md", "monorepo-scaffold-nextjs-go/references/decision-rules.md", "monorepo-scaffold-nextjs-go/references/init-checklist.md", "monorepo-scaffold-nextjs-go/references/local-dev.md"]
     },
     {
       "name": "my-agent",

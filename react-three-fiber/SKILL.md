@@ -1,6 +1,6 @@
 ---
-name: React Three Fiber
-description: Expert guidance for building 3D experiences with React Three Fiber (R3F), Three.js, and Drei helpers.
+name: react-three-fiber
+description: React Three Fiber (R3F), Three.js, and Drei patterns for 3D scenes in React. Use when building canvases, meshes, lights, cameras, useFrame animation, GLTF loading, or 3D performance tuning, or when the user mentions r3f, three.js, or drei.
 ---
 
 # React Three Fiber

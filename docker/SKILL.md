@@ -1,6 +1,6 @@
 ---
-name: Docker & Docker Compose
-description: Expert guidance for building, running, and orchestrating containers with Docker and Docker Compose.
+name: docker
+description: "Building, running, and orchestrating containers with Docker and Docker Compose. Use when writing Dockerfiles, docker-compose.yml, multi-stage builds, healthchecks, volumes, networks, or debugging containers and images."
 ---
 
 # Docker & Docker Compose

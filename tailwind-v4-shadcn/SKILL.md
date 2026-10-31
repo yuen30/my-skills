@@ -1,6 +1,6 @@
 ---
-name: Tailwind CSS v4 + shadcn/ui
-description: Expert guidance for building UIs with Tailwind CSS v4 and shadcn/ui components.
+name: tailwind-v4-shadcn
+description: Tailwind CSS v4 CSS-first setup with shadcn/ui integration (@import "tailwindcss", @theme, Vite plugin, v3 migration). Use when configuring Tailwind v4, replacing tailwind.config.js, or defining @theme design tokens.
 ---
 
 # Tailwind CSS v4 + shadcn/ui

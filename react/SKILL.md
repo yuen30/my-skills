@@ -1,6 +1,6 @@
 ---
 name: react
-description: Use for plain (non-Next.js) React development — client-rendered SPA component patterns, hooks rules, state management decisions (local state vs Context vs external store), and common hook anti-patterns. For Next.js-specific concerns (Server Components, App Router, routing, data fetching conventions), use the nextjs-* skills instead.
+description: Plain client-side React (Vite SPA, no framework) component patterns, hooks rules, and state choices (local, Context, store). Use when writing or reviewing hooks and components outside Next.js. For Server Components or App Router use nextjs-* skills.
 ---
 
 # React

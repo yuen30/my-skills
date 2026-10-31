@@ -1,6 +1,6 @@
 ---
 name: odoo-addons
-description: Use when developing or reviewing Odoo addon/module code — models, views, security, wizards, controllers. Detects the installed Odoo version first, since Odoo ships a new major version yearly with meaningful API differences (e.g. attrs/states deprecated in favor of direct Python expressions in Odoo 17+).
+description: "Odoo addon/module development (Python models, XML views, security, wizards, controllers, __manifest__.py). Use when building or reviewing Odoo modules; detects Odoo version first. Not for Frappe/ERPNext (use frappe-framework)."
 ---
 
 # Odoo Addons

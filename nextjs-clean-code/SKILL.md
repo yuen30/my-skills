@@ -1,6 +1,6 @@
 ---
 name: nextjs-clean-code
-description: Use when designing, implementing, or reviewing clean code in Next.js or React projects, especially folder boundaries for components/ui, hooks, helpers, lib, types, feature modules, and layered business logic.
+description: Folder boundaries and layering for Next.js/React projects covering components/ui, hooks, helpers, lib, types, and feature modules. Use when structuring or reviewing project architecture. For detailed per-layer rules and smells see frontend-layer.
 ---
 
 # Next.js and React Clean Code Architecture

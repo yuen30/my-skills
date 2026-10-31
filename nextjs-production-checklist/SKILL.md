@@ -1,6 +1,6 @@
 ---
 name: nextjs-production-checklist
-description: Use before releasing a Next.js application to review correctness, security, performance, caching, accessibility, SEO, observability, build output, and deployment readiness against the installed version.
+description: Pre-release verification workflow for Next.js apps covering correctness, security, performance, caching, accessibility, SEO, observability, build output, and deployment readiness. Use when preparing to ship. Not for upgrades (see nextjs-upgrading).
 ---
 
 # Next.js Production Review

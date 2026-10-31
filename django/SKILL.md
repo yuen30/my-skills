@@ -1,6 +1,6 @@
 ---
-name: Django Expert
-description: Senior Django specialist — Django REST Framework, models, serializers, viewsets, ORM optimization, authentication, testing, and production best practices. Detects the installed Django version and derives applicable guidance rather than assuming a fixed version.
+name: django
+description: "Django and Django REST Framework: models, serializers, viewsets, ORM optimization, auth, testing, production settings. Use when working on Django projects, DRF APIs, manage.py, migrations, N+1 queries, or SimpleJWT. Detects installed version."
 ---
 
 # Django Expert
@@ -457,13 +457,3 @@ project/
 | `factory-boy` | Test data factories |
 
 ---
-
-## สรุป
-
-1. **Models** — indexes, `select_related`/`prefetch_related`, custom managers
-2. **Serializers** — validation, read-only fields, separate list/detail serializers
-3. **ViewSets** — permissions, filtering, search, ordering, `perform_create`
-4. **Auth** — SimpleJWT, custom permissions, `IsAuthorOrReadOnly`
-5. **Testing** — APITestCase, force_authenticate, status code assertions
-6. **Production** — env vars, security headers, PostgreSQL, Redis cache
-7. **Never** — raw SQL without params, DEBUG=True in prod, secrets in settings.py

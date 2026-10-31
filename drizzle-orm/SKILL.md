@@ -1,6 +1,6 @@
 ---
-name: Drizzle ORM
-description: Expert guidance on Drizzle ORM — schema definition, migrations with drizzle-kit, relational + SQL-like query APIs, type inference, relations, transactions, and repository pattern.
+name: drizzle-orm
+description: Drizzle ORM for TypeScript — pg/sqlite/mysql-core schemas, drizzle-kit migrations, relational and SQL-like queries, type inference, relations, transactions. Use when editing drizzle.config.ts, pgTable schemas or db.query code.
 ---
 
 # Drizzle ORM
@@ -361,16 +361,3 @@ export default defineConfig({
 5. **Type inference** — `$inferSelect`/`$inferInsert` เป็น boundary type, map เป็น domain entity
 6. **Transactions** — orchestrate จาก application, throw = rollback
 7. **`relations()`** — สำหรับ query API เท่านั้น, FK จริงมาจาก `.references()`
-
----
-
-## สรุป
-
-1. **Schema** — `pgTable`/`sqliteTable`/`mysqlTable`, ULID PK, `index()`, `pgEnum`
-2. **Client** — `drizzle(pool, { schema })` เพื่อเปิด relational queries
-3. **Query** — `db.query.*` (relational) vs `db.select().from()` (SQL-like)
-4. **Types** — `$inferSelect` / `$inferInsert`
-5. **Relations** — `relations()` + `.references()`
-6. **Transactions** — `db.transaction()` atomic + auto rollback
-7. **Repository** — infrastructure layer, implement inward-owned ports
-8. **Migrations** — `generate` → review → test → `migrate`, additive-first

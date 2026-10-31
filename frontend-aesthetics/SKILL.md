@@ -1,6 +1,6 @@
 ---
-name: Frontend Aesthetics & Creative UI
-description: Guide for creating distinctive, production-grade frontend interfaces that avoid generic AI aesthetics — bold design thinking, typography, color, motion, spatial composition, and visual details.
+name: frontend-aesthetics
+description: Art direction for distinctive, non-generic frontend UIs covering typography, color, motion, composition, and backgrounds. Use when asked to make a page or component look bold, designed, or unique. Not for UI library or component API usage.
 ---
 
 # Frontend Aesthetics & Creative UI
@@ -388,18 +388,3 @@ function HeroSection() {
 □ Would a human designer be proud of this?
 □ Is it different from the last thing generated?
 ```
-
----
-
-## สรุป
-
-1. **NEVER generic** — no Inter, no purple gradients, no cookie-cutter layouts
-2. **Commit to a direction** — pick an extreme aesthetic and execute fully
-3. **Typography is identity** — distinctive fonts, dramatic scale
-4. **Color with conviction** — dominant + sharp accent, not scattered
-5. **Motion with purpose** — orchestrated reveals > random micro-interactions
-6. **Spatial interest** — asymmetry, overlap, generous whitespace
-7. **Atmosphere** — textures, gradients, depth, not flat solid colors
-8. **Match complexity to vision** — maximalist = elaborate, minimal = precise
-9. **Every design is unique** — vary themes, fonts, aesthetics between projects
-10. **One unforgettable moment** — what will someone remember?

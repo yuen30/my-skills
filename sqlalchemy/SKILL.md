@@ -1,6 +1,6 @@
 ---
-name: SQLAlchemy
-description: Expert guidance on SQLAlchemy 2.0 with FastAPI — typed declarative models, relationships and loader strategies, async engine/session, Alembic migrations, repository pattern with Depends, Pydantic mapping, and unit-of-work transactions.
+name: sqlalchemy
+description: SQLAlchemy 2.0 for Python/FastAPI — typed models, relationships, async sessions, Alembic migrations, repository with Depends, Pydantic mapping. Use when editing SQLAlchemy models, AsyncSession code, alembic revisions or FastAPI DB layers.
 ---
 
 # SQLAlchemy
@@ -325,16 +325,3 @@ def downgrade() -> None:
 5. **Map ORM → domain/Pydantic ที่ boundary** ไม่ปล่อยรั่ว
 6. **Review ทุก autogenerate** — Alembic ตรวจ rename/enum/check ไม่ครบ
 7. **Session ต่อ request เดียว** ผ่าน `Depends` — ห้าม global session
-
----
-
-## สรุป
-
-1. **Models** — `Mapped`/`mapped_column`, ULID PK, `Index` ใน `__table_args__`
-2. **Relationships** — `relationship()` + `back_populates` + `lazy="raise"`
-3. **N+1** — `selectinload` (collection) vs `joinedload` (many-to-one)
-4. **Async** — `create_async_engine` + `async_sessionmaker(expire_on_commit=False)`
-5. **DI** — `get_session` → repository ผ่าน FastAPI `Depends`
-6. **Transactions** — Unit of Work, commit/rollback ที่ Application
-7. **Boundary** — Pydantic `from_attributes`, ไม่คืน ORM model ออก API
-8. **Alembic** — `revision --autogenerate` → review → `upgrade head`, additive-first + `downgrade()`

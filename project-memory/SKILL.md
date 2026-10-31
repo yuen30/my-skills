@@ -1,6 +1,6 @@
 ---
 name: project-memory
-description: Maintain lightweight per-project memory to avoid re-deriving facts across sessions. Write feedback notes and progress checkpoints; read them before non-trivial work to preserve context and apply learnings automatically.
+description: Maintains lightweight per-project memory of feedback notes and progress checkpoints across sessions. Use when starting non-trivial work in a project, recording a correction or decision, or resuming earlier work.
 ---
 
 # Project Memory: Cross-Session Context Retention

@@ -1,6 +1,6 @@
 ---
 name: nextjs-data-security
-description: Use when implementing or auditing Next.js authentication, authorization, Server Actions, Route Handlers, data access, environment variables, caching, CSP, and server-to-client data exposure.
+description: Security review procedure for Next.js covering authn/authz, Server Actions, Route Handlers, data access layer, env vars, caching, CSP, and server-to-client data exposure. Use when implementing or auditing Next.js security. Not for other backends.
 ---
 
 # Next.js Data Security Review

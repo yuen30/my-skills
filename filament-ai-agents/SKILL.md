@@ -1,6 +1,6 @@
 ---
 name: filament-ai-agents
-description: Use when an AI agent must create, inspect, implement, debug, upgrade, or review a Laravel application that uses Filament PHP. Resolves version-matched Markdown documentation from the installed packages under vendor/filament before code changes and avoids guessing APIs from training data.
+description: Resolves version-matched Filament PHP docs from installed vendor/filament packages instead of guessing APIs. Use when creating, debugging, upgrading or reviewing a Laravel app that uses Filament resources, panels, forms or tables.
 ---
 
 # Filament AI Agents

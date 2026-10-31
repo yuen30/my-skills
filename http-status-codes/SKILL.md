@@ -1,6 +1,6 @@
 ---
-name: HTTP Status Codes
-description: HTTP status code reference covering 1xx-5xx categories, REST API design conventions (which code for which operation), and frontend/backend error-handling patterns. Use when designing API responses, choosing status codes for endpoints, or handling fetch/axios errors in a frontend client.
+name: http-status-codes
+description: HTTP status code reference (1xx-5xx), REST status conventions per operation, and frontend error handling. Use when choosing status codes for API endpoints, designing error responses, or handling fetch/axios errors.
 ---
 
 # HTTP Status Codes
@@ -132,7 +132,3 @@ async function apiRequest<T>(url: string, init?: RequestInit): Promise<T> {
 - **ไม่ตอบ `404` สำหรับ REST route ที่ id ไม่พบ** — บาง API ตอบ `200` พร้อม body ว่างหรือ `null` แทน ทำให้ client ต้องเช็ค body content แทนที่จะเช็ค status
 - **ปนกันระหว่าง `401` กับ `403`** — ใช้ `401` ผิดตอนที่ user login อยู่แล้วแต่ไม่มีสิทธิ์ (ควรเป็น `403`) หรือใช้ `403` ตอนที่ยังไม่ได้ login เลย (ควรเป็น `401`)
 - **ไม่แนบ `Retry-After` กับ `429`/`503`** — ทำให้ client ไม่รู้ว่าควรรอนานแค่ไหนก่อน retry
-
-## สรุป
-
-เลือก status code ตามความหมายจริงของผลลัพธ์ ไม่ใช่ความสะดวกของฝั่ง backend — แยก `400` (request อ่านไม่ได้) กับ `422` (validation ตาม business rule), แยก `401` (ยังไม่รู้ตัวตน) กับ `403` (รู้ตัวตนแต่ไม่มีสิทธิ์), ใช้ `201`/`204` ให้ตรงกับ operation จริง และฝั่ง frontend ต้องเช็ค `response.ok`/status เสมอแทนการเชื่อ body เพียงอย่างเดียว เพื่อให้ tooling มาตรฐาน (cache, retry, monitoring) ทำงานถูกต้องโดยไม่ต้องรู้ business logic ของแต่ละ endpoint

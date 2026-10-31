@@ -1,6 +1,6 @@
 ---
 name: nextjs-ai-agents
-description: Use when an AI agent must create, inspect, implement, debug, or review a Next.js project. Resolves version-matched documentation before code changes and handles the generated nextjs-agent-rules block safely.
+description: Workflow for AI agents on a Next.js project, using docs bundled in the installed next package and handling the nextjs-agent-rules block safely. Use when creating, inspecting, debugging, or reviewing a Next.js project as an agent, before code changes.
 ---
 
 # Next.js AI Coding Agents
