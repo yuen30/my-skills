@@ -1,3 +1,4 @@
 # Project Memory Index
 
-- [Skill version-staleness audit — completed](skill_version_audit_progress.md) — full repo audit done and closed; all flagged skills (django, odoo-addons/frappe-framework new, go-fiber-v3, react-three-fiber, github-actions-cicd, monorepo-scaffold-nextjs-go, hono) fixed and pushed
+- [Skill consolidation](skill_consolidation_progress.md) — done: 15 skills, checks + install prune; next: verify selection in a real session, decide vercel/postman plugins
+- [Skill version audit](skill_version_audit_progress.md) — done (2026-06); superseded by consolidation

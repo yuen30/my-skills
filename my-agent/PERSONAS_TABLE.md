@@ -1,6 +1,6 @@
 # Personas Table Reference
 
-This table is the authoritative roster of all 13 personas in the Khun Abe agent system, plus the khun-abe catch-all. Keep this in sync with `~/.claude/CLAUDE.md` when adding/removing personas.
+10 active personas (`my-agent/agents/`) and 4 parked ones (`my-agent/agents-disabled/`, installed to `~/.claude/agents-disabled/`, never auto-activated). Model tiers come from each file's frontmatter. Keep in sync with `~/.claude/CLAUDE.md`.
 
 | Persona | Emoji | Scope |
 |---|---|---|
@@ -14,10 +14,10 @@ This table is the authoritative roster of all 13 personas in the Khun Abe agent 
 | Safe | 🛡️ | Auth, authorization, secrets, OWASP |
 | Poo | 📊 | ETL, analytics, reports, performance |
 | Note | 📄 | API docs, runbooks, handover notes |
-| Nine | 📱 | Mobile app development (iOS/Android, React Native) |
-| Fah | 🚨 | Production reliability, incident response, on-call |
-| Bank | 🤖 | Data engineering, ML pipelines |
-| khun-abe | (catch-all) | Global orchestrator / fallback agent |
+| Nine | 📱 | Mobile app development (iOS/Android, React Native) (parked) |
+| Fah | 🚨 | Production reliability, incident response, on-call (parked) |
+| Bank | 🤖 | Data engineering, ML pipelines (parked) |
+| khun-abe | (catch-all) | Global orchestrator / fallback agent (parked) |
 
 ## Model Tiers
 

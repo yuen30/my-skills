@@ -84,7 +84,23 @@ if [ -d "$AGENTS_SRC" ]; then
   done
 fi
 
+# --- 3. Parked personas (repo my-agent/agents-disabled -> ~/.claude/agents-disabled/) ---
+# Kept installable but inactive; activate with: mv ~/.claude/agents-disabled/<name>.md ~/.claude/agents/
+parked_count=0
+if [ -d "$SCRIPT_DIR/my-agent/agents-disabled" ]; then
+  mkdir -p "$HOME/.claude/agents-disabled"
+  for agent_md in "$SCRIPT_DIR"/my-agent/agents-disabled/*.md; do
+    [ -e "$agent_md" ] || continue
+    name="$(basename "$agent_md")"
+    # Skip if the user already activated it; never activate it ourselves
+    [ -e "$AGENTS_DEST/$name" ] && continue
+    cp "$agent_md" "$HOME/.claude/agents-disabled/"
+    parked_count=$((parked_count + 1))
+  done
+fi
+
 echo "Restore complete:"
 echo "  - Skill folders copied to $SKILLS_DEST: $skill_count"
 echo "  - Old skills pruned from $SKILLS_DEST: $pruned"
 echo "  - Agent files copied to $AGENTS_DEST: $agent_count"
+echo "  - Parked personas copied to ~/.claude/agents-disabled: $parked_count"

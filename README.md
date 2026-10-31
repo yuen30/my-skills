@@ -23,7 +23,7 @@ cd my-skills
 - Copy skill folder ทุกตัวที่มี `SKILL.md` (ค้นหาแบบ dynamic ไม่ hardcode รายชื่อ) ไปที่ `~/.claude/skills/<name>/`
 - Copy persona agent config (`my-agent/agents/*.md`) ไปที่ `~/.claude/agents/`
 - แทนที่ skill folder ทั้งโฟลเดอร์ (ไฟล์ที่ลบใน repo จะหายจากเครื่องด้วย) และลบ skill ที่ repo เคยติดตั้งแต่เลิกใช้แล้ว (จดรายชื่อไว้ที่ `~/.claude/skills/.my-skills-installed`; ไม่แตะ plugin, `synced/` หรือ skill ที่ติดตั้งเองผ่าน `find-skills`)
-- ข้าม persona ที่พักไว้ใน `~/.claude/agents-disabled/`
+- Persona ที่พักไว้ (`my-agent/agents-disabled/`: nine, fah, bank, khun-abe) ถูกคัดลอกไป `~/.claude/agents-disabled/` เท่านั้น ไม่เปิดใช้ — เปิดด้วย `mv ~/.claude/agents-disabled/<name>.md ~/.claude/agents/`
 - ตั้ง `core.hooksPath=.githooks` ให้ repo นี้ — ก่อน commit จะรัน `scripts/check.py` (name/description, ลิงก์ references, `index.json`, persona อ้าง skill ที่มีจริง, ไฟล์ใน skill folder ที่ยังไม่ได้ `git add`)
 - Idempotent — รันซ้ำได้ปลอดภัย ไม่มี prompt
 
