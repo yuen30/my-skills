@@ -165,7 +165,7 @@ If all files are present, the opencode restore was successful.
 
 Many persona files reference specific skills in their `## Skills` sections. After restoring agents, **check that those referenced skills are also installed**:
 
-- **Art** references: `tailwind-css-v4-shadcn-ui`, `frontend-design`, etc.
+- **Art** references: `tailwind-v4-shadcn`, `frontend-design`, etc.
 - **Boy** references: `go-fiber-v3`, etc.
 - **Keng** references: `drizzle-orm`, `prisma`, etc.
 - **Oat** references: `docker`, `github-actions-cicd`, etc.
