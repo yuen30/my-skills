@@ -53,7 +53,7 @@ Mirror ของ codex/opencode ใน `my-agent/codex/` และ `my-agent/ope
 | [eloquent-orm](./eloquent-orm/) | Laravel Eloquent ORM — models, casts, relationships, eager loading, schema migrations, scopes, observers, soft deletes, repository pattern, factories |
 | [sqlalchemy](./sqlalchemy/) | SQLAlchemy 2.0 for FastAPI — typed declarative models, loader strategies, async sessions, Alembic migrations, repository pattern, unit of work |
 | [filament-ai-agents](./filament-ai-agents/) | Filament PHP workflow — resolve installed versions and read local bundled docs before implementing or reviewing code |
-| [frontend-layer](./frontend-layer/) | Frontend layer separation — components/, hooks/, helpers/, types/, lib/ organization and strict concern boundaries |
+| [project-structure](./project-structure/) | Where code and folders go across stacks — Next.js/React layers, Go Fiber, monorepo, Astro, Django, Odoo, Frappe |
 | [monorepo-scaffold-nextjs-go](./monorepo-scaffold-nextjs-go/) | Monorepo scaffold for Next.js 16+ App Router + Go 1.20+ microservices with shared infrastructure and swappable API adapters |
 | [angular](./angular/) | Angular framework — standalone components, signals, control flow syntax, dependency injection, version detection across major releases |
 | [react](./react/) | Plain (non-Next.js) React development — client-rendered SPA patterns, hooks, state management, and common anti-patterns |
@@ -67,7 +67,6 @@ Next.js skills ชุดนี้ไม่ทำหน้าที่เป็�
 | Skill | Description |
 |-------|-------------|
 | [nextjs-ai-agents](./nextjs-ai-agents/) | Workflow สำหรับ AI agent: local bundled docs เป็น source of truth และดูแล generated agent rules |
-| [nextjs-clean-code](./nextjs-clean-code/) | Clean Code Architecture สำหรับทั้ง Next.js และ React — components/ui, hooks, helpers, lib, types และ feature layers |
 | [nextjs-data-security](./nextjs-data-security/) | Security review — trust boundaries, auth/authz, Server Actions, Route Handlers, secrets และ data exposure |
 | [nextjs-production-checklist](./nextjs-production-checklist/) | Production review — correctness, security, performance, caching, accessibility, SEO และ operations |
 | [nextjs-upgrading](./nextjs-upgrading/) | Upgrade workflow — bundled migration guides, codemods, regression checks และ rollback |

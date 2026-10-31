@@ -43,6 +43,8 @@ agent_count=0
 if [ -d "$AGENTS_SRC" ]; then
   for agent_md in "$AGENTS_SRC"/*.md; do
     [ -e "$agent_md" ] || continue
+    # Respect personas the user parked in ~/.claude/agents-disabled/
+    [ -e "$HOME/.claude/agents-disabled/$(basename "$agent_md")" ] && continue
     cp "$agent_md" "$AGENTS_DEST/"
     agent_count=$((agent_count + 1))
   done

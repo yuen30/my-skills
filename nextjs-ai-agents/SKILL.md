@@ -24,7 +24,7 @@ If the installed package or bundled docs are unavailable, inspect the package ma
 - Respect the requested package manager, runtime, deployment target, and repository rules; do not impose a fixed stack.
 - Inspect the current scaffolder's help and generated files instead of copying flags or versions from this skill.
 - Add authentication, database, i18n, UI, testing, and Docker dependencies only when the project requires them.
-- After installation, switch immediately to the bundled-doc workflow above and establish boundaries with `nextjs-clean-code`.
+- After installation, switch immediately to the bundled-doc workflow above and establish boundaries with `project-structure`.
 
 ## Generated agent rules
 

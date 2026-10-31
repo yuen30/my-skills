@@ -5,10 +5,6 @@
       "files": ["frontend-aesthetics/SKILL.md"]
     },
     {
-      "name": "frontend-layer",
-      "files": ["frontend-layer/SKILL.md", "frontend-layer/references/layers.md", "frontend-layer/references/refactor-recipe.md", "frontend-layer/references/violations.md"]
-    },
-    {
       "name": "nextjs-pages-router",
       "files": ["nextjs-pages-router/SKILL.md"]
     },
@@ -19,10 +15,6 @@
     {
       "name": "http-status-codes",
       "files": ["http-status-codes/SKILL.md"]
-    },
-    {
-      "name": "nextjs-clean-code",
-      "files": ["nextjs-clean-code/SKILL.md"]
     },
     {
       "name": "shadcn-ui",
@@ -66,7 +58,7 @@
     },
     {
       "name": "astro",
-      "files": ["astro/SKILL.md", "astro/references/components.md", "astro/references/content-collections.md", "astro/references/data-fetching.md", "astro/references/deployment.md", "astro/references/project-structure.md"]
+      "files": ["astro/SKILL.md", "astro/references/components.md", "astro/references/content-collections.md", "astro/references/data-fetching.md", "astro/references/deployment.md"]
     },
     {
       "name": "nextjs-upgrading",
@@ -147,6 +139,10 @@
     {
       "name": "context7-auto-research",
       "files": ["context7-auto-research/SKILL.md"]
+    },
+    {
+      "name": "project-structure",
+      "files": ["project-structure/SKILL.md", "project-structure/references/astro.md", "project-structure/references/django.md", "project-structure/references/frappe.md", "project-structure/references/frontend-layers.md", "project-structure/references/frontend-smells-and-refactor.md", "project-structure/references/go-fiber.md", "project-structure/references/monorepo-nextjs-go.md", "project-structure/references/nextjs.md", "project-structure/references/odoo.md"]
     }
   ]
 }

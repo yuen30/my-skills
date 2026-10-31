@@ -164,7 +164,7 @@ const posts = await Astro.glob('../content/blog/*.md')
 ---
 ## 📚 References
 
-- [references/project-structure.md](references/project-structure.md) — read when laying out or reorganizing an Astro project.
+- Project structure → use the `project-structure` skill (references/astro.md).
 - [references/components.md](references/components.md) — read when writing `.astro` components or framework islands.
 - [references/content-collections.md](references/content-collections.md) — read when defining collection schemas or dynamic routes from collections.
 - [references/data-fetching.md](references/data-fetching.md) — read when fetching at build time, in SSR, or writing API endpoints.

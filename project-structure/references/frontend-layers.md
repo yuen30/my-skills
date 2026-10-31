@@ -85,3 +85,17 @@ import { fetchOrder } from '@/lib/api/orders'        // hook -> lib
 - `types/` entry used in one file only? → make local.
 - `lib/` imports components or hooks? → lib must never know about UI.
 - Could parsing/formatting/validation be unit-tested without mocking? If not, move it to lib/ or helpers/.
+
+## Common hook recipes
+
+Extract to a hook when state/effect logic is reused in 2+ components, or one component combines 2+ pieces of state/effect logic. Below that, keep `useState`/`useEffect` inline. Extract these on first real need; don't pre-build a library:
+
+- `useDebounce<T>(value: T, delayMs: number): T` — settle a fast-changing value (search input).
+- `useLocalStorage<T>(key: string, initialValue: T): [T, (v: T) => void]` — SSR-safe (guard `typeof window`).
+- `useMediaQuery(query: string): boolean` — responsive logic in JS.
+- `usePrevious<T>(value: T): T | undefined` — ref updated in `useEffect`.
+- `useToggle(initial = false): [boolean, () => void]` — stable toggle callback.
+- `useIntersectionObserver(ref: RefObject<Element>, options?: IntersectionObserverInit): boolean` — lazy-load, infinite scroll.
+- `useClickOutside(ref: RefObject<HTMLElement>, onOutside: () => void): void` — dropdowns, modals.
+
+Shape sketches only — write the minimal version the project needs.

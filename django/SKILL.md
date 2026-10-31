@@ -398,38 +398,7 @@ CACHES = {
 
 ## Project Structure
 
-```
-project/
-├── config/                 # Project settings
-│   ├── settings/
-│   │   ├── base.py
-│   │   ├── development.py
-│   │   └── production.py
-│   ├── urls.py
-│   └── wsgi.py
-├── apps/
-│   ├── articles/
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   ├── permissions.py
-│   │   ├── filters.py
-│   │   ├── tests/
-│   │   │   ├── test_models.py
-│   │   │   ├── test_views.py
-│   │   │   └── test_serializers.py
-│   │   └── admin.py
-│   └── users/
-│       ├── models.py
-│       └── ...
-├── manage.py
-├── requirements/
-│   ├── base.txt
-│   ├── development.txt
-│   └── production.txt
-└── docker-compose.yml
-```
+Project layout → use the `project-structure` skill (references/django.md).
 
 ---
 
