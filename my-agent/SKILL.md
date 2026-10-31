@@ -38,7 +38,7 @@ This is a **living backup** of your multi-agent development system across two di
 
 - **Location**: `~/.config/opencode/AGENTS.md` (unified orchestrator) and `~/.config/opencode/agents/*.md` (per-persona definitions)
 - **Format**: Central AGENTS.md file with all personas listed + separate `.md` files for each persona with YAML frontmatter (description, mode: subagent, color: #hex, permission: {edit, bash})
-- **Structure**: 13 core personas (art, boy, joy, keng, note, oat, poo, safe, toey, nine, fah, bank) plus 3 cavecrew helper subagents
+- **Structure**: 12 core personas (art, boy, joy, keng, note, oat, poo, safe, toey, nine, fah, bank) plus 3 cavecrew helper subagents (`cavecrew-builder`, `-investigator`, `-reviewer`, present only in `opencode/agents/`)
 - **Purpose**: Powers the opencode editor's persona switching with role-specific instructions and visual identity (color coding)
 
 ## Persona Roster
@@ -106,7 +106,7 @@ cp <skill-path>/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
 cp <skill-path>/opencode/agents/*.md ~/.config/opencode/agents/
 ```
 
-This restores the opencode persona configuration, including all 13 core personas and 3 cavecrew helper subagents with YAML metadata (color coding, permissions).
+This restores the opencode persona configuration, including all 12 core personas and 3 cavecrew helper subagents with YAML metadata (color coding, permissions).
 
 ### Step 7: Start a New Claude Code Session
 
@@ -152,7 +152,7 @@ ls -la ~/.config/opencode/AGENTS.md
 ls ~/.config/opencode/agents/ | wc -l
 ```
 
-You should see `AGENTS.md` exist and the `agents/` folder should contain 15 files (13 core + 3 cavecrew):
+You should see `AGENTS.md` exist and the `agents/` folder should contain 15 files (12 core + 3 cavecrew):
 ```
 art.md  bank.md  boy.md  cavecrew-builder.md  cavecrew-investigator.md
 cavecrew-reviewer.md  fah.md  joy.md  keng.md  nine.md  note.md  oat.md
@@ -165,11 +165,10 @@ If all files are present, the opencode restore was successful.
 
 Many persona files reference specific skills in their `## Skills` sections. After restoring agents, **check that those referenced skills are also installed**:
 
-- **Art** references: `abe-ui`, `frontend-design`, etc.
-- **Boy** references: `abe-framework`, etc.
-- **Keng** references: `drizzle-orm`, `prisma`, etc.
-- **Oat** references: `docker`, `ci-cd`, etc.
-- **Note** references: various documentation skills
+- **Art**: `abe-ui`
+- **Boy**: `abe-framework`, `project-structure`
+- **Keng**: `abe-data`
+- **Oat**: `docker`, `ci-cd`
 
 If a skill is missing from `~/.claude/skills/`, the persona will load without that skill's context. To restore all skills as well:
 
@@ -256,7 +255,7 @@ The persona .md files list skills they expect to find in `~/.claude/skills/`. If
 
 ### opencode: Personas not loaded or out of sync
 
-1. Did you restore both `~/.config/opencode/AGENTS.md` and all files in `~/.config/opencode/agents/`? Run: `ls ~/.config/opencode/agents/ | wc -l` — should be 15 (13 core + 3 cavecrew).
+1. Did you restore both `~/.config/opencode/AGENTS.md` and all files in `~/.config/opencode/agents/`? Run: `ls ~/.config/opencode/agents/ | wc -l` — should be 15 (12 core + 3 cavecrew).
 2. Did you restart the opencode editor? The editor scans configuration at startup; a running editor won't pick up newly restored files.
 3. Are the YAML frontmatters in each `.md` file properly formatted (description, mode: subagent, color, permission)? Check a known-good file like `art.md` for reference.
 

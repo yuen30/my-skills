@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Block commits that leave skills, index.json or personas inconsistent.
+exec python3 "$(git rev-parse --show-toplevel)/scripts/check.py"

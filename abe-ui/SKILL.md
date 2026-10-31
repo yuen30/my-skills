@@ -1,6 +1,6 @@
 ---
 name: abe-ui
-description: "Tailwind CSS v4 UI work with shadcn/ui or daisyUI: setup, components, theming, dark mode. Use when you see components.json, components/ui/, @radix-ui, the daisyui plugin, Tailwind v4 @theme, or are building or styling UI components."
+description: "Tailwind CSS v4 UI with shadcn/ui or daisyUI: setup, components, theming, dark mode, visual design/aesthetics. Use for components.json, components/ui/, @radix-ui, daisyui, Tailwind v4 @theme, or building, styling or art-directing UI."
 ---
 
 # abe-ui
@@ -30,6 +30,7 @@ Never mix daisyUI classes into a shadcn/ui project or the reverse. They are alte
 - Prefer the kit's component over hand-rolled markup; compose, don't fork.
 - Accessibility is not automatic: check roles, `aria-*`, focus and keyboard behavior on interactive parts.
 - Confirm installed versions (`npm ls tailwindcss daisyui`) before using version-specific syntax.
+- Design direction/aesthetics (distinctive look, typography, color, motion): [references/aesthetics.md](references/aesthetics.md).
 
 ## shadcn/ui Rules
 
@@ -58,3 +59,5 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 | shadcn patterns | [references/patterns.md](references/patterns.md) | Building forms, data tables, dialogs, composite UI |
 | shadcn dark mode | [references/dark-mode.md](references/dark-mode.md) | Wiring dark mode / next-themes |
 | shadcn MCP and registry | [references/mcp-registry.md](references/mcp-registry.md) | Using the shadcn MCP server, publishing or consuming a registry |
+| aesthetics | [references/aesthetics.md](references/aesthetics.md) | Designing a distinctive look: art direction, typography, color |
+| aesthetics (motion, layout) | [references/aesthetics-motion-layout.md](references/aesthetics-motion-layout.md) | Motion, spatial composition, backgrounds, final design checklist |

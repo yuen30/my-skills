@@ -1,7 +1,4 @@
----
-name: eloquent-orm
-description: Laravel Eloquent ORM (PHP) — models, casts, relationships, eager loading, migrations, scopes, observers, soft deletes, repository pattern, factories. Use when editing Laravel models, migrations, seeders or fixing N+1 queries.
----
+Read when the project is Laravel (artisan, app/Models) and you touch Eloquent models, migrations or queries.
 
 # Eloquent ORM
 

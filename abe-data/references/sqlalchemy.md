@@ -1,7 +1,4 @@
----
-name: sqlalchemy
-description: SQLAlchemy 2.0 for Python/FastAPI — typed models, relationships, async sessions, Alembic migrations, repository with Depends, Pydantic mapping. Use when editing SQLAlchemy models, AsyncSession code, alembic revisions or FastAPI DB layers.
----
+Read when sqlalchemy or alembic appears in pyproject.toml or requirements.
 
 # SQLAlchemy
 

@@ -23,6 +23,7 @@ mkdir -p "$SKILLS_DEST" "$AGENTS_DEST"
 
 # --- 1. Restore skill folders (repo -> ~/.claude/skills/<name>/) ---
 skill_count=0
+current_skills=" "
 for skill_md in "$SCRIPT_DIR"/*/SKILL.md; do
   [ -e "$skill_md" ] || continue
   skill_dir="$(dirname "$skill_md")"
@@ -33,10 +34,43 @@ for skill_md in "$SCRIPT_DIR"/*/SKILL.md; do
     my-agent|docs) continue ;;
   esac
 
+  # Replace, not overlay, so files deleted from the repo disappear too
+  rm -rf "${SKILLS_DEST:?}/$name"
   mkdir -p "$SKILLS_DEST/$name"
   cp -R "$skill_dir/." "$SKILLS_DEST/$name/"
+  current_skills="$current_skills$name "
   skill_count=$((skill_count + 1))
 done
+
+# --- 1b. Prune skills this repo installed before but no longer ships ---
+# Candidates come from the manifest of the previous run, so plugin, app-managed
+# (synced/) or skills installed later by find-skills are never touched.
+# First run without a manifest: fall back to names that ever had a top-level
+# SKILL.md in this repo's git history.
+MANIFEST="$SKILLS_DEST/.my-skills-installed"
+pruned=0
+if [ -f "$MANIFEST" ]; then
+  candidates="$(cat "$MANIFEST")"
+elif git -C "$SCRIPT_DIR" rev-parse --git-dir >/dev/null 2>&1; then
+  candidates="$(git -C "$SCRIPT_DIR" log --all --format= --name-only -- '*/SKILL.md' \
+               | awk -F/ 'NF==2 && $2=="SKILL.md" {print $1}' | sort -u)"
+else
+  candidates=""
+fi
+for old in $candidates; do
+  case "$current_skills" in *" $old "*) continue ;; esac
+  case "$old" in my-agent|docs|""|.*) continue ;; esac
+  if [ -d "$SKILLS_DEST/$old" ]; then
+    rm -rf "${SKILLS_DEST:?}/$old"
+    pruned=$((pruned + 1))
+  fi
+done
+printf '%s\n' $current_skills > "$MANIFEST"
+
+# Repo checks run before every commit (scripts/check.py)
+if git -C "$SCRIPT_DIR" rev-parse --git-dir >/dev/null 2>&1; then
+  git -C "$SCRIPT_DIR" config core.hooksPath .githooks
+fi
 
 # --- 2. Restore Claude persona agent configs (repo backup -> live ~/.claude/agents/) ---
 agent_count=0
@@ -52,4 +86,5 @@ fi
 
 echo "Restore complete:"
 echo "  - Skill folders copied to $SKILLS_DEST: $skill_count"
+echo "  - Old skills pruned from $SKILLS_DEST: $pruned"
 echo "  - Agent files copied to $AGENTS_DEST: $agent_count"

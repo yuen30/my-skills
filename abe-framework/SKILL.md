@@ -39,7 +39,7 @@ Monorepos: detect per app/package from the file being changed, not from the repo
 - `project-structure` — where files and folders go (layout, layering) for every stack.
 - `abe-ui` — UI kit work: Tailwind v4, shadcn/ui, daisyUI.
 - `web-research` — current facts, release notes, error fixes from the web.
-- ORM skills — `prisma`, `drizzle-orm`, `eloquent-orm`, `sqlalchemy` for schema, migrations and queries.
+- `abe-data` — Prisma, Drizzle, Eloquent, SQLAlchemy for schema, migrations and queries.
 
 ## Reference routing
 

@@ -1,7 +1,4 @@
----
-name: drizzle-orm
-description: Drizzle ORM for TypeScript — pg/sqlite/mysql-core schemas, drizzle-kit migrations, relational and SQL-like queries, type inference, relations, transactions. Use when editing drizzle.config.ts, pgTable schemas or db.query code.
----
+Read when the project has drizzle.config.* or a "drizzle-orm" dependency.
 
 # Drizzle ORM
 
@@ -354,10 +351,8 @@ export default defineConfig({
 
 ## Best Practices
 
-1. **Repository layer** — ไม่เรียก `db` ตรงใน handlers/use cases
-2. **`generate` + `migrate`** — ห้าม `push` บน production
-3. **Additive migrations** — เพิ่ม nullable column/table ก่อน destructive
-4. **Indexes** — ประกาศ `index()` ให้ fields ที่ query บ่อยและ FK
-5. **Type inference** — `$inferSelect`/`$inferInsert` เป็น boundary type, map เป็น domain entity
-6. **Transactions** — orchestrate จาก application, throw = rollback
-7. **`relations()`** — สำหรับ query API เท่านั้น, FK จริงมาจาก `.references()`
+1. **`generate` + `migrate`** — ห้าม `push` บน production
+2. **Additive migrations** — เพิ่ม nullable column/table ก่อน destructive
+3. **Indexes** — ประกาศ `index()` ให้ fields ที่ query บ่อยและ FK
+4. **Type inference** — `$inferSelect`/`$inferInsert` เป็น boundary type, map เป็น domain entity
+5. **`relations()`** — สำหรับ query API เท่านั้น, FK จริงมาจาก `.references()`

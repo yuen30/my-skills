@@ -22,7 +22,12 @@ cd my-skills
 
 - Copy skill folder ทุกตัวที่มี `SKILL.md` (ค้นหาแบบ dynamic ไม่ hardcode รายชื่อ) ไปที่ `~/.claude/skills/<name>/`
 - Copy persona agent config (`my-agent/agents/*.md`) ไปที่ `~/.claude/agents/`
+- แทนที่ skill folder ทั้งโฟลเดอร์ (ไฟล์ที่ลบใน repo จะหายจากเครื่องด้วย) และลบ skill ที่ repo เคยติดตั้งแต่เลิกใช้แล้ว (จดรายชื่อไว้ที่ `~/.claude/skills/.my-skills-installed`; ไม่แตะ plugin, `synced/` หรือ skill ที่ติดตั้งเองผ่าน `find-skills`)
+- ข้าม persona ที่พักไว้ใน `~/.claude/agents-disabled/`
+- ตั้ง `core.hooksPath=.githooks` ให้ repo นี้ — ก่อน commit จะรัน `scripts/check.py` (name/description, ลิงก์ references, `index.json`, persona อ้าง skill ที่มีจริง, ไฟล์ใน skill folder ที่ยังไม่ได้ `git add`)
 - Idempotent — รันซ้ำได้ปลอดภัย ไม่มี prompt
+
+แก้ `index.json` อัตโนมัติ: `python3 scripts/check.py --write-index` · skill จาก plugin ที่ persona อ้างได้: `scripts/external-skills.txt`
 
 Plugin ที่ persona เรียกใช้ (`install.sh` ไม่ได้ติดตั้งให้) — ติดตั้งครั้งเดียวต่อเครื่อง:
 
@@ -45,13 +50,9 @@ Mirror ของ codex/opencode ใน `my-agent/codex/` และ `my-agent/ope
 | [redis](./redis/) | Redis as a cache layer — connection setup (Node/Python/Go), cache-aside, TTL, invalidation, distributed locks, pub/sub, docker-compose |
 | [rabbitmq](./rabbitmq/) | RabbitMQ as a message broker — exchange types, ack/prefetch, dead-letter exchanges, docker-compose, idempotent consumers |
 | [http-status-codes](./http-status-codes/) | HTTP Status Codes — 1xx-5xx reference, REST API conventions, frontend/backend error handling |
-| [abe-ui](./abe-ui/) | UI kit skill on Tailwind CSS v4 — shadcn/ui or daisyUI (auto-detect), CLI, components, theming, dark mode, MCP/registry |
+| [abe-ui](./abe-ui/) | UI kit skill on Tailwind CSS v4 — shadcn/ui or daisyUI (auto-detect), theming, dark mode, MCP/registry, visual design/aesthetics |
 | [ci-cd](./ci-cd/) | CI/CD to AWS ECR/EC2/ECS — GitHub Actions and Bitbucket Pipelines, smoke test, rollback |
-| [frontend-aesthetics](./frontend-aesthetics/) | Frontend Aesthetics — bold design thinking, typography, color, motion, spatial composition |
-| [prisma](./prisma/) | Prisma ORM — schema design, migrations, repository pattern, transactions, PostGIS |
-| [drizzle-orm](./drizzle-orm/) | Drizzle ORM — schema definition, drizzle-kit migrations, relational + SQL-like queries, type inference, relations, repository pattern |
-| [eloquent-orm](./eloquent-orm/) | Laravel Eloquent ORM — models, casts, relationships, eager loading, schema migrations, scopes, observers, soft deletes, repository pattern, factories |
-| [sqlalchemy](./sqlalchemy/) | SQLAlchemy 2.0 for FastAPI — typed declarative models, loader strategies, async sessions, Alembic migrations, repository pattern, unit of work |
+| [abe-data](./abe-data/) | ORM skill — Prisma, Drizzle, Eloquent, SQLAlchemy/Alembic: detect ORM, schema, migrations, queries, transactions, repository layer |
 | [project-structure](./project-structure/) | Where code and folders go across stacks — Next.js/React layers, Go Fiber, monorepo, Astro, Django, Odoo, Frappe |
 | [monorepo-scaffold-nextjs-go](./monorepo-scaffold-nextjs-go/) | Monorepo scaffold for Next.js 16+ App Router + Go 1.20+ microservices with shared infrastructure and swappable API adapters |
 

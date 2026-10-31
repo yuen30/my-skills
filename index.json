@@ -1,32 +1,36 @@
 {
   "skills": [
     {
-      "name": "frontend-aesthetics",
-      "files": ["frontend-aesthetics/SKILL.md"]
+      "name": "abe-data",
+      "files": ["abe-data/SKILL.md", "abe-data/references/drizzle.md", "abe-data/references/eloquent.md", "abe-data/references/prisma.md", "abe-data/references/sqlalchemy.md"]
+    },
+    {
+      "name": "abe-framework",
+      "files": ["abe-framework/SKILL.md", "abe-framework/references/angular.md", "abe-framework/references/astro-components.md", "abe-framework/references/astro-content-collections.md", "abe-framework/references/astro-data-fetching.md", "abe-framework/references/astro-deployment.md", "abe-framework/references/astro.md", "abe-framework/references/django.md", "abe-framework/references/filament.md", "abe-framework/references/frappe.md", "abe-framework/references/go-fiber.md", "abe-framework/references/hono.md", "abe-framework/references/laravel.md", "abe-framework/references/nextjs-ai-agents.md", "abe-framework/references/nextjs-data-security.md", "abe-framework/references/nextjs-pages-router.md", "abe-framework/references/nextjs-production-checklist.md", "abe-framework/references/nextjs-upgrading.md", "abe-framework/references/nextjs.md", "abe-framework/references/odoo.md", "abe-framework/references/react-three-fiber.md", "abe-framework/references/react.md"]
+    },
+    {
+      "name": "abe-ui",
+      "files": ["abe-ui/SKILL.md", "abe-ui/references/aesthetics-motion-layout.md", "abe-ui/references/aesthetics.md", "abe-ui/references/components.md", "abe-ui/references/daisyui.md", "abe-ui/references/dark-mode.md", "abe-ui/references/mcp-registry.md", "abe-ui/references/patterns.md", "abe-ui/references/setup.md", "abe-ui/references/shadcn-cli.md", "abe-ui/references/tailwind-v4.md", "abe-ui/references/theming.md"]
+    },
+    {
+      "name": "ci-cd",
+      "files": ["ci-cd/SKILL.md", "ci-cd/references/bitbucket.md", "ci-cd/references/github-key-patterns.md", "ci-cd/references/github-production-pipeline.md", "ci-cd/references/github-workflow-template.md"]
+    },
+    {
+      "name": "context7-auto-research",
+      "files": ["context7-auto-research/SKILL.md"]
     },
     {
       "name": "docker",
       "files": ["docker/SKILL.md"]
     },
     {
+      "name": "find-skills",
+      "files": ["find-skills/SKILL.md"]
+    },
+    {
       "name": "http-status-codes",
       "files": ["http-status-codes/SKILL.md"]
-    },
-    {
-      "name": "prisma",
-      "files": ["prisma/SKILL.md"]
-    },
-    {
-      "name": "drizzle-orm",
-      "files": ["drizzle-orm/SKILL.md"]
-    },
-    {
-      "name": "eloquent-orm",
-      "files": ["eloquent-orm/SKILL.md"]
-    },
-    {
-      "name": "sqlalchemy",
-      "files": ["sqlalchemy/SKILL.md"]
     },
     {
       "name": "monorepo-scaffold-nextjs-go",
@@ -41,44 +45,24 @@
       "files": ["project-memory/SKILL.md"]
     },
     {
-      "name": "ship",
-      "files": ["ship/SKILL.md"]
-    },
-    {
-      "name": "redis",
-      "files": ["redis/SKILL.md"]
+      "name": "project-structure",
+      "files": ["project-structure/SKILL.md", "project-structure/references/astro.md", "project-structure/references/django.md", "project-structure/references/frappe.md", "project-structure/references/frontend-layers.md", "project-structure/references/frontend-smells-and-refactor.md", "project-structure/references/go-fiber.md", "project-structure/references/monorepo-nextjs-go.md", "project-structure/references/nextjs.md", "project-structure/references/odoo.md"]
     },
     {
       "name": "rabbitmq",
       "files": ["rabbitmq/SKILL.md"]
     },
     {
-      "name": "context7-auto-research",
-      "files": ["context7-auto-research/SKILL.md"]
+      "name": "redis",
+      "files": ["redis/SKILL.md"]
     },
     {
-      "name": "project-structure",
-      "files": ["project-structure/SKILL.md", "project-structure/references/astro.md", "project-structure/references/django.md", "project-structure/references/frappe.md", "project-structure/references/frontend-layers.md", "project-structure/references/frontend-smells-and-refactor.md", "project-structure/references/go-fiber.md", "project-structure/references/monorepo-nextjs-go.md", "project-structure/references/nextjs.md", "project-structure/references/odoo.md"]
-    },
-    {
-      "name": "ci-cd",
-      "files": ["ci-cd/SKILL.md", "ci-cd/references/bitbucket.md", "ci-cd/references/github-key-patterns.md", "ci-cd/references/github-production-pipeline.md", "ci-cd/references/github-workflow-template.md"]
-    },
-    {
-      "name": "abe-ui",
-      "files": ["abe-ui/SKILL.md", "abe-ui/references/components.md", "abe-ui/references/daisyui.md", "abe-ui/references/dark-mode.md", "abe-ui/references/mcp-registry.md", "abe-ui/references/patterns.md", "abe-ui/references/setup.md", "abe-ui/references/shadcn-cli.md", "abe-ui/references/tailwind-v4.md", "abe-ui/references/theming.md"]
-    },
-    {
-      "name": "find-skills",
-      "files": ["find-skills/SKILL.md"]
+      "name": "ship",
+      "files": ["ship/SKILL.md"]
     },
     {
       "name": "web-research",
       "files": ["web-research/SKILL.md"]
-    },
-    {
-      "name": "abe-framework",
-      "files": ["abe-framework/SKILL.md", "abe-framework/references/angular.md", "abe-framework/references/astro-components.md", "abe-framework/references/astro-content-collections.md", "abe-framework/references/astro-data-fetching.md", "abe-framework/references/astro-deployment.md", "abe-framework/references/astro.md", "abe-framework/references/django.md", "abe-framework/references/filament.md", "abe-framework/references/frappe.md", "abe-framework/references/go-fiber.md", "abe-framework/references/hono.md", "abe-framework/references/laravel.md", "abe-framework/references/nextjs-ai-agents.md", "abe-framework/references/nextjs-data-security.md", "abe-framework/references/nextjs-pages-router.md", "abe-framework/references/nextjs-production-checklist.md", "abe-framework/references/nextjs-upgrading.md", "abe-framework/references/nextjs.md", "abe-framework/references/odoo.md", "abe-framework/references/react-three-fiber.md", "abe-framework/references/react.md"]
     }
   ]
 }

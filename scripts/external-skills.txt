@@ -1,0 +1,7 @@
+# Skills personas may reference that come from plugins, not this repo (one per line).
+ai-sdk
+handoff
+frontend-design
+api-documentation
+ponytail:ponytail-review
+ponytail:ponytail-audit

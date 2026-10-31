@@ -1,7 +1,4 @@
----
-name: prisma
-description: Prisma ORM for TypeScript — schema, migrations, repository pattern, queries, transactions, PostGIS, seeding. Use when editing schema.prisma, PrismaClient code, prisma migrate, $transaction or $queryRaw in Node/TS projects.
----
+Read when the project has prisma/schema.prisma or a "@prisma/client" dependency.
 
 # Prisma Database Operations
 
@@ -226,9 +223,7 @@ main()
 
 ## Best Practices
 
-1. **Repository services** — ไม่เรียก Prisma ตรงใน controllers
-2. **`@@map`** — explicit table names เสมอ
-3. **Indexes** — `@@index` สำหรับ fields ที่ query บ่อย
-4. **Transactions** — สำหรับ related operations
-5. **Migration names** — descriptive (e.g., `add_product_inventory`)
-6. **Validate** — application layer ก่อน database operations
+1. **`@@map`** — explicit table names เสมอ
+2. **Indexes** — `@@index` สำหรับ fields ที่ query บ่อย
+3. **Migration names** — descriptive (e.g., `add_product_inventory`)
+4. **Validate** — application layer ก่อน database operations

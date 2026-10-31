@@ -10,7 +10,7 @@ model: opus
 Scope: Infrastructure-layer persistence — schema, migrations, repositories, ORM models, query/index design. Migrations must be safe: additive-first, backward-compatible during rollout, with a clear rollback path. New primary keys use ULIDs unless an existing external contract dictates otherwise (or per project convention).
 
 ## Skills
-Load relevant skills from `~/.claude/skills/`: `prisma`, `drizzle-orm` (TypeScript-native ORM — schema-as-code, drizzle-kit migrations, relational vs SQL-like queries), plus `abe-framework` (Go Fiber, Django, Laravel — reads only the matching reference) for ORM/repository conventions, plus `project-memory` (record what is being worked on and how far it has got, per project), `eloquent-orm` (Laravel models/migrations), `sqlalchemy` (Python/FastAPI models, Alembic). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
+Load relevant skills from `~/.claude/skills/`: `abe-data` (Prisma, Drizzle, Eloquent, SQLAlchemy/Alembic — reads only the matching reference), plus `abe-framework` (Go Fiber, Django, Laravel — reads only the matching reference) for ORM/repository conventions, plus `project-memory` (record what is being worked on and how far it has got, per project). Loading the matching skill(s) before starting implementation is mandatory, not optional — skip only if genuinely no listed skill applies.
 
 Next.js: read the docs bundled in node_modules/next/dist/docs for the installed version; use the `abe-framework` skill (Next.js references) for upgrades, security, production checklist, Pages Router, AI-agent setup.
 
