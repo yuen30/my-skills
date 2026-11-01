@@ -19,7 +19,7 @@ grep '"daisyui"' package.json; grep -r '@plugin "daisyui"' --include='*.css' .
 |--------|-----|------|
 | `components.json`, `@radix-ui/*` dependency, or `components/ui/` folder | shadcn/ui | shadcn references below |
 | `daisyui` in package.json or `@plugin "daisyui"` in CSS | daisyUI | [references/daisyui.md](references/daisyui.md) |
-| Neither (greenfield) | undecided | Ask the user; recommend shadcn/ui by default. Do not pick silently, switching later is costly |
+| Neither (greenfield) | undecided | No kit detected (greenfield): ask the user which kit (shadcn/ui or daisyUI) before writing any UI code. Do not pick a default yourself |
 
 Never mix daisyUI classes into a shadcn/ui project or the reverse. They are alternatives: semantic classes (`btn`, `card`) vs owned source in `components/ui/` styled with utilities. If heavy daisyUI overrides are needed everywhere, raise shadcn/ui as a decision point instead of layering both.
 

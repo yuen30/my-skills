@@ -71,7 +71,7 @@ Keep secrets encrypted; keep non-secret config as plain variables (GitHub: Secre
 ```
 □ Smoke test ก่อน deploy production
 □ trap cleanup credentials (security)
-□ --restart always สำหรับ production containers
+□ --restart always สำหรับ production `docker run` ใน pipeline (compose ใช้ `unless-stopped`, ดู docker)
 □ docker image prune -f --filter 'until=24h' หลัง deploy (เก็บ image ล่าสุดไว้ rollback มือได้เร็ว)
 □ set -euo pipefail ทุก script (fail fast)
 □ Concurrency control (ไม่ deploy ซ้อนกัน)

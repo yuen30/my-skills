@@ -19,6 +19,6 @@ description: "Building, running, and orchestrating containers with Docker and Do
 - `depends_on` with `condition: service_healthy` plus a healthcheck on the dependency (e.g. `pg_isready`) — plain `depends_on` doesn't wait for readiness.
 - Named volumes for persistent data; explicit networks for isolation; pin image versions.
 - Config via `.env`/env files, not hard-coded credentials; dev/prod split via `docker-compose.override.yml`.
-- `restart: unless-stopped` for services.
+- Compose files: `restart: unless-stopped` (pipeline `docker run`: `--restart always`, see ci-cd).
 - Validate with `docker compose config` after edits.
-- `docker compose down -v` and `docker system prune -af` are destructive (delete volumes/all unused images) — confirm first.
+- Before any `docker system prune`, `docker volume rm/prune` or `docker compose down -v`: stop, state what will be deleted, and ask the user to confirm. Never run it in the same reply.

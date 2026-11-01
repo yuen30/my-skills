@@ -40,6 +40,23 @@ claude plugin install ponytail@ponytail
 
 Mirror ของ codex/opencode ใน `my-agent/codex/` และ `my-agent/opencode/` เป็น reference เท่านั้น ไม่ได้อยู่ใน scope ของสคริปต์นี้ (คนละ path/format กับ Claude Code) — ต้อง restore เอง ถ้าต้องใช้
 
+## Evals
+
+ตรวจว่า skill ยังชี้นำโมเดลได้จริง (โดยเฉพาะ persona Haiku) หลังแก้หรือตัด `SKILL.md` แต่ละ case รันสองแบบ คือมีและไม่มี SKILL.md ด้วย `claude -p` แบบแยกขาด (ไม่มี tools, MCP, settings, CLAUDE.md)
+
+- รันก่อน commit ทุกครั้งที่แก้ `SKILL.md`
+- with-skill fail = กฎใน skill ต้องเขียนให้ชัดขึ้น
+- case ที่ pass แม้ไม่มี skill = ไม่ discriminating ควรปรับหรือลบ
+
+```bash
+python3 evals/haiku/run.py --runs 2                # ทุก case
+python3 evals/haiku/run.py --case <id> --runs 3    # case เดียว
+python3 evals/haiku/run.py --effort low            # ให้ตรง effort ของ persona
+```
+
+- `--model` เลือกโมเดลที่จะทดสอบ (default `haiku`)
+- Cases อยู่ที่ `evals/haiku/cases.json` (`{id, skill, prompt, must, must_not}`) ผลลัพธ์อยู่ที่ `evals/haiku/results/` (gitignored)
+
 ## รายการ Skills
 
 ### General

@@ -47,9 +47,11 @@ for name in skills:
 
 
 def skill_files(name):
-    if name == "my-agent":
-        return [f"{name}/SKILL.md"]
-    files = [f"{name}/SKILL.md"] + sorted(glob.glob(f"{name}/references/*"))
+    dirs = ["references", "scripts"] if name == "my-agent" else ["references"]  # my-agent's agents/, codex/, etc. are persona backups
+    files = [f"{name}/SKILL.md"]
+    for d in dirs:
+        files += sorted(f for f in glob.glob(f"{name}/{d}/**/*", recursive=True)
+                        if os.path.isfile(f) and "__pycache__" not in f and not f.endswith(".pyc"))
     return files
 
 

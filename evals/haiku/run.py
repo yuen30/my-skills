@@ -20,9 +20,9 @@ def skill_body(name):
     t = (ROOT / name / "SKILL.md").read_text()
     return re.sub(r"\A---\n.*?\n---\n", "", t, flags=re.S).strip()
 
-def call(case, with_skill, run, cwd, effort=None):
+def call(case, with_skill, run, cwd, effort=None, model="haiku"):
     sp = BASE + ("\n\n# Skill\n" + skill_body(case["skill"]) if with_skill else "")
-    cmd = ["claude", "-p", "--model", "haiku", "--tools", "", "--strict-mcp-config",
+    cmd = ["claude", "-p", "--model", model, "--tools", "", "--strict-mcp-config",
            "--setting-sources", "", "--disable-slash-commands", "--no-session-persistence",
            "--system-prompt", sp] + (["--effort", effort] if effort else []) + [case["prompt"]]
     try:
@@ -32,7 +32,7 @@ def call(case, with_skill, run, cwd, effort=None):
     ok = (out != "<TIMEOUT>"
           and all(re.search(p, out, re.I | re.S | re.M) for p in case["must"])
           and not any(re.search(p, out, re.I | re.S | re.M) for p in case["must_not"]))
-    return dict(id=case["id"], skill=case["skill"], with_skill=with_skill, run=run, output=out, pass_=ok)
+    return dict(id=case["id"], skill=case["skill"], model=model, with_skill=with_skill, run=run, output=out, pass_=ok)
 
 def main():
     ap = argparse.ArgumentParser()
@@ -40,12 +40,14 @@ def main():
     ap.add_argument("--case")
     ap.add_argument("--file", default="cases.json")
     ap.add_argument("--effort")
+    ap.add_argument("--model", default="haiku")
     ap.add_argument("--without-only", action="store_true")
     a = ap.parse_args()
     cases = [c for c in json.loads((HERE / a.file).read_text()) if not a.case or c["id"] == a.case]
     with tempfile.TemporaryDirectory() as cwd, ThreadPoolExecutor(4) as ex:
-        futs = [ex.submit(call, c, w, r, cwd, a.effort) for c in cases for r in range(a.runs) for w in ((False,) if a.without_only else (True, False))]
+        futs = [ex.submit(call, c, w, r, cwd, a.effort, a.model) for c in cases for r in range(a.runs) for w in ((False,) if a.without_only else (True, False))]
         res = [f.result() for f in futs]
+    print(f"model={a.model} effort={a.effort}")
     print(f"{'case':26} {'with':>6} {'without':>8}")
     tot = {True: [0, 0], False: [0, 0]}
     for c in cases:
@@ -56,7 +58,7 @@ def main():
             row.append(f"{p}/{len(rs)}")
         print(f"{c['id']:26} {row[0]:>6} {row[1]:>8}")
     print(f"{'TOTAL':26} {tot[True][0]}/{tot[True][1]:>3} {tot[False][0]}/{tot[False][1]:>5}")
-    out = HERE / "results" / (time.strftime("%Y%m%d-%H%M%S") + ".json")
+    out = HERE / "results" / (time.strftime("%Y%m%d-%H%M%S") + f"-{a.model}.json")
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(res, indent=1, ensure_ascii=False))
     print("saved", out)

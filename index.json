@@ -38,7 +38,7 @@
     },
     {
       "name": "my-agent",
-      "files": ["my-agent/SKILL.md"]
+      "files": ["my-agent/SKILL.md", "my-agent/references/restore.md", "my-agent/scripts/check_installed.py", "my-agent/scripts/restore_personas.sh", "my-agent/scripts/test_check_installed.py"]
     },
     {
       "name": "project-memory",

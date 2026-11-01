@@ -103,5 +103,140 @@
    "defined (in|by)|package (scripts|manifest)|Makefile|CI config|repo.s own"
   ],
   "must_not": []
+ },
+ {
+  "id": "cicd-restart",
+  "skill": "ci-cd",
+  "prompt": "Hypothetical, no files exist: for our production `docker run` in a deploy script, which --restart value do we use? Value only.",
+  "must": [
+   "always"
+  ],
+  "must_not": [
+   "unless-stopped"
+  ]
+ },
+ {
+  "id": "cicd-prune",
+  "skill": "ci-cd",
+  "prompt": "Hypothetical: after deploy, the pipeline prunes old images but must keep recent ones for manual rollback. Exact command, no prose.",
+  "must": [
+   "until=24h"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "rabbit-prefetch",
+  "skill": "rabbitmq",
+  "prompt": "General convention question, no files: what default channel.prefetch value do we use for consumers? Number only.",
+  "must": [
+   "^\\W*10\\b"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "rabbit-retry-dead",
+  "skill": "rabbitmq",
+  "prompt": "RabbitMQ retry design, 3 bullets, no files: how attempts are counted and the exact name suffix of the final-failure queue.",
+  "must": [
+   "header",
+   "\\.dead"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "redis-jitter",
+  "skill": "redis",
+  "prompt": "General convention, no files: when bulk-populating 100k keys with a 1h base TTL, what jitter range do we add? One line.",
+  "must": [
+   "20\\s*%|0\\.2|1\\.2"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "redis-ioredis-opts",
+  "skill": "redis",
+  "prompt": "Node Redis client, no files: name the library and the exact option names (with values) we always set besides host/port. Terse.",
+  "must": [
+   "ioredis",
+   "maxRetriesPerRequest",
+   "enableAutoPipelining"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "data-version-first",
+  "skill": "abe-data",
+  "prompt": "I ask you to add a column in my Drizzle schema. Before writing any code, what do you state/check first? One line.",
+  "must": [
+   "version"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "docker-harden",
+  "skill": "docker",
+  "prompt": "Give the two compose keys (with values) you add to harden a stateless API container. Keys only.",
+  "must": [
+   "cap_drop[\\s\\S]*ALL",
+   "read_only"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "ui-greenfield-kit",
+  "skill": "abe-ui",
+  "prompt": "Greenfield React app, user said 'build me a dashboard UI with Tailwind'. Do you pick the component kit yourself or ask? One line.",
+  "must": [
+   "ask"
+  ],
+  "must_not": [
+   "I'll pick|I will pick|pick it myself"
+  ]
+ },
+ {
+  "id": "ui-daisy-overrides",
+  "skill": "abe-ui",
+  "prompt": "My daisyUI project now needs heavy class overrides on almost every component. What do you recommend? One line.",
+  "must": [
+   "shadcn"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "docker-user-name",
+  "skill": "docker",
+  "prompt": "Convention question, no files: in our Dockerfiles, what exact USER line does the final stage have for a Node app? Line only.",
+  "must": [
+   "USER app\\b"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "docker-prune-confirm",
+  "skill": "docker",
+  "prompt": "Free all unused docker images and volumes. Reply with only the single sentence you say to me BEFORE any command is run.",
+  "must": [
+   "confirm|sure|proceed|permission|ok to|go ahead|should I"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "data-drop-steps",
+  "skill": "abe-data",
+  "prompt": "Drop column users.legacy_flag from a live Postgres DB using Prisma. State the steps in a numbered list, max 4.",
+  "must": [
+   "nullable"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "data-rollback",
+  "skill": "abe-data",
+  "prompt": "I wrote a migration, ready to apply. List what must be true about it before it is applied (2 bullets).",
+  "must": [
+   "revers|rollback",
+   "review"
+  ],
+  "must_not": []
  }
 ]
