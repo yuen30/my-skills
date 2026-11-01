@@ -8,8 +8,8 @@ Detail for the my-agent backup. Read on demand; the core steps are in SKILL.md.
 |---|---|---|---|
 | Claude Code, 10 active personas | `my-agent/agents/*.md` | `~/.claude/agents/` | `install.sh` |
 | Claude Code, 4 parked personas | `my-agent/agents-disabled/*.md` | `~/.claude/agents-disabled/` | `install.sh` |
-| Codex CLI (one unified file) | `my-agent/codex/AGENTS.md` | `~/.codex/AGENTS.md` and `~/.agents/agents/AGENTS.md` (keep identical) | manual |
-| opencode | `my-agent/opencode/AGENTS.md`, `my-agent/opencode/agents/*.md` | `~/.config/opencode/` | manual |
+| Codex CLI (one unified file) | `my-agent/codex/AGENTS.md` | `~/.codex/AGENTS.md` and `~/.agents/agents/AGENTS.md` (keep identical) | `install.sh` via `restore_personas.sh` |
+| opencode | `my-agent/opencode/AGENTS.md`, `my-agent/opencode/agents/*.md` | `~/.config/opencode/` | `install.sh` via `restore_personas.sh` |
 
 - Active (10): boss, art, boy, toey, oat, keng, joy, safe, poo, note.
 - Parked (4): nine, fah, bank, khun-abe. Never activated by `install.sh`.
@@ -24,7 +24,7 @@ Detail for the my-agent backup. Read on demand; the core steps are in SKILL.md.
 cd <repo> && ./install.sh
 ```
 
-- Skills: each `<repo>/*/SKILL.md` folder replaces `~/.claude/skills/<name>/`; stale entries are pruned via the manifest `~/.claude/skills/.my-skills-installed`.
+- Skills: each `<repo>/*/SKILL.md` folder replaces `~/.agents/skills/<name>/` and `~/.claude/skills/<name>` becomes a symlink to it; stale entries are pruned from both via the manifest `~/.claude/skills/.my-skills-installed`.
 - Personas: `my-agent/agents/*.md` goes to `~/.claude/agents/`; `my-agent/agents-disabled/*.md` goes to `~/.claude/agents-disabled/`.
 - Safe to re-run. Start a new Claude Code session afterwards; agents are scanned at startup.
 
@@ -35,25 +35,19 @@ ls ~/.claude/agents          # 10 files
 ls ~/.claude/agents-disabled # 4 files
 ```
 
-### Codex CLI (manual)
+### Codex CLI and opencode
+
+`install.sh` runs `my-agent/scripts/restore_personas.sh`, which restores each tool only if it is on PATH or its config dir exists (else prints "skip ..."). Force targets with `restore_personas.sh codex opencode`. Non-destructive: missing files are created, identical ones untouched, a differing live file is skipped (never overwritten). `--force` overwrites it, saving `<file>.bak` first; files not in the repo are never deleted. Restart opencode afterwards.
+
+Manual fallback:
 
 ```bash
-mkdir -p ~/.codex ~/.agents/agents
+mkdir -p ~/.codex ~/.agents/agents ~/.config/opencode/agents
 cp <repo>/my-agent/codex/AGENTS.md ~/.codex/AGENTS.md
 cp <repo>/my-agent/codex/AGENTS.md ~/.agents/agents/AGENTS.md
-diff ~/.codex/AGENTS.md ~/.agents/agents/AGENTS.md   # no output = in sync
-```
-
-### opencode (manual)
-
-```bash
-mkdir -p ~/.config/opencode/agents
 cp <repo>/my-agent/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
-cp <repo>/my-agent/opencode/agents/*.md ~/.config/opencode/agents/
-ls ~/.config/opencode/agents | wc -l   # 15
+cp <repo>/my-agent/opencode/agents/*.md ~/.config/opencode/agents/   # 15 files
 ```
-
-Restart opencode afterwards.
 
 ## Keeping the backup current
 

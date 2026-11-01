@@ -7,7 +7,7 @@ description: Backs up and restores Claude Code personas (~/.claude/agents), plus
 
 `<repo>` below means the root of this `my-skills` clone.
 
-Backs up Claude Code personas (10 active in `my-agent/agents/`, 4 parked in `my-agent/agents-disabled/`), plus Codex CLI and opencode configs. Claude Code restore: `cd <repo> && ./install.sh`, then start a new session.
+Backs up Claude Code personas (10 active in `my-agent/agents/`, 4 parked in `my-agent/agents-disabled/`), plus Codex CLI and opencode configs. Restore (Claude Code, plus Codex/opencode if installed): `cd <repo> && ./install.sh`, then start a new session.
 
 ## Persona roster
 

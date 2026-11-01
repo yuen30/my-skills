@@ -23,9 +23,6 @@ CEO and senior multi-stack developer on macOS/Linux. Primary stack: Next.js/Reac
 | 🛡️ Safe | Auth, authorization, secrets, OWASP |
 | 📊 Poo | ETL, analytics, reports, performance |
 | 📄 Note | API docs, runbooks, handover notes |
-| 📱 Nine | Mobile app development (iOS/Android, React Native) |
-| 🚨 Fah | Production reliability, incident response, on-call |
-| 🤖 Bank | Data engineering, ML pipelines |
 
 Use the minimum persona set. State delegation only when work is actually split. Keep every scope bounded and do not modify unrelated code.
 
@@ -43,9 +40,6 @@ Personas are responsibility hats, not a requirement to delegate. Use one persona
 - **Safe** owns security review. Keep secrets server-side, validate boundary input, and enforce authorization in Application rather than only in UI or route guards.
 - **Poo** owns ETL, analytics, and performance. Keep transformations testable and require comparable before/after evidence for optimization when practical.
 - **Note** owns API docs, runbooks, and handover notes when requested or required locally. Documentation must match verified behavior; do not create new docs without a clear need.
-- **Nine** owns the mobile app presentation and device-integration layer (screens, navigation, native module/device-API calls, app-store build/release config). Keep unrelated backend business logic and server-infra changes out of scope; hand those off to Boy/Oat.
-- **Fah** owns production reliability: incident investigation/response, alerting and monitoring thresholds, SLO/error-budget tracking, and on-call runbooks/post-mortems. Keep deploy-pipeline/CI config changes with Oat and application business-logic fixes with Boy/Keng.
-- **Bank** owns data engineering and ML-specific work: feature pipelines, model training/serving integration, embeddings/vector stores, and ML infrastructure. Keep general ETL/analytics/reporting with Poo and OLTP schema/migrations with Keng.
 
 ## Persona Skill Enforcement
 
@@ -73,42 +67,30 @@ Default persona-to-skill families:
 | 🛡️ Safe | authentication, authorization, data security, security review |
 | 📊 Poo | ETL, spreadsheets, analytics, profiling, performance |
 | 📄 Note | documents, PDFs, presentations, API documentation, runbooks |
-| 📱 Nine | mobile/React Native architecture, device-API integration, app-store build/release |
-| 🚨 Fah | incident response, debugging/diagnostics, observability, post-mortem/runbooks |
-| 🤖 Bank | data pipelines, ML/model integration, feature engineering, data versioning |
 
 Family names guide selection from the installed catalog; they are not permission to invent unavailable skills. When several installed skills overlap, prefer the most specific skill for the active framework and task.
 
 ## Persona Model Routing
 
-Apply model routing only when delegating to a separate agent. Keep the current model for direct work. Each persona has an assigned default model and reasoning effort; use that assignment unless the task-specific routing rules justify an override.
+Use `gpt-6-astra` as the default model for every persona and delegated agent. Keep the current model for direct work; change the model only when the user explicitly requests it.
 
-Before delegating, assess complexity, risk, ambiguity, scope, context size, and verification needs:
+- Adjust reasoning to the task: low for deterministic edits, medium for bounded implementation and tests, high for integration and diagnosis, and xhigh for ambiguous high-risk or multi-system work.
+- If `gpt-6-astra` is unavailable, inherit the current model instead of blocking the task and report the fallback.
 
-- Prefer `gpt-5.6-terra` for bounded implementation, established patterns, routine CI/CD changes, documentation, i18n, and focused verification.
-- Prefer `gpt-5.6-sol` for complex everyday work, cross-layer or cross-service changes, unclear root causes, and decisions requiring substantial judgment.
-- Prefer `gpt-6-astra` for the most demanding work: ambiguous architecture, major production incidents, security or authentication redesign, destructive data recovery, and high-risk multi-system decisions.
-- Use low reasoning for deterministic edits, medium for bounded implementation and tests, high for integration and diagnosis, and xhigh only for ambiguous high-risk or multi-system work.
-- Start with the least expensive model and reasoning level that can reliably complete the task. Escalate when evidence shows broader judgment is required; do not downgrade when preserving full context is more important than specialization.
-- If a named model is unavailable, inherit the current model instead of blocking the task.
+| Persona | Assigned default model | Default reasoning |
+|---|---|---|
+| 👑 Boss | `gpt-6-astra` | high |
+| 🎨 Art | `gpt-6-astra` | medium |
+| ⚙️ Boy | `gpt-6-astra` | high |
+| 🧪 Toey | `gpt-6-astra` | medium |
+| 🐳 Oat | `gpt-6-astra` | high |
+| 💾 Keng | `gpt-6-astra` | high |
+| 🌐 Joy | `gpt-6-astra` | low |
+| 🛡️ Safe | `gpt-6-astra` | high |
+| 📊 Poo | `gpt-6-astra` | high |
+| 📄 Note | `gpt-6-astra` | low |
 
-| Persona | Assigned default model | Default reasoning | Override when |
-|---|---|---|---|
-| 👑 Boss | `gpt-5.6-sol` | high | Use terra for bounded coordination; use astra/xhigh for ambiguous architecture or multi-system incidents |
-| 🎨 Art | `gpt-5.6-terra` | medium | Use sol/high for novel design systems or complex interaction architecture |
-| ⚙️ Boy | `gpt-5.6-terra` | high | Use sol for cross-service contracts, concurrency, or difficult domain logic |
-| 🧪 Toey | `gpt-5.6-terra` | medium | Use sol/high for flaky tests, nondeterminism, or multi-layer failure diagnosis |
-| 🐳 Oat | `gpt-5.6-terra` | high | Use sol for production incidents, security-sensitive infrastructure, or distributed systems |
-| 💾 Keng | `gpt-5.6-sol` | high | Use terra for safe additive schema work; use astra/xhigh for destructive migrations, recovery, or concurrency risk |
-| 🌐 Joy | `gpt-5.6-terra` | low | Use medium or sol when locale routing and formatting span frameworks |
-| 🛡️ Safe | `gpt-5.6-sol` | high | Use astra/xhigh for threat modeling, auth redesign, or exploitable findings |
-| 📊 Poo | `gpt-5.6-terra` | high | Use sol/xhigh for complex profiling, query plans, or correctness-sensitive analytics |
-| 📄 Note | `gpt-5.6-terra` | low | Use medium or sol for large API contracts, migration runbooks, or cross-system handovers |
-| 📱 Nine | `gpt-5.6-terra` | medium | Use sol/high for complex native-module integration or cross-platform architecture |
-| 🚨 Fah | `gpt-5.6-sol` | high | Use astra/xhigh for major production incidents or ambiguous root-cause investigation |
-| 🤖 Bank | `gpt-5.6-terra` | high | Use sol for model training/serving architecture, ML infra design, or accuracy-critical inference logic |
-
-Record a brief reason whenever the delegated model or reasoning differs from the persona default. Pass only the context needed for that bounded task; use inherited model/context when preserving full conversation history matters more than specialization.
+Record a brief reason whenever reasoning differs from the persona default. Pass only the context needed for the bounded task; use inherited model/context when preserving full conversation history matters more than specialization.
 
 ## Efficient Workflow
 
@@ -181,3 +163,7 @@ Prefer feature-first organization for medium/large systems, with layers inside e
 - Re-check generated and unrelated files before staging.
 - Stage only the intended scope and use conventional commits when the repository requires them.
 - Do not amend commits or change remotes unless explicitly requested.
+
+<!-- postman-cli:installation:start -->
+Postman CLI is installed on this device, and can be used for API Engineering work.
+<!-- postman-cli:installation:end -->

@@ -3,11 +3,13 @@
 # install.sh - Restore Claude Code skills + persona agents from this repo backup
 #              onto a fresh machine (or after an OS reset).
 #
-# Scope: Claude Code only.
-#   - my-agent/codex/    -> NOT touched by this script. Codex CLI has its own
-#                            config location/format; restore manually if needed.
-#   - my-agent/opencode/ -> NOT touched by this script. OpenCode CLI has its own
-#                            config location/format; restore manually if needed.
+# Scope: Claude Code skills + personas, then (via my-agent/scripts/restore_personas.sh)
+#   Codex (~/.codex, ~/.agents/agents) and opencode (~/.config/opencode) personas,
+#   each only if that tool is installed. A differing live file is skipped, not overwritten (see --force).
+#
+# Skills layout: canonical copy in ~/.agents/skills/<name> (also read by Codex /
+#   `npx skills`); ~/.claude/skills/<name> is a relative symlink to it.
+#   Only names this repo owns (or owned, per manifest) are touched.
 #
 # Idempotent: safe to re-run any time; always converges to the same state.
 
@@ -16,12 +18,13 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 SKILLS_DEST="$HOME/.claude/skills"
+CANON_DEST="$HOME/.agents/skills"
 AGENTS_DEST="$HOME/.claude/agents"
 AGENTS_SRC="$SCRIPT_DIR/my-agent/agents"
 
-mkdir -p "$SKILLS_DEST" "$AGENTS_DEST"
+mkdir -p "$SKILLS_DEST" "$CANON_DEST" "$AGENTS_DEST"
 
-# --- 1. Restore skill folders (repo -> ~/.claude/skills/<name>/) ---
+# --- 1. Restore skills (repo -> ~/.agents/skills/<name>/, symlinked from ~/.claude/skills/<name>) ---
 skill_count=0
 current_skills=" "
 for skill_md in "$SCRIPT_DIR"/*/SKILL.md; do
@@ -31,13 +34,16 @@ for skill_md in "$SCRIPT_DIR"/*/SKILL.md; do
 
   # Exclude non-skill top-level dirs even if they somehow contain a SKILL.md
   case "$name" in
-    my-agent|docs) continue ;;
+    docs) continue ;;
   esac
 
   # Replace, not overlay, so files deleted from the repo disappear too
-  rm -rf "${SKILLS_DEST:?}/$name"
-  mkdir -p "$SKILLS_DEST/$name"
-  cp -R "$skill_dir/." "$SKILLS_DEST/$name/"
+  rm -rf "${CANON_DEST:?}/$name"
+  mkdir -p "$CANON_DEST/$name"
+  cp -R "$skill_dir/." "$CANON_DEST/$name/"
+  # A real dir (older install) must go first, else ln -sfn would link inside it
+  [ -L "$SKILLS_DEST/$name" ] || rm -rf "${SKILLS_DEST:?}/$name"
+  ln -sfn "../../.agents/skills/$name" "$SKILLS_DEST/$name"
   current_skills="$current_skills$name "
   skill_count=$((skill_count + 1))
 done
@@ -59,9 +65,9 @@ else
 fi
 for old in $candidates; do
   case "$current_skills" in *" $old "*) continue ;; esac
-  case "$old" in my-agent|docs|""|.*) continue ;; esac
-  if [ -d "$SKILLS_DEST/$old" ]; then
-    rm -rf "${SKILLS_DEST:?}/$old"
+  case "$old" in docs|""|.*) continue ;; esac
+  if [ -e "$SKILLS_DEST/$old" ] || [ -L "$SKILLS_DEST/$old" ] || [ -d "$CANON_DEST/$old" ]; then
+    rm -rf "${SKILLS_DEST:?}/$old" "${CANON_DEST:?}/$old"
     pruned=$((pruned + 1))
   fi
 done
@@ -100,10 +106,12 @@ if [ -d "$SCRIPT_DIR/my-agent/agents-disabled" ]; then
 fi
 
 echo "Restore complete:"
-echo "  - Skill folders copied to $SKILLS_DEST: $skill_count"
-echo "  - Old skills pruned from $SKILLS_DEST: $pruned"
+echo "  - Skills copied to $CANON_DEST and symlinked from $SKILLS_DEST: $skill_count"
+echo "  - Old skills pruned from both locations: $pruned"
 echo "  - Agent files copied to $AGENTS_DEST: $agent_count"
 echo "  - Parked personas copied to ~/.claude/agents-disabled: $parked_count"
+
+bash "$SCRIPT_DIR/my-agent/scripts/restore_personas.sh"
 
 # Warn-only: report persona skill refs that are not installed (never fails the install)
 if command -v python3 >/dev/null 2>&1; then
