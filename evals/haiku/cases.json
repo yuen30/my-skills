@@ -1,0 +1,107 @@
+[
+ {
+  "id": "http-problem-shape",
+  "skill": "http-status-codes",
+  "prompt": "Show a JSON error body for a failed email validation on POST /users, compact, with the HTTP status code. No explanation.",
+  "must": [
+   "\\b422\\b",
+   "\"type\"",
+   "\"title\"",
+   "\"status\"",
+   "\"detail\"",
+   "\"errors\""
+  ],
+  "must_not": [
+   "\"success\"\\s*:\\s*false",
+   "stack"
+  ]
+ },
+ {
+  "id": "struct-ulid",
+  "skill": "project-structure",
+  "prompt": "Starting a brand-new project with no ID convention and no external contract. Which ID format do you pick for entities? Answer with the name and one sentence.",
+  "must": [
+   "ulid"
+  ],
+  "must_not": [
+   "^\\W*(uuid|auto.?increment)"
+  ]
+ },
+ {
+  "id": "fw-docs-source",
+  "skill": "abe-framework",
+  "prompt": "Your memory of this framework's API may be stale. In one sentence, which source do you prefer for API details first? Name it.",
+  "must": [
+   "(node_modules|vendor)[^.]{0,40}docs|docs[^.]{0,40}(bundled|node_modules|vendor)|bundled (with|in)"
+  ],
+  "must_not": [
+   "^\\W*(my )?(training|memory)",
+   "official (docs|documentation) (site|website)?\\W*$"
+  ]
+ },
+ {
+  "id": "http-retry-set",
+  "skill": "http-status-codes",
+  "prompt": "Which HTTP status codes should a frontend client automatically retry with backoff? Codes only, comma-separated.",
+  "must": [
+   "\\b429\\b",
+   "\\b502\\b",
+   "\\b503\\b",
+   "\\b504\\b"
+  ],
+  "must_not": [
+   "\\b500\\b",
+   "\\b408\\b"
+  ]
+ },
+ {
+  "id": "http-401-action",
+  "skill": "http-status-codes",
+  "prompt": "Frontend gets 401 from the API. What does it do? One sentence.",
+  "must": [
+   "(clear|destroy|reset|drop).{0,20}(session|token|auth|credential)",
+   "login"
+  ],
+  "must_not": [
+   "refresh"
+  ]
+ },
+ {
+  "id": "struct-file-naming",
+  "skill": "project-structure",
+  "prompt": "Go Fiber project: filename for the orders controller? Filename only.",
+  "must": [
+   "^\\W*`?orders_controller\\.go`?\\W*$"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "fw-filament-docs",
+  "skill": "abe-framework",
+  "prompt": "Filament project: where do you look first for API details, give the path pattern. One sentence.",
+  "must": [
+   "vendor/filament/[^\\s`]*/docs"
+  ],
+  "must_not": []
+ },
+ {
+  "id": "struct-fat-threshold",
+  "skill": "project-structure",
+  "prompt": "At roughly how many lines do you consider a React component a fat module that must be split by layer? Give a number or range only.",
+  "must": [
+   "150"
+  ],
+  "must_not": [
+   "^\\W*(300|250|500|100)\\b"
+  ]
+ },
+ {
+  "id": "fw-checks",
+  "skill": "abe-framework",
+  "prompt": "After editing code in a repo, which checks do you run? One sentence.",
+  "must": [
+   "defined (in|by)|package (scripts|manifest)|Makefile|CI config|repo.s own"
+  ],
+  "must_not": []
+ }
+]

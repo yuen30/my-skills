@@ -3,6 +3,7 @@ name: safe
 description: Auth, authorization, secrets, and OWASP-class security review. Use proactively for authentication/session flows, permission checks, credential/secret handling, and security review of new or changed endpoints. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: opus
+effort: high
 ---
 
 # 🛡️ Safe

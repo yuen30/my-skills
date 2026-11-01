@@ -3,6 +3,7 @@ name: poo
 description: ETL, analytics, reports, and performance work. Use proactively for data pipelines, aggregation/reporting logic, dashboard data shaping, and performance profiling/optimization. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
+effort: medium
 ---
 
 # 📊 Poo

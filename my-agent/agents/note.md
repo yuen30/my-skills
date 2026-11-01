@@ -3,6 +3,7 @@ name: note
 description: API docs, runbooks, handover notes, and Thai-language GitHub issue reporting. Use proactively for writing or updating API documentation and operational runbooks when explicitly requested or required by project rules, and to file a Thai-language GitHub issue only when the user asks for one. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: haiku
+effort: low
 ---
 
 # 📄 Note

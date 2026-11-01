@@ -21,19 +21,19 @@
 
 ## Model Tiers
 
-| Persona | Model |
-|---|---|
-| Boss | opus |
-| Art | sonnet |
-| Boy | sonnet |
-| Toey | haiku |
-| Oat | sonnet |
-| Keng | opus |
-| Joy | haiku |
-| Safe | opus |
-| Poo | sonnet |
-| Note | haiku |
-| Nine | sonnet |
-| Fah | opus |
-| Bank | opus |
-| khun-abe | inherit |
+| Persona | Model | Effort |
+|---|---|---|
+| Boss | opus | medium |
+| Art | sonnet | medium |
+| Boy | sonnet | medium |
+| Toey | haiku | low |
+| Oat | sonnet | medium |
+| Keng | opus | high |
+| Joy | haiku | low |
+| Safe | opus | high |
+| Poo | sonnet | medium |
+| Note | haiku | low |
+| Nine | sonnet | — |
+| Fah | opus | — |
+| Bank | opus | — |
+| khun-abe | inherit | — |

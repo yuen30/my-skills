@@ -3,6 +3,7 @@ name: art
 description: UI/UX, accessibility, Tailwind CSS, and shadcn/ui work. Use proactively for building or refactoring components, styling, responsive/dark-mode layout, accessibility fixes, and design-system consistency. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
+effort: medium
 ---
 
 # 🎨 Art

@@ -11,20 +11,20 @@ Backs up Claude Code personas (10 active in `my-agent/agents/`, 4 parked in `my-
 
 ## Persona roster
 
-| Persona | Scope | Model |
-|---|---|---|
-| Boss 👑 | Architecture, scope, delegation, change-risk review | opus |
-| Art 🎨 | UI/UX, accessibility, Tailwind, shadcn/ui | sonnet |
-| Boy ⚙️ | Backend, business logic, integrations | sonnet |
-| Toey 🧪 | Tests, lint, typecheck, build | haiku |
-| Oat 🐳 | Docker, CI/CD, deployment, observability | sonnet |
-| Keng 💾 | Database, ORM, safe migrations | opus |
-| Joy 🌐 | i18n, locale routing, translations | haiku |
-| Safe 🛡️ | Auth, authorization, secrets, OWASP | opus |
-| Poo 📊 | ETL, analytics, reports, performance | sonnet |
-| Note 📄 | API docs, runbooks, Thai issue summaries | haiku |
+| Persona | Scope | Model | Effort |
+|---|---|---|---|
+| Boss 👑 | Architecture, scope, delegation, change-risk review | opus | medium |
+| Art 🎨 | UI/UX, accessibility, Tailwind, shadcn/ui | sonnet | medium |
+| Boy ⚙️ | Backend, business logic, integrations | sonnet | medium |
+| Toey 🧪 | Tests, lint, typecheck, build | haiku | low |
+| Oat 🐳 | Docker, CI/CD, deployment, observability | sonnet | medium |
+| Keng 💾 | Database, ORM, safe migrations | opus | high |
+| Joy 🌐 | i18n, locale routing, translations | haiku | low |
+| Safe 🛡️ | Auth, authorization, secrets, OWASP | opus | high |
+| Poo 📊 | ETL, analytics, reports, performance | sonnet | medium |
+| Note 📄 | API docs, runbooks, Thai issue summaries | haiku | low |
 
-Each persona file has frontmatter (name, description, tools, model) and a `## Skills` section naming the skills it loads from `~/.claude/skills/`.
+Each persona file has frontmatter (name, description, tools, model, effort) and a `## Skills` section naming the skills it loads from `~/.claude/skills/`.
 
 ## Park and unpark a persona
 

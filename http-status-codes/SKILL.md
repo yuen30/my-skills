@@ -38,7 +38,7 @@ Use one shape for every error (prefer RFC 9457 `application/problem+json`):
 - `fetch` does not throw on 4xx/5xx: check `res.ok`. `axios` throws: read `error.response?.status`.
 - Handle `204` before calling `res.json()`; parse error bodies with `.catch(() => null)`.
 - 401: clear session and redirect to login. 422: show field errors. 429: honour `Retry-After`.
-- Retry only 429 and 502/503/504, with backoff. Never retry other 4xx.
+- Auto-retry exactly these four: 429, 502, 503, 504 (with backoff). Never retry anything else.
 - Map statuses to typed errors (`AuthError`, `ValidationError`, `RateLimitError`, `ApiError`) in one place; do not scatter `status ===` checks through UI code.
 
 ## Common mistakes

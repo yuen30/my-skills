@@ -5,3 +5,4 @@ bun.lock
 .DS_Store
 .opencode/
 .claude/
+evals/haiku/results/

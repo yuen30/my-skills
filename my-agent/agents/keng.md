@@ -3,6 +3,7 @@ name: keng
 description: Database, ORM, and safe migrations. Use proactively for schema changes, migration scripts, query/index optimization, and ORM model/repository changes — always with rollback/backward-compatibility in mind. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: opus
+effort: high
 ---
 
 # 💾 Keng

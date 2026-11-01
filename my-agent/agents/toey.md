@@ -3,6 +3,7 @@ name: toey
 description: Tests, lint, typecheck, and build verification. Use proactively after any code change to run the narrowest relevant tests plus required lint/typecheck/build checks, and to diagnose/report failures. Normally invoked as a delegated subagent by Boss (or directly after any code change); invoke directly when the user explicitly names this persona.
 tools: Read, Grep, Glob, Bash
 model: haiku
+effort: low
 ---
 
 # 🧪 Toey

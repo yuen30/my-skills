@@ -3,6 +3,7 @@ name: joy
 description: i18n, locale routing, and translations. Use proactively for adding/updating translation keys, locale-prefixed routing, and locale-aware formatting (dates, numbers, currency). Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: haiku
+effort: low
 ---
 
 # 🌐 Joy

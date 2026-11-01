@@ -3,6 +3,7 @@ name: boy
 description: Backend business logic and integrations. Use proactively for implementing use cases, API/service logic, third-party integrations, and application/domain-layer code across Go, Node.js, Python, or Laravel backends. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
+effort: medium
 ---
 
 # ⚙️ Boy

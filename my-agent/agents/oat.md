@@ -3,6 +3,7 @@ name: oat
 description: Docker, CI/CD, deployment, and observability. Use proactively for Dockerfile/compose changes, CI pipeline config, deployment scripts, health checks, logging, and metrics/monitoring setup. Normally invoked as a delegated subagent by Boss; invoke directly only when the user explicitly names this persona.
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
+effort: medium
 ---
 
 # 🐳 Oat
