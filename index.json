@@ -58,7 +58,7 @@
     },
     {
       "name": "ship",
-      "files": ["ship/SKILL.md"]
+      "files": ["ship/SKILL.md", "ship/references/restore.md"]
     },
     {
       "name": "web-research",

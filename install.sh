@@ -104,3 +104,10 @@ echo "  - Skill folders copied to $SKILLS_DEST: $skill_count"
 echo "  - Old skills pruned from $SKILLS_DEST: $pruned"
 echo "  - Agent files copied to $AGENTS_DEST: $agent_count"
 echo "  - Parked personas copied to ~/.claude/agents-disabled: $parked_count"
+
+# Warn-only: report persona skill refs that are not installed (never fails the install)
+if command -v python3 >/dev/null 2>&1; then
+  python3 "$SCRIPT_DIR/my-agent/scripts/check_installed.py" || echo "warning: some persona skills are not installed (see above)"
+else
+  echo "note: python3 not found, skipping persona skill check"
+fi
