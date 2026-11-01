@@ -21,6 +21,10 @@
       "files": ["context7-auto-research/SKILL.md"]
     },
     {
+      "name": "dev-loop",
+      "files": ["dev-loop/SKILL.md"]
+    },
+    {
       "name": "docker",
       "files": ["docker/SKILL.md"]
     },
